@@ -1,0 +1,6 @@
+﻿description,category,venue,city,price,totalSeats,updatedDescription,newPrice,newTotalSeats
+Postman API Conference event testing,Conference,SMX Convention Center Manila,Pasay City,950,1600,Updated Postman API Conference event testing,1000,2000
+Postman API Concert event testing,Concert,Smart Araneta Coliseum,Quezon City,2350,11200,Updated Postman API Concert event testing,2500,14000
+Postman API Sports event testing,Sports,Rizal Memorial Sports Complex,Manila,500,6000,Updated Postman API Sports event testing,800,10000
+Postman API Workshop event testing,Workshop,SMX Convention Center Aura,Taguig City,450,1200,Updated Postman API Workshop event testing,650,1500
+Postman API Festival event testing,Festival,SMDC Festival Grounds,Paranaque City,2050,35000,Updated Postman API Festival event testing,3150,40000

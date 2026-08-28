@@ -35,12 +35,6 @@ jobs:
           mkdir -p reports/data-driven
 
       # --------------------------------------------------
-      # 2.1 Postman login
-      # --------------------------------------------------
-      - name: Postman login
-        run: postman login --with-api-key "${{ secrets.POSTMAN_API_KEY }}"
-
-      # --------------------------------------------------
       # 3. EventHubAPI - Functional Collection
       # --------------------------------------------------
       - name: Run Functional Collection
@@ -48,6 +42,7 @@ jobs:
         continue-on-error: true
         uses: postmanlabs/postman-cli-action@v1
         with:
+          api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
             collection run
             postman/collections/functional.postman_collection.json
@@ -69,6 +64,7 @@ jobs:
         continue-on-error: true
         uses: postmanlabs/postman-cli-action@v1
         with:
+          api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
             collection run
             postman/collections/e2e.postman_collection.json
@@ -89,6 +85,7 @@ jobs:
         continue-on-error: true
         uses: postmanlabs/postman-cli-action@v1
         with:
+          api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
             collection run
             postman/collections/datadriven.postman_collection.json

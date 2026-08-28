@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="EventHubAPI - E2E" tests="21" time="3.201">
+  <testsuite name="Event Bookings Business Flow / Register New User" id="67ce467b-0aa0-4ea4-b87f-936938a271c6" timestamp="2026-08-28T04:23:46.026Z" tests="6" failures="0" errors="0" time="0.599">
+    <testcase name="Response status code should be 201" time="0.599" classname="EventBookingsBusinessFlowRegisterNewUser"/>
+    <testcase name="success should be true" time="0.599" classname="EventBookingsBusinessFlowRegisterNewUser"/>
+    <testcase name="token should be a non-empty string" time="0.599" classname="EventBookingsBusinessFlowRegisterNewUser"/>
+    <testcase name="Response contains created user id and email" time="0.599" classname="EventBookingsBusinessFlowRegisterNewUser"/>
+    <testcase name="Set e2e_testUserID collection variable" time="0.599" classname="EventBookingsBusinessFlowRegisterNewUser"/>
+    <testcase name="Set e2e_authToken environment variable" time="0.599" classname="EventBookingsBusinessFlowRegisterNewUser"/>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Login New User" id="b6fcbc90-3d69-490a-a5bb-ea6635a12c43" timestamp="2026-08-28T04:23:46.026Z" tests="5" failures="0" errors="0" time="0.261">
+    <testcase name="Response status code should be 200" time="0.261" classname="EventBookingsBusinessFlowLoginNewUser"/>
+    <testcase name="success should be true" time="0.261" classname="EventBookingsBusinessFlowLoginNewUser"/>
+    <testcase name="Response has token property and not empty" time="0.261" classname="EventBookingsBusinessFlowLoginNewUser"/>
+    <testcase name="Response contains login user id and email" time="0.261" classname="EventBookingsBusinessFlowLoginNewUser"/>
+    <testcase name="Extract token and set e2e_authToken environment variable" time="0.261" classname="EventBookingsBusinessFlowLoginNewUser"/>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Get Authenticated User" id="00a6658a-93c9-4b87-88c7-9bd71bccc642" timestamp="2026-08-28T04:23:46.026Z" tests="3" failures="0" errors="0" time="0.118">
+    <testcase name="Response status code should be 200" time="0.118" classname="EventBookingsBusinessFlowGetAuthenticatedUser"/>
+    <testcase name="success should be true" time="0.118" classname="EventBookingsBusinessFlowGetAuthenticatedUser"/>
+    <testcase name="Response contains authenticated user with correct id and email" time="0.118" classname="EventBookingsBusinessFlowGetAuthenticatedUser"/>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Create a new event" id="fb96d0c1-d3f9-4b4a-bb7b-1405fafa1e1b" timestamp="2026-08-28T04:23:46.026Z" tests="5" failures="0" errors="0" time="0.128">
+    <testcase name="Status code should be 201" time="0.128" classname="EventBookingsBusinessFlowCreateANewEvent"/>
+    <testcase name="Response success should be true" time="0.128" classname="EventBookingsBusinessFlowCreateANewEvent"/>
+    <testcase name="Response message should be 'Event created successfully'" time="0.128" classname="EventBookingsBusinessFlowCreateANewEvent"/>
+    <testcase name="Save eventID as collection variable" time="0.128" classname="EventBookingsBusinessFlowCreateANewEvent"/>
+    <testcase name="Validate event data properties" time="0.128" classname="EventBookingsBusinessFlowCreateANewEvent"/>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Get a single event by ID" id="d251858c-6dab-4bbe-9722-7ef9681bcd29" timestamp="2026-08-28T04:23:46.026Z" tests="2" failures="0" errors="0" time="0.120">
+    <testcase name="Response status code should be 200" time="0.120" classname="EventBookingsBusinessFlowGetASingleEventById"/>
+    <testcase name="Validate event data properties" time="0.120" classname="EventBookingsBusinessFlowGetASingleEventById"/>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Create a booking" id="3a18b07b-f781-4b4c-9517-da31d59748ee" timestamp="2026-08-28T04:23:46.026Z" tests="7" failures="1" errors="0" time="0.132">
+    <testcase name="Status code should be 201" time="0.132" classname="EventBookingsBusinessFlowCreateABooking"/>
+    <testcase name="Response success should be true" time="0.132" classname="EventBookingsBusinessFlowCreateABooking"/>
+    <testcase name="Response message should be 'Booking confirmed!'" time="0.132" classname="EventBookingsBusinessFlowCreateABooking"/>
+    <testcase name="Save booking ID and reference code as collection variables" time="0.132" classname="EventBookingsBusinessFlowCreateABooking"/>
+    <testcase name="Available seats should be reduced after booking" time="0.132" classname="EventBookingsBusinessFlowCreateABooking"/>
+    <testcase name="Validate booking data properties" time="0.132" classname="EventBookingsBusinessFlowCreateABooking"/>
+    <testcase name="(BUG-001) Validate event object properties in booking response" time="0.132" classname="EventBookingsBusinessFlowCreateABooking">
+      <failure type="AssertionFailure" message="expected 300 to equal 295">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 980b4821-2d15-4e5e-a808-2db803dec8ca.]]>
+        <![CDATA[Collection name: EventHubAPI - E2E.]]>
+        <![CDATA[Request name: Event Bookings Business Flow / Create a booking.]]>
+        <![CDATA[Test description: (BUG-001) Validate event object properties in booking response.]]>
+        <![CDATA[Error message: expected 300 to equal 295.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 300 to equal 295
+   at Object.eval sandbox-script.js:7:6).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Get a single booking by ID" id="67ab49de-33e0-44ab-a30b-c017104fbf70" timestamp="2026-08-28T04:23:46.026Z" tests="4" failures="1" errors="0" time="0.118">
+    <testcase name="Response status code should be 200" time="0.118" classname="EventBookingsBusinessFlowGetASingleBookingById"/>
+    <testcase name="success should be true" time="0.118" classname="EventBookingsBusinessFlowGetASingleBookingById"/>
+    <testcase name="Validate booking data object properties" time="0.118" classname="EventBookingsBusinessFlowGetASingleBookingById"/>
+    <testcase name="(BUG-001) Validate data event object properties" time="0.118" classname="EventBookingsBusinessFlowGetASingleBookingById">
+      <failure type="AssertionFailure" message="expected 300 to equal 295">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 980b4821-2d15-4e5e-a808-2db803dec8ca.]]>
+        <![CDATA[Collection name: EventHubAPI - E2E.]]>
+        <![CDATA[Request name: Event Bookings Business Flow / Get a single booking by ID.]]>
+        <![CDATA[Test description: (BUG-001) Validate data event object properties.]]>
+        <![CDATA[Error message: expected 300 to equal 295.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 300 to equal 295
+   at Object.eval sandbox-script.js:4:7).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Look up a booking using a reference code" id="3ee879ec-7d29-4d94-b59c-191a806b6e24" timestamp="2026-08-28T04:23:46.026Z" tests="4" failures="1" errors="0" time="0.120">
+    <testcase name="Response status code should be 200" time="0.120" classname="EventBookingsBusinessFlowLookUpABookingUsingAReferenceCode"/>
+    <testcase name="success should be true" time="0.120" classname="EventBookingsBusinessFlowLookUpABookingUsingAReferenceCode"/>
+    <testcase name="Validate booking data object properties" time="0.120" classname="EventBookingsBusinessFlowLookUpABookingUsingAReferenceCode"/>
+    <testcase name="(BUG-001) Validate data event object properties" time="0.120" classname="EventBookingsBusinessFlowLookUpABookingUsingAReferenceCode">
+      <failure type="AssertionFailure" message="expected 300 to equal 295">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 980b4821-2d15-4e5e-a808-2db803dec8ca.]]>
+        <![CDATA[Collection name: EventHubAPI - E2E.]]>
+        <![CDATA[Request name: Event Bookings Business Flow / Look up a booking using a reference code.]]>
+        <![CDATA[Test description: (BUG-001) Validate data event object properties.]]>
+        <![CDATA[Error message: expected 300 to equal 295.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 300 to equal 295
+   at Object.eval sandbox-script.js:4:8).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / List all bookings" id="a8744d61-bd4b-4754-900a-85106d9a3b88" timestamp="2026-08-28T04:23:46.026Z" tests="6" failures="0" errors="0" time="0.122">
+    <testcase name="Response status code should be 200" time="0.122" classname="EventBookingsBusinessFlowListAllBookings"/>
+    <testcase name="success should be true" time="0.122" classname="EventBookingsBusinessFlowListAllBookings"/>
+    <testcase name="The 'data' array is not empty and not null" time="0.122" classname="EventBookingsBusinessFlowListAllBookings"/>
+    <testcase name="Each property in the 'data' array has the expected properties" time="0.122" classname="EventBookingsBusinessFlowListAllBookings"/>
+    <testcase name="Pagination values are correct" time="0.122" classname="EventBookingsBusinessFlowListAllBookings"/>
+    <testcase name="Validate total quantity of booked tickets" time="0.122" classname="EventBookingsBusinessFlowListAllBookings"/>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Update an event (BUG-001)" id="cfc5fdd2-f7a1-4057-8a75-905d969139ae" timestamp="2026-08-28T04:23:46.026Z" tests="8" failures="1" errors="0" time="0.130">
+    <testcase name="Pre-request: Updated event title: Event_Updated_API_20260828-042347318" time="0.130" classname="EventBookingsBusinessFlowUpdateAnEventBug001"/>
+    <testcase name="Pre-request: Update event title and set as collection variable" time="0.130" classname="EventBookingsBusinessFlowUpdateAnEventBug001"/>
+    <testcase name="Pre-request: Set updated event price and total seats and save as collection variables" time="0.130" classname="EventBookingsBusinessFlowUpdateAnEventBug001"/>
+    <testcase name="Response status code should be 200" time="0.130" classname="EventBookingsBusinessFlowUpdateAnEventBug001"/>
+    <testcase name="success should be true" time="0.130" classname="EventBookingsBusinessFlowUpdateAnEventBug001"/>
+    <testcase name="(BUG-001) Validate event data properties" time="0.130" classname="EventBookingsBusinessFlowUpdateAnEventBug001">
+      <failure type="AssertionFailure" message="expected 300 to equal 545">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 980b4821-2d15-4e5e-a808-2db803dec8ca.]]>
+        <![CDATA[Collection name: EventHubAPI - E2E.]]>
+        <![CDATA[Request name: Event Bookings Business Flow / Update an event (BUG-001).]]>
+        <![CDATA[Test description: (BUG-001) Validate event data properties.]]>
+        <![CDATA[Error message: expected 300 to equal 545.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 300 to equal 545
+   at Object.eval sandbox-script.js:3:10).]]>
+      </failure>
+    </testcase>
+    <testcase name="message should be 'Event updated successfully'" time="0.130" classname="EventBookingsBusinessFlowUpdateAnEventBug001"/>
+    <testcase name="Sync eventTotalSeats and eventCurrentAvailableSeats after update" time="0.130" classname="EventBookingsBusinessFlowUpdateAnEventBug001"/>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Get a single event by ID (BUG-001)" id="0a2aa07e-d8db-4a80-9379-9258e35caeb8" timestamp="2026-08-28T04:23:46.026Z" tests="3" failures="1" errors="0" time="0.120">
+    <testcase name="Response status code should be 200" time="0.120" classname="EventBookingsBusinessFlowGetASingleEventByIdBug001"/>
+    <testcase name="success should be true" time="0.120" classname="EventBookingsBusinessFlowGetASingleEventByIdBug001"/>
+    <testcase name="(BUG-001) Validate event data properties" time="0.120" classname="EventBookingsBusinessFlowGetASingleEventByIdBug001">
+      <failure type="AssertionFailure" message="expected 295 to equal 545">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 980b4821-2d15-4e5e-a808-2db803dec8ca.]]>
+        <![CDATA[Collection name: EventHubAPI - E2E.]]>
+        <![CDATA[Request name: Event Bookings Business Flow / Get a single event by ID (BUG-001).]]>
+        <![CDATA[Test description: (BUG-001) Validate event data properties.]]>
+        <![CDATA[Error message: expected 295 to equal 545.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 295 to equal 545
+   at Object.eval sandbox-script.js:3:11).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Look up a booking using a reference code" id="e0bd1c05-d152-4c7b-a1bc-da2e28b08de8" timestamp="2026-08-28T04:23:46.026Z" tests="4" failures="1" errors="0" time="0.119">
+    <testcase name="Response status code should be 200" time="0.119" classname="EventBookingsBusinessFlowLookUpABookingUsingAReferenceCode"/>
+    <testcase name="success should be true" time="0.119" classname="EventBookingsBusinessFlowLookUpABookingUsingAReferenceCode"/>
+    <testcase name="Validate booking data object properties" time="0.119" classname="EventBookingsBusinessFlowLookUpABookingUsingAReferenceCode"/>
+    <testcase name="(BUG-001) Validate data event object properties" time="0.119" classname="EventBookingsBusinessFlowLookUpABookingUsingAReferenceCode">
+      <failure type="AssertionFailure" message="expected 300 to equal 545">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 980b4821-2d15-4e5e-a808-2db803dec8ca.]]>
+        <![CDATA[Collection name: EventHubAPI - E2E.]]>
+        <![CDATA[Request name: Event Bookings Business Flow / Look up a booking using a reference code.]]>
+        <![CDATA[Test description: (BUG-001) Validate data event object properties.]]>
+        <![CDATA[Error message: expected 300 to equal 545.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 300 to equal 545
+   at Object.eval sandbox-script.js:4:12).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Create a booking - Maximum Ticket" id="dcca04fc-af10-40ff-bbc7-3b1760866dda" timestamp="2026-08-28T04:23:46.026Z" tests="7" failures="1" errors="0" time="0.133">
+    <testcase name="Status code should be 201" time="0.133" classname="EventBookingsBusinessFlowCreateABookingMaximumTicket"/>
+    <testcase name="Response success should be true" time="0.133" classname="EventBookingsBusinessFlowCreateABookingMaximumTicket"/>
+    <testcase name="Response message should be 'Booking confirmed!'" time="0.133" classname="EventBookingsBusinessFlowCreateABookingMaximumTicket"/>
+    <testcase name="Save bookingID and bookingRefCode as collection variables" time="0.133" classname="EventBookingsBusinessFlowCreateABookingMaximumTicket"/>
+    <testcase name="Available seats should be reduced after booking" time="0.133" classname="EventBookingsBusinessFlowCreateABookingMaximumTicket"/>
+    <testcase name="Validate booking data properties" time="0.133" classname="EventBookingsBusinessFlowCreateABookingMaximumTicket"/>
+    <testcase name="(BUG-001) Validate event object properties in booking response" time="0.133" classname="EventBookingsBusinessFlowCreateABookingMaximumTicket">
+      <failure type="AssertionFailure" message="expected 300 to equal 535">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 980b4821-2d15-4e5e-a808-2db803dec8ca.]]>
+        <![CDATA[Collection name: EventHubAPI - E2E.]]>
+        <![CDATA[Request name: Event Bookings Business Flow / Create a booking - Maximum Ticket.]]>
+        <![CDATA[Test description: (BUG-001) Validate event object properties in booking response.]]>
+        <![CDATA[Error message: expected 300 to equal 535.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 300 to equal 535
+   at Object.eval sandbox-script.js:7:13).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / List all bookings" id="ce82b049-dc17-48c9-b5bb-368d17ff3bf9" timestamp="2026-08-28T04:23:46.026Z" tests="6" failures="0" errors="0" time="0.122">
+    <testcase name="Response status code should be 200" time="0.122" classname="EventBookingsBusinessFlowListAllBookings"/>
+    <testcase name="success should be true" time="0.122" classname="EventBookingsBusinessFlowListAllBookings"/>
+    <testcase name="The 'data' array is not empty and not null" time="0.122" classname="EventBookingsBusinessFlowListAllBookings"/>
+    <testcase name="Each property in the 'data' array has the expected properties" time="0.122" classname="EventBookingsBusinessFlowListAllBookings"/>
+    <testcase name="Pagination values are correct" time="0.122" classname="EventBookingsBusinessFlowListAllBookings"/>
+    <testcase name="Validate total quantity of booked tickets" time="0.122" classname="EventBookingsBusinessFlowListAllBookings"/>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Cancel a booking" id="77164dc0-baaa-4377-bf01-80a26b106d9c" timestamp="2026-08-28T04:23:46.026Z" tests="3" failures="0" errors="0" time="0.128">
+    <testcase name="Response status code should be 200" time="0.128" classname="EventBookingsBusinessFlowCancelABooking"/>
+    <testcase name="success should be true" time="0.128" classname="EventBookingsBusinessFlowCancelABooking"/>
+    <testcase name="message should be 'Booking cancelled'" time="0.128" classname="EventBookingsBusinessFlowCancelABooking"/>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Get a single event by ID" id="e9b1e9c2-b8a5-4765-84c0-bd2d8d00c711" timestamp="2026-08-28T04:23:46.026Z" tests="2" failures="1" errors="0" time="0.119">
+    <testcase name="Response status code should be 200" time="0.119" classname="EventBookingsBusinessFlowGetASingleEventById"/>
+    <testcase name="(BUG-001) Validate event data properties" time="0.119" classname="EventBookingsBusinessFlowGetASingleEventById">
+      <failure type="AssertionFailure" message="expected 295 to equal 535">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 980b4821-2d15-4e5e-a808-2db803dec8ca.]]>
+        <![CDATA[Collection name: EventHubAPI - E2E.]]>
+        <![CDATA[Request name: Event Bookings Business Flow / Get a single event by ID.]]>
+        <![CDATA[Test description: (BUG-001) Validate event data properties.]]>
+        <![CDATA[Error message: expected 295 to equal 535.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 295 to equal 535
+   at Object.eval sandbox-script.js:2:16).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Get a single booking by ID - Cancelled" id="efef5137-4f93-4d0e-8d69-b49ac2929ad9" timestamp="2026-08-28T04:23:46.026Z" tests="3" failures="0" errors="0" time="0.118">
+    <testcase name="Response status code should be 404" time="0.118" classname="EventBookingsBusinessFlowGetASingleBookingByIdCancelled"/>
+    <testcase name="success should be false" time="0.118" classname="EventBookingsBusinessFlowGetASingleBookingByIdCancelled"/>
+    <testcase name="error should be 'Booking with id 137574 not found'" time="0.118" classname="EventBookingsBusinessFlowGetASingleBookingByIdCancelled"/>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / List all bookings" id="2351b588-5367-46bc-9a18-670b7ee88380" timestamp="2026-08-28T04:23:46.026Z" tests="6" failures="0" errors="0" time="0.118">
+    <testcase name="Response status code should be 200" time="0.118" classname="EventBookingsBusinessFlowListAllBookings"/>
+    <testcase name="success should be true" time="0.118" classname="EventBookingsBusinessFlowListAllBookings"/>
+    <testcase name="The 'data' array is not empty and not null" time="0.118" classname="EventBookingsBusinessFlowListAllBookings"/>
+    <testcase name="Each property in the 'data' array has the expected properties" time="0.118" classname="EventBookingsBusinessFlowListAllBookings"/>
+    <testcase name="Pagination values are correct" time="0.118" classname="EventBookingsBusinessFlowListAllBookings"/>
+    <testcase name="Validate total quantity of booked tickets after cancelled booking" time="0.118" classname="EventBookingsBusinessFlowListAllBookings"/>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / List all bookings - Cancelled (BUG-005)" id="d46900fc-b54d-454d-a2d8-e6a8c61fe372" timestamp="2026-08-28T04:23:46.026Z" tests="4" failures="1" errors="0" time="0.120">
+    <testcase name="Response status code should be 200" time="0.120" classname="EventBookingsBusinessFlowListAllBookingsCancelledBug005"/>
+    <testcase name="success should be true" time="0.120" classname="EventBookingsBusinessFlowListAllBookingsCancelledBug005"/>
+    <testcase name="(BUG-005) The 'data' array is null or empty" time="0.120" classname="EventBookingsBusinessFlowListAllBookingsCancelledBug005">
+      <failure type="AssertionFailure" message="Reported as BUG-005: Cancelled Bookings Not Returned in List">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 980b4821-2d15-4e5e-a808-2db803dec8ca.]]>
+        <![CDATA[Collection name: EventHubAPI - E2E.]]>
+        <![CDATA[Request name: Event Bookings Business Flow / List all bookings - Cancelled (BUG-005).]]>
+        <![CDATA[Test description: (BUG-005) The 'data' array is null or empty.]]>
+        <![CDATA[Error message: Reported as BUG-005: Cancelled Bookings Not Returned in List.]]>
+        <![CDATA[Stacktrace: AssertionError: Reported as BUG-005: Cancelled Bookings Not Returned in List
+   at Object.eval sandbox-script.js:3:19).]]>
+      </failure>
+    </testcase>
+    <testcase name="Pagination values are correct" time="0.120" classname="EventBookingsBusinessFlowListAllBookingsCancelledBug005"/>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Delete an event" id="6eb221d4-5b18-4cdf-b8f7-af4c073ba659" timestamp="2026-08-28T04:23:46.026Z" tests="3" failures="0" errors="0" time="0.137">
+    <testcase name="Response status code should be 200" time="0.137" classname="EventBookingsBusinessFlowDeleteAnEvent"/>
+    <testcase name="success should be true" time="0.137" classname="EventBookingsBusinessFlowDeleteAnEvent"/>
+    <testcase name="message should be 'Event deleted successfully'" time="0.137" classname="EventBookingsBusinessFlowDeleteAnEvent"/>
+  </testsuite>
+  <testsuite name="Event Bookings Business Flow / Verify event is deleted" id="5b347dd1-ddc2-4d16-94a4-0d0e4a2deae4" timestamp="2026-08-28T04:23:46.026Z" tests="3" failures="0" errors="0" time="0.119">
+    <testcase name="Response status code should be 404" time="0.119" classname="EventBookingsBusinessFlowVerifyEventIsDeleted"/>
+    <testcase name="success should be false" time="0.119" classname="EventBookingsBusinessFlowVerifyEventIsDeleted"/>
+    <testcase name="error should be Event with id '107161' not found" time="0.119" classname="EventBookingsBusinessFlowVerifyEventIsDeleted"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="EventHubAPI - Functional" tests="56" time="11.152">
+  <testsuite name="Admin Login / Login with existing credentials" id="6801cd11-2cd6-40c4-9ca0-7fa465477a15" timestamp="2026-08-28T04:26:28.331Z" tests="8" failures="0" errors="0" time="0.450">
+    <testcase name="Response header Content-Type is JSON" time="0.450" classname="AdminLoginLoginWithExistingCredentials"/>
+    <testcase name="Response body should not be null or empty" time="0.450" classname="AdminLoginLoginWithExistingCredentials"/>
+    <testcase name="Response time is within 2000ms" time="0.450" classname="AdminLoginLoginWithExistingCredentials"/>
+    <testcase name="Response status code should be 200" time="0.450" classname="AdminLoginLoginWithExistingCredentials"/>
+    <testcase name="success should be true" time="0.450" classname="AdminLoginLoginWithExistingCredentials"/>
+    <testcase name="Response has token property and not empty" time="0.450" classname="AdminLoginLoginWithExistingCredentials"/>
+    <testcase name="Extract token and set environment variable" time="0.450" classname="AdminLoginLoginWithExistingCredentials"/>
+    <testcase name="Response contains login user id and email" time="0.450" classname="AdminLoginLoginWithExistingCredentials"/>
+  </testsuite>
+  <testsuite name="Admin Login / Get the currently auhenticated user" id="5a2e9321-8fbe-449d-a626-ddddb381bd9d" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.112">
+    <testcase name="Response header Content-Type is JSON" time="0.112" classname="AdminLoginGetTheCurrentlyAuhenticatedUser"/>
+    <testcase name="Response body should not be null or empty" time="0.112" classname="AdminLoginGetTheCurrentlyAuhenticatedUser"/>
+    <testcase name="Response time is within 2000ms" time="0.112" classname="AdminLoginGetTheCurrentlyAuhenticatedUser"/>
+    <testcase name="Response status code should be 200" time="0.112" classname="AdminLoginGetTheCurrentlyAuhenticatedUser"/>
+    <testcase name="success should be true" time="0.112" classname="AdminLoginGetTheCurrentlyAuhenticatedUser"/>
+    <testcase name="Response contains login user" time="0.112" classname="AdminLoginGetTheCurrentlyAuhenticatedUser"/>
+  </testsuite>
+  <testsuite name="Authorization / Authorization - CRUD / Register a new user" id="97f65eaa-2da2-4613-84aa-4f845b063924" timestamp="2026-08-28T04:26:28.331Z" tests="10" failures="0" errors="0" time="0.396">
+    <testcase name="Pre-request: Generate user email and set as collection variable" time="0.396" classname="AuthorizationAuthorizationCrudRegisterANewUser"/>
+    <testcase name="Response header Content-Type is JSON" time="0.396" classname="AuthorizationAuthorizationCrudRegisterANewUser"/>
+    <testcase name="Response body should not be null or empty" time="0.396" classname="AuthorizationAuthorizationCrudRegisterANewUser"/>
+    <testcase name="Response time is within 2000ms" time="0.396" classname="AuthorizationAuthorizationCrudRegisterANewUser"/>
+    <testcase name="Response status code should be 201" time="0.396" classname="AuthorizationAuthorizationCrudRegisterANewUser"/>
+    <testcase name="success should be true" time="0.396" classname="AuthorizationAuthorizationCrudRegisterANewUser"/>
+    <testcase name="token should be a string" time="0.396" classname="AuthorizationAuthorizationCrudRegisterANewUser"/>
+    <testcase name="Set token as environment variable" time="0.396" classname="AuthorizationAuthorizationCrudRegisterANewUser"/>
+    <testcase name="Response contains created user id and email" time="0.396" classname="AuthorizationAuthorizationCrudRegisterANewUser"/>
+    <testcase name="Set '45690' user id as collection variable" time="0.396" classname="AuthorizationAuthorizationCrudRegisterANewUser"/>
+  </testsuite>
+  <testsuite name="Authorization / Authorization - CRUD / Login with registered new user" id="40b71cec-717e-44cb-a8d9-326b151d2726" timestamp="2026-08-28T04:26:28.331Z" tests="8" failures="0" errors="0" time="0.201">
+    <testcase name="Response header Content-Type is JSON" time="0.201" classname="AuthorizationAuthorizationCrudLoginWithRegisteredNewUser"/>
+    <testcase name="Response body should not be null or empty" time="0.201" classname="AuthorizationAuthorizationCrudLoginWithRegisteredNewUser"/>
+    <testcase name="Response time is within 2000ms" time="0.201" classname="AuthorizationAuthorizationCrudLoginWithRegisteredNewUser"/>
+    <testcase name="Response status code should be 200" time="0.201" classname="AuthorizationAuthorizationCrudLoginWithRegisteredNewUser"/>
+    <testcase name="success should be true" time="0.201" classname="AuthorizationAuthorizationCrudLoginWithRegisteredNewUser"/>
+    <testcase name="Response has token property and not empty" time="0.201" classname="AuthorizationAuthorizationCrudLoginWithRegisteredNewUser"/>
+    <testcase name="Extract token and set environment variable" time="0.201" classname="AuthorizationAuthorizationCrudLoginWithRegisteredNewUser"/>
+    <testcase name="Response contains login user id and email" time="0.201" classname="AuthorizationAuthorizationCrudLoginWithRegisteredNewUser"/>
+  </testsuite>
+  <testsuite name="Authorization / Authorization - CRUD / Get the currently auhenticated user" id="ecd0425a-5fee-4c06-adfd-ff1526635eaf" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.114">
+    <testcase name="Response header Content-Type is JSON" time="0.114" classname="AuthorizationAuthorizationCrudGetTheCurrentlyAuhenticatedUser"/>
+    <testcase name="Response body should not be null or empty" time="0.114" classname="AuthorizationAuthorizationCrudGetTheCurrentlyAuhenticatedUser"/>
+    <testcase name="Response time is within 2000ms" time="0.114" classname="AuthorizationAuthorizationCrudGetTheCurrentlyAuhenticatedUser"/>
+    <testcase name="Response status code should be 200" time="0.114" classname="AuthorizationAuthorizationCrudGetTheCurrentlyAuhenticatedUser"/>
+    <testcase name="success should be true" time="0.114" classname="AuthorizationAuthorizationCrudGetTheCurrentlyAuhenticatedUser"/>
+    <testcase name="Response contains login user" time="0.114" classname="AuthorizationAuthorizationCrudGetTheCurrentlyAuhenticatedUser"/>
+  </testsuite>
+  <testsuite name="Authorization / Authorization - Negative Tests / Get the currently auhenticated user - No Authorization" id="a890c200-78ea-4f8a-b0cd-2b225718eb54" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.137">
+    <testcase name="Response header Content-Type is JSON" time="0.137" classname="AuthorizationAuthorizationNegativeTestsGetTheCurrentlyAuhenticatedUserNoAuthorization"/>
+    <testcase name="Response body should not be null or empty" time="0.137" classname="AuthorizationAuthorizationNegativeTestsGetTheCurrentlyAuhenticatedUserNoAuthorization"/>
+    <testcase name="Response time is within 2000ms" time="0.137" classname="AuthorizationAuthorizationNegativeTestsGetTheCurrentlyAuhenticatedUserNoAuthorization"/>
+    <testcase name="Response status code should be 401" time="0.137" classname="AuthorizationAuthorizationNegativeTestsGetTheCurrentlyAuhenticatedUserNoAuthorization"/>
+    <testcase name="success should be false" time="0.137" classname="AuthorizationAuthorizationNegativeTestsGetTheCurrentlyAuhenticatedUserNoAuthorization"/>
+    <testcase name="error should be 'Unauthorized'" time="0.137" classname="AuthorizationAuthorizationNegativeTestsGetTheCurrentlyAuhenticatedUserNoAuthorization"/>
+  </testsuite>
+  <testsuite name="Authorization / Authorization - Negative Tests / Get the currently auhenticated user - Expired Token" id="a05c88f1-acfb-4a25-9ac2-0c799453bac1" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.110">
+    <testcase name="Response header Content-Type is JSON" time="0.110" classname="AuthorizationAuthorizationNegativeTestsGetTheCurrentlyAuhenticatedUserExpiredToken"/>
+    <testcase name="Response body should not be null or empty" time="0.110" classname="AuthorizationAuthorizationNegativeTestsGetTheCurrentlyAuhenticatedUserExpiredToken"/>
+    <testcase name="Response time is within 2000ms" time="0.110" classname="AuthorizationAuthorizationNegativeTestsGetTheCurrentlyAuhenticatedUserExpiredToken"/>
+    <testcase name="Response status code should be 401" time="0.110" classname="AuthorizationAuthorizationNegativeTestsGetTheCurrentlyAuhenticatedUserExpiredToken"/>
+    <testcase name="success should be false" time="0.110" classname="AuthorizationAuthorizationNegativeTestsGetTheCurrentlyAuhenticatedUserExpiredToken"/>
+    <testcase name="error should be 'Invalid or expired token'" time="0.110" classname="AuthorizationAuthorizationNegativeTestsGetTheCurrentlyAuhenticatedUserExpiredToken"/>
+  </testsuite>
+  <testsuite name="Authorization / Authorization - Negative Tests / Login with existing credentials - Invalid Email" id="a8298818-bcfd-4406-bfc7-4f7107eaf687" timestamp="2026-08-28T04:26:28.331Z" tests="7" failures="0" errors="0" time="0.113">
+    <testcase name="Response header Content-Type is JSON" time="0.113" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsInvalidEmail"/>
+    <testcase name="Response body should not be null or empty" time="0.113" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsInvalidEmail"/>
+    <testcase name="Response time is within 2000ms" time="0.113" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsInvalidEmail"/>
+    <testcase name="Response status code should be 400" time="0.113" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsInvalidEmail"/>
+    <testcase name="success should be false" time="0.113" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsInvalidEmail"/>
+    <testcase name="error should be 'Invalid email or passwordt'" time="0.113" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsInvalidEmail"/>
+    <testcase name="details should be an empty array" time="0.113" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsInvalidEmail"/>
+  </testsuite>
+  <testsuite name="Authorization / Authorization - Negative Tests / Login with existing credentials - Invalid Password" id="92c030f5-5d53-47c9-9c99-9fefbed58b51" timestamp="2026-08-28T04:26:28.331Z" tests="7" failures="0" errors="0" time="0.530">
+    <testcase name="Response header Content-Type is JSON" time="0.530" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsInvalidPassword"/>
+    <testcase name="Response body should not be null or empty" time="0.530" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsInvalidPassword"/>
+    <testcase name="Response time is within 2000ms" time="0.530" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsInvalidPassword"/>
+    <testcase name="Response status code should be 400" time="0.530" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsInvalidPassword"/>
+    <testcase name="success should be false" time="0.530" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsInvalidPassword"/>
+    <testcase name="error should be 'Invalid email or passwordt'" time="0.530" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsInvalidPassword"/>
+    <testcase name="details should be an empty array" time="0.530" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsInvalidPassword"/>
+  </testsuite>
+  <testsuite name="Authorization / Authorization - Negative Tests / Login with existing credentials - Missing Password" id="0260ae74-f203-4b09-a5ea-f2a44f4ccaa7" timestamp="2026-08-28T04:26:28.331Z" tests="7" failures="0" errors="0" time="0.328">
+    <testcase name="Response header Content-Type is JSON" time="0.328" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsMissingPassword"/>
+    <testcase name="Response body should not be null or empty" time="0.328" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsMissingPassword"/>
+    <testcase name="Response time is within 2000ms" time="0.328" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsMissingPassword"/>
+    <testcase name="Response status code should be 400" time="0.328" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsMissingPassword"/>
+    <testcase name="success should be false" time="0.328" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsMissingPassword"/>
+    <testcase name="error should be 'Validation failed'" time="0.328" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsMissingPassword"/>
+    <testcase name="details should be an array with one object" time="0.328" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsMissingPassword"/>
+  </testsuite>
+  <testsuite name="Authorization / Authorization - Negative Tests / Login with existing credentials - Missing Email" id="1d63b709-e3fc-401f-8fc9-d812604b8c39" timestamp="2026-08-28T04:26:28.331Z" tests="7" failures="0" errors="0" time="0.312">
+    <testcase name="Response header Content-Type is JSON" time="0.312" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsMissingEmail"/>
+    <testcase name="Response body should not be null or empty" time="0.312" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsMissingEmail"/>
+    <testcase name="Response time is within 2000ms" time="0.312" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsMissingEmail"/>
+    <testcase name="Response status code should be 400" time="0.312" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsMissingEmail"/>
+    <testcase name="success should be false" time="0.312" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsMissingEmail"/>
+    <testcase name="error should be 'Validation failed'" time="0.312" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsMissingEmail"/>
+    <testcase name="details should be an array with one object" time="0.312" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsMissingEmail"/>
+  </testsuite>
+  <testsuite name="Authorization / Authorization - Negative Tests / Login with existing credentials - Empty Payload" id="9630ca74-7872-4365-a57c-5881fd7513f0" timestamp="2026-08-28T04:26:28.331Z" tests="7" failures="0" errors="0" time="0.310">
+    <testcase name="Response header Content-Type is JSON" time="0.310" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsEmptyPayload"/>
+    <testcase name="Response body should not be null or empty" time="0.310" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsEmptyPayload"/>
+    <testcase name="Response time is within 2000ms" time="0.310" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsEmptyPayload"/>
+    <testcase name="Response status code should be 400" time="0.310" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsEmptyPayload"/>
+    <testcase name="success should be false" time="0.310" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsEmptyPayload"/>
+    <testcase name="error should be 'Validation failed'" time="0.310" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsEmptyPayload"/>
+    <testcase name="details should match expected validation errors" time="0.310" classname="AuthorizationAuthorizationNegativeTestsLoginWithExistingCredentialsEmptyPayload"/>
+  </testsuite>
+  <testsuite name="Health / API Health Check" id="21c1a6a8-6d4c-4be4-b855-4a3b6443174d" timestamp="2026-08-28T04:26:28.331Z" tests="7" failures="0" errors="0" time="0.350">
+    <testcase name="Response header Content-Type is JSON" time="0.350" classname="HealthApiHealthCheck"/>
+    <testcase name="Response body should not be null or empty" time="0.350" classname="HealthApiHealthCheck"/>
+    <testcase name="Response time is within 2000ms" time="0.350" classname="HealthApiHealthCheck"/>
+    <testcase name="Response status code should be 200" time="0.350" classname="HealthApiHealthCheck"/>
+    <testcase name="status should be 'ok'" time="0.350" classname="HealthApiHealthCheck"/>
+    <testcase name="timestamp should be a valid date" time="0.350" classname="HealthApiHealthCheck"/>
+    <testcase name="dbStatus should be 'connected'" time="0.350" classname="HealthApiHealthCheck"/>
+  </testsuite>
+  <testsuite name="Config / Get public feature flags" id="590422e3-4893-4109-a04a-ed59f4d001bb" timestamp="2026-08-28T04:26:28.331Z" tests="5" failures="0" errors="0" time="0.116">
+    <testcase name="Response header Content-Type is JSON" time="0.116" classname="ConfigGetPublicFeatureFlags"/>
+    <testcase name="Response body should not be null or empty" time="0.116" classname="ConfigGetPublicFeatureFlags"/>
+    <testcase name="Response time is within 2000ms" time="0.116" classname="ConfigGetPublicFeatureFlags"/>
+    <testcase name="Response status code should be 200" time="0.116" classname="ConfigGetPublicFeatureFlags"/>
+    <testcase name="showExploreLinks should be false" time="0.116" classname="ConfigGetPublicFeatureFlags"/>
+  </testsuite>
+  <testsuite name="Events / Events - CRUD / Create a new event" id="d478634b-ca97-4542-af46-691408f9e808" timestamp="2026-08-28T04:26:28.331Z" tests="14" failures="0" errors="0" time="0.129">
+    <testcase name="Pre-request: Generated event title: Event_API_20260828-042633313" time="0.129" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Pre-request: Generate event title and set as collection variable" time="0.129" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Pre-request: Generated event date: 2026-11-28T04:26:33.315Z" time="0.129" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Pre-request: Generate future event date and set as collection variable" time="0.129" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Pre-request: Set event price and total seats and save as collection variables" time="0.129" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Response header Content-Type is JSON" time="0.129" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Response body should not be null or empty" time="0.129" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Response time is within 2000ms" time="0.129" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Response status code should be 201" time="0.129" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="success should be true" time="0.129" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="The 'id' property exists and value is '107167'" time="0.129" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Set Event ID as variable" time="0.129" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Validate event data properties" time="0.129" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="message should be 'Event created successfully'" time="0.129" classname="EventsEventsCrudCreateANewEvent"/>
+  </testsuite>
+  <testsuite name="Events / Events - CRUD / Get a single event by ID" id="d479fc2d-e2ce-4d2c-882d-cab787a6ab8e" timestamp="2026-08-28T04:26:28.331Z" tests="5" failures="0" errors="0" time="0.120">
+    <testcase name="Response header Content-Type is JSON" time="0.120" classname="EventsEventsCrudGetASingleEventById"/>
+    <testcase name="Response body should not be null or empty" time="0.120" classname="EventsEventsCrudGetASingleEventById"/>
+    <testcase name="Response time is within 2000ms" time="0.120" classname="EventsEventsCrudGetASingleEventById"/>
+    <testcase name="Response status code should be 200" time="0.120" classname="EventsEventsCrudGetASingleEventById"/>
+    <testcase name="Validate event data properties" time="0.120" classname="EventsEventsCrudGetASingleEventById"/>
+  </testsuite>
+  <testsuite name="Events / Events - CRUD / Lists all events" id="c7635d5e-b14e-49c6-a699-7427096a45f4" timestamp="2026-08-28T04:26:28.331Z" tests="7" failures="0" errors="0" time="0.153">
+    <testcase name="Response header Content-Type is JSON" time="0.153" classname="EventsEventsCrudListsAllEvents"/>
+    <testcase name="Response body should not be null or empty" time="0.153" classname="EventsEventsCrudListsAllEvents"/>
+    <testcase name="Response time is within 2000ms" time="0.153" classname="EventsEventsCrudListsAllEvents"/>
+    <testcase name="Response status code should be 200" time="0.153" classname="EventsEventsCrudListsAllEvents"/>
+    <testcase name="The 'data' array is not empty and not null" time="0.153" classname="EventsEventsCrudListsAllEvents"/>
+    <testcase name="Each property in the 'data' array has the expected properties" time="0.153" classname="EventsEventsCrudListsAllEvents"/>
+    <testcase name="Pagination values are correct" time="0.153" classname="EventsEventsCrudListsAllEvents"/>
+  </testsuite>
+  <testsuite name="Events / Events - CRUD / List all bookings" id="701fd1fb-b619-4331-91b5-84b81ce3f147" timestamp="2026-08-28T04:26:28.331Z" tests="7" failures="0" errors="0" time="0.118">
+    <testcase name="Response header Content-Type is JSON" time="0.118" classname="EventsEventsCrudListAllBookings"/>
+    <testcase name="Response body should not be null or empty" time="0.118" classname="EventsEventsCrudListAllBookings"/>
+    <testcase name="Response time is within 2000ms" time="0.118" classname="EventsEventsCrudListAllBookings"/>
+    <testcase name="Response status code should be 200" time="0.118" classname="EventsEventsCrudListAllBookings"/>
+    <testcase name="success should be true" time="0.118" classname="EventsEventsCrudListAllBookings"/>
+    <testcase name="data should be an array and have 0 items" time="0.118" classname="EventsEventsCrudListAllBookings"/>
+    <testcase name="Pagination values are correct" time="0.118" classname="EventsEventsCrudListAllBookings"/>
+  </testsuite>
+  <testsuite name="Events / Events - CRUD / Update an event (BUG-001)" id="a6dc4998-c0ca-4e42-94f5-9c8c4ba2bb9c" timestamp="2026-08-28T04:26:28.331Z" tests="11" failures="1" errors="0" time="0.127">
+    <testcase name="Pre-request: Updated event title: Event_Updated_API_20260828-042633313" time="0.127" classname="EventsEventsCrudUpdateAnEventBug001"/>
+    <testcase name="Pre-request: Update event title and set as collection variable" time="0.127" classname="EventsEventsCrudUpdateAnEventBug001"/>
+    <testcase name="Pre-request: Set updated event price and total seats and save as collection variables" time="0.127" classname="EventsEventsCrudUpdateAnEventBug001"/>
+    <testcase name="Response header Content-Type is JSON" time="0.127" classname="EventsEventsCrudUpdateAnEventBug001"/>
+    <testcase name="Response body should not be null or empty" time="0.127" classname="EventsEventsCrudUpdateAnEventBug001"/>
+    <testcase name="Response time is within 2000ms" time="0.127" classname="EventsEventsCrudUpdateAnEventBug001"/>
+    <testcase name="Response status code should be 200" time="0.127" classname="EventsEventsCrudUpdateAnEventBug001"/>
+    <testcase name="success should be true" time="0.127" classname="EventsEventsCrudUpdateAnEventBug001"/>
+    <testcase name="Validate event data properties" time="0.127" classname="EventsEventsCrudUpdateAnEventBug001"/>
+    <testcase name="message should be 'Event updated successfully'" time="0.127" classname="EventsEventsCrudUpdateAnEventBug001"/>
+    <testcase name="BUG-001 - availableSeats should be updated when totalSeats changes" time="0.127" classname="EventsEventsCrudUpdateAnEventBug001">
+      <failure type="AssertionFailure" message="expected 300 to equal 550">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: d769b2fd-57e8-419a-a01b-d353833564e1.]]>
+        <![CDATA[Collection name: EventHubAPI - Functional.]]>
+        <![CDATA[Request name: Events / Events - CRUD / Update an event (BUG-001).]]>
+        <![CDATA[Test description: BUG-001 - availableSeats should be updated when totalSeats changes.]]>
+        <![CDATA[Error message: expected 300 to equal 550.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 300 to equal 550
+   at Object.eval sandbox-script.js:5:19).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Events / Events - CRUD / Get a single event by ID (BUG-001)" id="614e6463-bf33-4dfc-8bfd-d2b532fcc047" timestamp="2026-08-28T04:26:28.331Z" tests="7" failures="1" errors="0" time="0.124">
+    <testcase name="Response header Content-Type is JSON" time="0.124" classname="EventsEventsCrudGetASingleEventByIdBug001"/>
+    <testcase name="Response body should not be null or empty" time="0.124" classname="EventsEventsCrudGetASingleEventByIdBug001"/>
+    <testcase name="Response time is within 2000ms" time="0.124" classname="EventsEventsCrudGetASingleEventByIdBug001"/>
+    <testcase name="Response status code should be 200" time="0.124" classname="EventsEventsCrudGetASingleEventByIdBug001"/>
+    <testcase name="success should be true" time="0.124" classname="EventsEventsCrudGetASingleEventByIdBug001"/>
+    <testcase name="Validate event data properties" time="0.124" classname="EventsEventsCrudGetASingleEventByIdBug001"/>
+    <testcase name="BUG-001 - availableSeats should be updated when totalSeats changes" time="0.124" classname="EventsEventsCrudGetASingleEventByIdBug001">
+      <failure type="AssertionFailure" message="expected 300 to equal 550">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: d769b2fd-57e8-419a-a01b-d353833564e1.]]>
+        <![CDATA[Collection name: EventHubAPI - Functional.]]>
+        <![CDATA[Request name: Events / Events - CRUD / Get a single event by ID (BUG-001).]]>
+        <![CDATA[Test description: BUG-001 - availableSeats should be updated when totalSeats changes.]]>
+        <![CDATA[Error message: expected 300 to equal 550.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 300 to equal 550
+   at Object.eval sandbox-script.js:4:20).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Events / Events - CRUD / Delete an event" id="7daa07a8-1664-4f3a-98eb-0d9d729d1e49" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.128">
+    <testcase name="Response header Content-Type is JSON" time="0.128" classname="EventsEventsCrudDeleteAnEvent"/>
+    <testcase name="Response body should not be null or empty" time="0.128" classname="EventsEventsCrudDeleteAnEvent"/>
+    <testcase name="Response time is within 2000ms" time="0.128" classname="EventsEventsCrudDeleteAnEvent"/>
+    <testcase name="Response status code should be 200" time="0.128" classname="EventsEventsCrudDeleteAnEvent"/>
+    <testcase name="success should be true" time="0.128" classname="EventsEventsCrudDeleteAnEvent"/>
+    <testcase name="message should be 'Event deleted successfully'" time="0.128" classname="EventsEventsCrudDeleteAnEvent"/>
+  </testsuite>
+  <testsuite name="Events / Events - CRUD / Verify event is deleted" id="c43667cf-3eaf-4f4a-a269-95b6573e8097" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.118">
+    <testcase name="Response header Content-Type is JSON" time="0.118" classname="EventsEventsCrudVerifyEventIsDeleted"/>
+    <testcase name="Response body should not be null or empty" time="0.118" classname="EventsEventsCrudVerifyEventIsDeleted"/>
+    <testcase name="Response time is within 2000ms" time="0.118" classname="EventsEventsCrudVerifyEventIsDeleted"/>
+    <testcase name="Response status code should be 404" time="0.118" classname="EventsEventsCrudVerifyEventIsDeleted"/>
+    <testcase name="success should be false" time="0.118" classname="EventsEventsCrudVerifyEventIsDeleted"/>
+    <testcase name="error should be Event with id '107167' not found" time="0.118" classname="EventsEventsCrudVerifyEventIsDeleted"/>
+  </testsuite>
+  <testsuite name="Events / Search Events / Lists all events" id="149863a2-b5b3-4c3a-a70d-eb2f28134cd2" timestamp="2026-08-28T04:26:28.331Z" tests="4" failures="0" errors="0" time="0.146">
+    <testcase name="Response header Content-Type is JSON" time="0.146" classname="EventsSearchEventsListsAllEvents"/>
+    <testcase name="Response body should not be null or empty" time="0.146" classname="EventsSearchEventsListsAllEvents"/>
+    <testcase name="Response time is within 2000ms" time="0.146" classname="EventsSearchEventsListsAllEvents"/>
+    <testcase name="Response status code should be 200" time="0.146" classname="EventsSearchEventsListsAllEvents"/>
+  </testsuite>
+  <testsuite name="Events / Search Events / Lists all events - No Search Results" id="009a1b61-b8f1-4a1a-a66e-738ffe94cecf" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.156">
+    <testcase name="Response header Content-Type is JSON" time="0.156" classname="EventsSearchEventsListsAllEventsNoSearchResults"/>
+    <testcase name="Response body should not be null or empty" time="0.156" classname="EventsSearchEventsListsAllEventsNoSearchResults"/>
+    <testcase name="Response time is within 2000ms" time="0.156" classname="EventsSearchEventsListsAllEventsNoSearchResults"/>
+    <testcase name="Response status code should be 200" time="0.156" classname="EventsSearchEventsListsAllEventsNoSearchResults"/>
+    <testcase name="The 'data' array is empty" time="0.156" classname="EventsSearchEventsListsAllEventsNoSearchResults"/>
+    <testcase name="Pagination values are correct" time="0.156" classname="EventsSearchEventsListsAllEventsNoSearchResults"/>
+  </testsuite>
+  <testsuite name="Events / Search Events / Lists all events - One Search Result" id="5769251b-2c2b-453f-9e0e-71b2b18f0ffc" timestamp="2026-08-28T04:26:28.331Z" tests="7" failures="0" errors="0" time="0.157">
+    <testcase name="Response header Content-Type is JSON" time="0.157" classname="EventsSearchEventsListsAllEventsOneSearchResult"/>
+    <testcase name="Response body should not be null or empty" time="0.157" classname="EventsSearchEventsListsAllEventsOneSearchResult"/>
+    <testcase name="Response time is within 2000ms" time="0.157" classname="EventsSearchEventsListsAllEventsOneSearchResult"/>
+    <testcase name="Response status code should be 200" time="0.157" classname="EventsSearchEventsListsAllEventsOneSearchResult"/>
+    <testcase name="The 'data' array is not empty and not null" time="0.157" classname="EventsSearchEventsListsAllEventsOneSearchResult"/>
+    <testcase name="Each property in the 'data' array has the expected properties" time="0.157" classname="EventsSearchEventsListsAllEventsOneSearchResult"/>
+    <testcase name="Pagination values are correct" time="0.157" classname="EventsSearchEventsListsAllEventsOneSearchResult"/>
+  </testsuite>
+  <testsuite name="Events / Events - Negative Tests / Create Event / Create a new event -  Empty request body" id="fb5cb978-eead-4120-aa70-a8163821b163" timestamp="2026-08-28T04:26:28.331Z" tests="18" failures="0" errors="0" time="0.120">
+    <testcase name="Response header Content-Type is JSON" time="0.120" classname="EventsEventsNegativeTestsCreateEventCreateANewEventEmptyRequestBody"/>
+    <testcase name="Response body should not be null or empty" time="0.120" classname="EventsEventsNegativeTestsCreateEventCreateANewEventEmptyRequestBody"/>
+    <testcase name="Response time is within 2000ms" time="0.120" classname="EventsEventsNegativeTestsCreateEventCreateANewEventEmptyRequestBody"/>
+    <testcase name="Response status code should be 400" time="0.120" classname="EventsEventsNegativeTestsCreateEventCreateANewEventEmptyRequestBody"/>
+    <testcase name="success should be false" time="0.120" classname="EventsEventsNegativeTestsCreateEventCreateANewEventEmptyRequestBody"/>
+    <testcase name="error should be 'Validation failed'" time="0.120" classname="EventsEventsNegativeTestsCreateEventCreateANewEventEmptyRequestBody"/>
+    <testcase name="details array should exist and be an array" time="0.120" classname="EventsEventsNegativeTestsCreateEventCreateANewEventEmptyRequestBody"/>
+    <testcase name="each item in details should have 'field' and 'message' properties" time="0.120" classname="EventsEventsNegativeTestsCreateEventCreateANewEventEmptyRequestBody"/>
+    <testcase name="Validation failed for 'title' required field" time="0.120" classname="EventsEventsNegativeTestsCreateEventCreateANewEventEmptyRequestBody"/>
+    <testcase name="Validation failed for 'category' required field" time="0.120" classname="EventsEventsNegativeTestsCreateEventCreateANewEventEmptyRequestBody"/>
+    <testcase name="Validation failed for 'venue' required field" time="0.120" classname="EventsEventsNegativeTestsCreateEventCreateANewEventEmptyRequestBody"/>
+    <testcase name="Validation failed for 'city' required field" time="0.120" classname="EventsEventsNegativeTestsCreateEventCreateANewEventEmptyRequestBody"/>
+    <testcase name="Validation failed for 'eventDate' required field" time="0.120" classname="EventsEventsNegativeTestsCreateEventCreateANewEventEmptyRequestBody"/>
+    <testcase name="Validation failed for 'price' required field" time="0.120" classname="EventsEventsNegativeTestsCreateEventCreateANewEventEmptyRequestBody"/>
+    <testcase name="Validation failed for 'totalSeats' required field" time="0.120" classname="EventsEventsNegativeTestsCreateEventCreateANewEventEmptyRequestBody"/>
+  </testsuite>
+  <testsuite name="Events / Events - Negative Tests / Create Event / Create a new event - No values for required fields" id="e5622076-0b1f-4894-b8e6-e878fcd2e6c5" timestamp="2026-08-28T04:26:28.331Z" tests="14" failures="0" errors="0" time="0.342">
+    <testcase name="Response header Content-Type is JSON" time="0.342" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForRequiredFields"/>
+    <testcase name="Response body should not be null or empty" time="0.342" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForRequiredFields"/>
+    <testcase name="Response time is within 2000ms" time="0.342" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForRequiredFields"/>
+    <testcase name="Response status code should be 400" time="0.342" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForRequiredFields"/>
+    <testcase name="success should be false" time="0.342" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForRequiredFields"/>
+    <testcase name="error should be 'Validation failed'" time="0.342" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForRequiredFields"/>
+    <testcase name="details array should exist and be an array" time="0.342" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForRequiredFields"/>
+    <testcase name="each item in details should have 'field' and 'message' properties" time="0.342" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForRequiredFields"/>
+    <testcase name="Validation failed for 'title' required field" time="0.342" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForRequiredFields"/>
+    <testcase name="Validation failed for 'category' required field" time="0.342" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForRequiredFields"/>
+    <testcase name="Validation failed for 'venue' required field" time="0.342" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForRequiredFields"/>
+    <testcase name="Validation failed for 'city' required field" time="0.342" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForRequiredFields"/>
+    <testcase name="Validation failed for 'eventDate' required field" time="0.342" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForRequiredFields"/>
+  </testsuite>
+  <testsuite name="Events / Events - Negative Tests / Create Event / Create a new event - Missing all field values" id="a7bdde59-0235-48f5-a61b-780be7e70679" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.353">
+    <testcase name="Response header Content-Type is JSON" time="0.353" classname="EventsEventsNegativeTestsCreateEventCreateANewEventMissingAllFieldValues"/>
+    <testcase name="Response body should not be null or empty" time="0.353" classname="EventsEventsNegativeTestsCreateEventCreateANewEventMissingAllFieldValues"/>
+    <testcase name="Response time is within 2000ms" time="0.353" classname="EventsEventsNegativeTestsCreateEventCreateANewEventMissingAllFieldValues"/>
+    <testcase name="Response status code should be 500" time="0.353" classname="EventsEventsNegativeTestsCreateEventCreateANewEventMissingAllFieldValues"/>
+    <testcase name="success should be false" time="0.353" classname="EventsEventsNegativeTestsCreateEventCreateANewEventMissingAllFieldValues"/>
+    <testcase name="error should be 'Internal server error'" time="0.353" classname="EventsEventsNegativeTestsCreateEventCreateANewEventMissingAllFieldValues"/>
+  </testsuite>
+  <testsuite name="Events / Events - Negative Tests / Create Event / Create a new event - No values for price and total seats" id="03fae6de-7bf5-403d-8973-29efaccb1af6" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.345">
+    <testcase name="Response header Content-Type is JSON" time="0.345" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForPriceAndTotalSeats"/>
+    <testcase name="Response body should not be null or empty" time="0.345" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForPriceAndTotalSeats"/>
+    <testcase name="Response time is within 2000ms" time="0.345" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForPriceAndTotalSeats"/>
+    <testcase name="Response status code should be 500" time="0.345" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForPriceAndTotalSeats"/>
+    <testcase name="success should be false" time="0.345" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForPriceAndTotalSeats"/>
+    <testcase name="error should be 'Internal server error'" time="0.345" classname="EventsEventsNegativeTestsCreateEventCreateANewEventNoValuesForPriceAndTotalSeats"/>
+  </testsuite>
+  <testsuite name="Events / Events - Negative Tests / Create Event / Create a new event - Invalid date format" id="5ec089c9-e71a-4f59-9ad2-c24076200ef9" timestamp="2026-08-28T04:26:28.331Z" tests="9" failures="0" errors="0" time="0.337">
+    <testcase name="Response header Content-Type is JSON" time="0.337" classname="EventsEventsNegativeTestsCreateEventCreateANewEventInvalidDateFormat"/>
+    <testcase name="Response body should not be null or empty" time="0.337" classname="EventsEventsNegativeTestsCreateEventCreateANewEventInvalidDateFormat"/>
+    <testcase name="Response time is within 2000ms" time="0.337" classname="EventsEventsNegativeTestsCreateEventCreateANewEventInvalidDateFormat"/>
+    <testcase name="Response status code should be 400" time="0.337" classname="EventsEventsNegativeTestsCreateEventCreateANewEventInvalidDateFormat"/>
+    <testcase name="success should be false" time="0.337" classname="EventsEventsNegativeTestsCreateEventCreateANewEventInvalidDateFormat"/>
+    <testcase name="error should be 'Validation failed'" time="0.337" classname="EventsEventsNegativeTestsCreateEventCreateANewEventInvalidDateFormat"/>
+    <testcase name="details array should exist and be an array" time="0.337" classname="EventsEventsNegativeTestsCreateEventCreateANewEventInvalidDateFormat"/>
+    <testcase name="each item in details should have 'field' and 'message' properties" time="0.337" classname="EventsEventsNegativeTestsCreateEventCreateANewEventInvalidDateFormat"/>
+    <testcase name="Validation failed for 'eventDate' required field" time="0.337" classname="EventsEventsNegativeTestsCreateEventCreateANewEventInvalidDateFormat"/>
+  </testsuite>
+  <testsuite name="Events / Events - Negative Tests / Get Event / Get a single event by ID - Not existing ID" id="f5c929f9-ddff-4cd7-a321-63afe6cfcf85" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.316">
+    <testcase name="Response header Content-Type is JSON" time="0.316" classname="EventsEventsNegativeTestsGetEventGetASingleEventByIdNotExistingId"/>
+    <testcase name="Response body should not be null or empty" time="0.316" classname="EventsEventsNegativeTestsGetEventGetASingleEventByIdNotExistingId"/>
+    <testcase name="Response time is within 2000ms" time="0.316" classname="EventsEventsNegativeTestsGetEventGetASingleEventByIdNotExistingId"/>
+    <testcase name="Response status code should be 404" time="0.316" classname="EventsEventsNegativeTestsGetEventGetASingleEventByIdNotExistingId"/>
+    <testcase name="success should be false" time="0.316" classname="EventsEventsNegativeTestsGetEventGetASingleEventByIdNotExistingId"/>
+    <testcase name="error should be 'Event with id 1234567 not found'" time="0.316" classname="EventsEventsNegativeTestsGetEventGetASingleEventByIdNotExistingId"/>
+  </testsuite>
+  <testsuite name="Events / Events - Negative Tests / Update Event / Update an event - Parameter and Request Body No Values" id="3746718e-b3fe-4f64-adb8-15dd2391c640" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.105">
+    <testcase name="Response header Content-Type is JSON" time="0.105" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventParameterAndRequestBodyNoValues"/>
+    <testcase name="Response body should not be null or empty" time="0.105" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventParameterAndRequestBodyNoValues"/>
+    <testcase name="Response time is within 2000ms" time="0.105" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventParameterAndRequestBodyNoValues"/>
+    <testcase name="Response status code should be 500" time="0.105" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventParameterAndRequestBodyNoValues"/>
+    <testcase name="success should be false" time="0.105" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventParameterAndRequestBodyNoValues"/>
+    <testcase name="error should be 'Internal server error'" time="0.105" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventParameterAndRequestBodyNoValues"/>
+  </testsuite>
+  <testsuite name="Events / Events - Negative Tests / Update Event / Update an event - Parameter No Value" id="ae96606b-70ac-4bda-b7c6-accd7d038280" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.334">
+    <testcase name="Response header Content-Type is JSON" time="0.334" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventParameterNoValue"/>
+    <testcase name="Response body should not be null or empty" time="0.334" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventParameterNoValue"/>
+    <testcase name="Response time is within 2000ms" time="0.334" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventParameterNoValue"/>
+    <testcase name="Response status code should be 404" time="0.334" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventParameterNoValue"/>
+    <testcase name="success should be false" time="0.334" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventParameterNoValue"/>
+    <testcase name="error should be 'Route PUT /api/events?id= not found'" time="0.334" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventParameterNoValue"/>
+  </testsuite>
+  <testsuite name="Events / Events - Negative Tests / Update Event / Update an event - Missing parameter" id="5cc41162-fe3e-4950-b004-90a418eb36b7" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.114">
+    <testcase name="Response header Content-Type is JSON" time="0.114" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventMissingParameter"/>
+    <testcase name="Response body should not be null or empty" time="0.114" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventMissingParameter"/>
+    <testcase name="Response time is within 2000ms" time="0.114" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventMissingParameter"/>
+    <testcase name="Response status code should be 404" time="0.114" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventMissingParameter"/>
+    <testcase name="success should be false" time="0.114" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventMissingParameter"/>
+    <testcase name="error should be 'Route PUT /api/events not found'" time="0.114" classname="EventsEventsNegativeTestsUpdateEventUpdateAnEventMissingParameter"/>
+  </testsuite>
+  <testsuite name="Events / Events - Negative Tests / Delete Event / Delete an event - Deleted event ID" id="c23f69c9-5a8c-4a78-bbf9-c0e79fc8df29" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.122">
+    <testcase name="Response header Content-Type is JSON" time="0.122" classname="EventsEventsNegativeTestsDeleteEventDeleteAnEventDeletedEventId"/>
+    <testcase name="Response body should not be null or empty" time="0.122" classname="EventsEventsNegativeTestsDeleteEventDeleteAnEventDeletedEventId"/>
+    <testcase name="Response time is within 2000ms" time="0.122" classname="EventsEventsNegativeTestsDeleteEventDeleteAnEventDeletedEventId"/>
+    <testcase name="Response status code should be 404" time="0.122" classname="EventsEventsNegativeTestsDeleteEventDeleteAnEventDeletedEventId"/>
+    <testcase name="success should be false" time="0.122" classname="EventsEventsNegativeTestsDeleteEventDeleteAnEventDeletedEventId"/>
+    <testcase name="error should be 'Event with id 46440 not found'" time="0.122" classname="EventsEventsNegativeTestsDeleteEventDeleteAnEventDeletedEventId"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - CRUD / List all bookings" id="7ce35748-b30a-4622-be58-af8e05080132" timestamp="2026-08-28T04:26:28.331Z" tests="7" failures="0" errors="0" time="0.113">
+    <testcase name="Response header Content-Type is JSON" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="Response body should not be null or empty" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="Response time is within 2000ms" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="Response status code should be 200" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="success should be true" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="The 'data' array is empty" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="Pagination values are correct" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - CRUD / Create a new event" id="26864b15-921f-4b3a-adfc-a47680eb6eb1" timestamp="2026-08-28T04:26:28.331Z" tests="8" failures="0" errors="0" time="0.187">
+    <testcase name="Response header Content-Type is JSON" time="0.187" classname="BookingsBookingsCrudCreateANewEvent"/>
+    <testcase name="Response body should not be null or empty" time="0.187" classname="BookingsBookingsCrudCreateANewEvent"/>
+    <testcase name="Response time is within 2000ms" time="0.187" classname="BookingsBookingsCrudCreateANewEvent"/>
+    <testcase name="Status code should be 201" time="0.187" classname="BookingsBookingsCrudCreateANewEvent"/>
+    <testcase name="Response success should be true" time="0.187" classname="BookingsBookingsCrudCreateANewEvent"/>
+    <testcase name="Response message should be 'Event created successfully'" time="0.187" classname="BookingsBookingsCrudCreateANewEvent"/>
+    <testcase name="Save eventID as collection variable" time="0.187" classname="BookingsBookingsCrudCreateANewEvent"/>
+    <testcase name="Validate event data properties" time="0.187" classname="BookingsBookingsCrudCreateANewEvent"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - CRUD / Get a single event by ID" id="d89f59cf-01c4-452a-8a58-43ae63e74200" timestamp="2026-08-28T04:26:28.331Z" tests="5" failures="0" errors="0" time="0.114">
+    <testcase name="Response header Content-Type is JSON" time="0.114" classname="BookingsBookingsCrudGetASingleEventById"/>
+    <testcase name="Response body should not be null or empty" time="0.114" classname="BookingsBookingsCrudGetASingleEventById"/>
+    <testcase name="Response time is within 2000ms" time="0.114" classname="BookingsBookingsCrudGetASingleEventById"/>
+    <testcase name="Response status code should be 200" time="0.114" classname="BookingsBookingsCrudGetASingleEventById"/>
+    <testcase name="Validate event data properties" time="0.114" classname="BookingsBookingsCrudGetASingleEventById"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - CRUD / Create a booking - Minimum Ticket" id="bc7ded06-deb4-457d-a3df-dd7fe1938ca1" timestamp="2026-08-28T04:26:28.331Z" tests="10" failures="1" errors="0" time="0.125">
+    <testcase name="Response header Content-Type is JSON" time="0.125" classname="BookingsBookingsCrudCreateABookingMinimumTicket"/>
+    <testcase name="Response body should not be null or empty" time="0.125" classname="BookingsBookingsCrudCreateABookingMinimumTicket"/>
+    <testcase name="Response time is within 2000ms" time="0.125" classname="BookingsBookingsCrudCreateABookingMinimumTicket"/>
+    <testcase name="Status code should be 201" time="0.125" classname="BookingsBookingsCrudCreateABookingMinimumTicket"/>
+    <testcase name="Response success should be true" time="0.125" classname="BookingsBookingsCrudCreateABookingMinimumTicket"/>
+    <testcase name="Response message should be 'Booking confirmed!'" time="0.125" classname="BookingsBookingsCrudCreateABookingMinimumTicket"/>
+    <testcase name="Save bookingID and bookingRefCode as collection variables" time="0.125" classname="BookingsBookingsCrudCreateABookingMinimumTicket"/>
+    <testcase name="Available seats should be reduced after booking" time="0.125" classname="BookingsBookingsCrudCreateABookingMinimumTicket"/>
+    <testcase name="Validate booking data properties" time="0.125" classname="BookingsBookingsCrudCreateABookingMinimumTicket"/>
+    <testcase name="(BUG-001) Validate event object properties in booking response" time="0.125" classname="BookingsBookingsCrudCreateABookingMinimumTicket">
+      <failure type="AssertionFailure" message="expected 150 to equal 149">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: d769b2fd-57e8-419a-a01b-d353833564e1.]]>
+        <![CDATA[Collection name: EventHubAPI - Functional.]]>
+        <![CDATA[Request name: Bookings / Bookings - CRUD / Create a booking - Minimum Ticket.]]>
+        <![CDATA[Test description: (BUG-001) Validate event object properties in booking response.]]>
+        <![CDATA[Error message: expected 150 to equal 149.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 150 to equal 149
+   at Object.eval sandbox-script.js:7:39).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - CRUD / Get a single booking by ID" id="5f6e4e14-4696-4035-9014-58756ce2385f" timestamp="2026-08-28T04:26:28.331Z" tests="7" failures="1" errors="0" time="0.112">
+    <testcase name="Response header Content-Type is JSON" time="0.112" classname="BookingsBookingsCrudGetASingleBookingById"/>
+    <testcase name="Response body should not be null or empty" time="0.112" classname="BookingsBookingsCrudGetASingleBookingById"/>
+    <testcase name="Response time is within 2000ms" time="0.112" classname="BookingsBookingsCrudGetASingleBookingById"/>
+    <testcase name="Response status code should be 200" time="0.112" classname="BookingsBookingsCrudGetASingleBookingById"/>
+    <testcase name="success should be true" time="0.112" classname="BookingsBookingsCrudGetASingleBookingById"/>
+    <testcase name="Validate booking data object properties" time="0.112" classname="BookingsBookingsCrudGetASingleBookingById"/>
+    <testcase name="(BUG-001) Validate data event object properties" time="0.112" classname="BookingsBookingsCrudGetASingleBookingById">
+      <failure type="AssertionFailure" message="expected 150 to equal 149">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: d769b2fd-57e8-419a-a01b-d353833564e1.]]>
+        <![CDATA[Collection name: EventHubAPI - Functional.]]>
+        <![CDATA[Request name: Bookings / Bookings - CRUD / Get a single booking by ID.]]>
+        <![CDATA[Test description: (BUG-001) Validate data event object properties.]]>
+        <![CDATA[Error message: expected 150 to equal 149.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 150 to equal 149
+   at Object.eval sandbox-script.js:4:40).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - CRUD / Look up a booking using a reference code" id="87ef124d-3462-47ad-b967-7175c7bc6359" timestamp="2026-08-28T04:26:28.331Z" tests="7" failures="1" errors="0" time="0.114">
+    <testcase name="Response header Content-Type is JSON" time="0.114" classname="BookingsBookingsCrudLookUpABookingUsingAReferenceCode"/>
+    <testcase name="Response body should not be null or empty" time="0.114" classname="BookingsBookingsCrudLookUpABookingUsingAReferenceCode"/>
+    <testcase name="Response time is within 2000ms" time="0.114" classname="BookingsBookingsCrudLookUpABookingUsingAReferenceCode"/>
+    <testcase name="Response status code should be 200" time="0.114" classname="BookingsBookingsCrudLookUpABookingUsingAReferenceCode"/>
+    <testcase name="success should be true" time="0.114" classname="BookingsBookingsCrudLookUpABookingUsingAReferenceCode"/>
+    <testcase name="Validate booking data object properties" time="0.114" classname="BookingsBookingsCrudLookUpABookingUsingAReferenceCode"/>
+    <testcase name="(BUG-001) Validate data event object properties" time="0.114" classname="BookingsBookingsCrudLookUpABookingUsingAReferenceCode">
+      <failure type="AssertionFailure" message="expected 150 to equal 149">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: d769b2fd-57e8-419a-a01b-d353833564e1.]]>
+        <![CDATA[Collection name: EventHubAPI - Functional.]]>
+        <![CDATA[Request name: Bookings / Bookings - CRUD / Look up a booking using a reference code.]]>
+        <![CDATA[Test description: (BUG-001) Validate data event object properties.]]>
+        <![CDATA[Error message: expected 150 to equal 149.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 150 to equal 149
+   at Object.eval sandbox-script.js:4:41).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - CRUD / List all bookings" id="ca3a5208-ede5-4d5f-810a-e3d8c82657e1" timestamp="2026-08-28T04:26:28.331Z" tests="9" failures="0" errors="0" time="0.113">
+    <testcase name="Response header Content-Type is JSON" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="Response body should not be null or empty" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="Response time is within 2000ms" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="Response status code should be 200" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="success should be true" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="The 'data' array is not empty and not null" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="Each property in the 'data' array has the expected properties" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="Pagination values are correct" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="Validate total quantity of booked tickets" time="0.113" classname="BookingsBookingsCrudListAllBookings"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - CRUD / Cancel a booking" id="a55b00d0-a20e-4c45-aeb2-6d2cb4e34f61" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.150">
+    <testcase name="Response header Content-Type is JSON" time="0.150" classname="BookingsBookingsCrudCancelABooking"/>
+    <testcase name="Response body should not be null or empty" time="0.150" classname="BookingsBookingsCrudCancelABooking"/>
+    <testcase name="Response time is within 2000ms" time="0.150" classname="BookingsBookingsCrudCancelABooking"/>
+    <testcase name="Response status code should be 200" time="0.150" classname="BookingsBookingsCrudCancelABooking"/>
+    <testcase name="success should be true" time="0.150" classname="BookingsBookingsCrudCancelABooking"/>
+    <testcase name="message should be 'Booking cancelled'" time="0.150" classname="BookingsBookingsCrudCancelABooking"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - CRUD / Get a single booking by ID - Cancelled" id="f40cde15-424a-4484-81cc-419045aae832" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.113">
+    <testcase name="Response header Content-Type is JSON" time="0.113" classname="BookingsBookingsCrudGetASingleBookingByIdCancelled"/>
+    <testcase name="Response body should not be null or empty" time="0.113" classname="BookingsBookingsCrudGetASingleBookingByIdCancelled"/>
+    <testcase name="Response time is within 2000ms" time="0.113" classname="BookingsBookingsCrudGetASingleBookingByIdCancelled"/>
+    <testcase name="Response status code should be 404" time="0.113" classname="BookingsBookingsCrudGetASingleBookingByIdCancelled"/>
+    <testcase name="success should be false" time="0.113" classname="BookingsBookingsCrudGetASingleBookingByIdCancelled"/>
+    <testcase name="error should be 'Booking with id 137583 not found'" time="0.113" classname="BookingsBookingsCrudGetASingleBookingByIdCancelled"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - CRUD / List all bookings - Cancelled (BUG-005)" id="49210f58-ef22-4bb7-adb2-8e8210299291" timestamp="2026-08-28T04:26:28.331Z" tests="7" failures="1" errors="0" time="0.114">
+    <testcase name="Response header Content-Type is JSON" time="0.114" classname="BookingsBookingsCrudListAllBookingsCancelledBug005"/>
+    <testcase name="Response body should not be null or empty" time="0.114" classname="BookingsBookingsCrudListAllBookingsCancelledBug005"/>
+    <testcase name="Response time is within 2000ms" time="0.114" classname="BookingsBookingsCrudListAllBookingsCancelledBug005"/>
+    <testcase name="Response status code should be 200" time="0.114" classname="BookingsBookingsCrudListAllBookingsCancelledBug005"/>
+    <testcase name="success should be true" time="0.114" classname="BookingsBookingsCrudListAllBookingsCancelledBug005"/>
+    <testcase name="(BUG-005) The 'data' array is null or empty" time="0.114" classname="BookingsBookingsCrudListAllBookingsCancelledBug005">
+      <failure type="AssertionFailure" message="Reported as BUG-005: Cancelled Bookings Not Returned in List">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: d769b2fd-57e8-419a-a01b-d353833564e1.]]>
+        <![CDATA[Collection name: EventHubAPI - Functional.]]>
+        <![CDATA[Request name: Bookings / Bookings - CRUD / List all bookings - Cancelled (BUG-005).]]>
+        <![CDATA[Test description: (BUG-005) The 'data' array is null or empty.]]>
+        <![CDATA[Error message: Reported as BUG-005: Cancelled Bookings Not Returned in List.]]>
+        <![CDATA[Stacktrace: AssertionError: Reported as BUG-005: Cancelled Bookings Not Returned in List
+   at Object.eval sandbox-script.js:3:45).]]>
+      </failure>
+    </testcase>
+    <testcase name="Pagination values are correct" time="0.114" classname="BookingsBookingsCrudListAllBookingsCancelledBug005"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - CRUD / List all bookings" id="25b0fa00-44b8-4a9e-a9ad-1f7c21be9e5f" timestamp="2026-08-28T04:26:28.331Z" tests="7" failures="0" errors="0" time="0.114">
+    <testcase name="Response header Content-Type is JSON" time="0.114" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="Response body should not be null or empty" time="0.114" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="Response time is within 2000ms" time="0.114" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="Response status code should be 200" time="0.114" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="success should be true" time="0.114" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="The 'data' array is empty" time="0.114" classname="BookingsBookingsCrudListAllBookings"/>
+    <testcase name="Pagination values are correct" time="0.114" classname="BookingsBookingsCrudListAllBookings"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - CRUD / Delete an event" id="1cbd84a2-0582-4cc6-adab-1b69fca4b927" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.121">
+    <testcase name="Response header Content-Type is JSON" time="0.121" classname="BookingsBookingsCrudDeleteAnEvent"/>
+    <testcase name="Response body should not be null or empty" time="0.121" classname="BookingsBookingsCrudDeleteAnEvent"/>
+    <testcase name="Response time is within 2000ms" time="0.121" classname="BookingsBookingsCrudDeleteAnEvent"/>
+    <testcase name="Response status code should be 200" time="0.121" classname="BookingsBookingsCrudDeleteAnEvent"/>
+    <testcase name="success should be true" time="0.121" classname="BookingsBookingsCrudDeleteAnEvent"/>
+    <testcase name="message should be 'Event deleted successfully'" time="0.121" classname="BookingsBookingsCrudDeleteAnEvent"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - CRUD / Verify event is deleted" id="79432117-792b-4805-8f45-aa1df51e24d4" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.115">
+    <testcase name="Response header Content-Type is JSON" time="0.115" classname="BookingsBookingsCrudVerifyEventIsDeleted"/>
+    <testcase name="Response body should not be null or empty" time="0.115" classname="BookingsBookingsCrudVerifyEventIsDeleted"/>
+    <testcase name="Response time is within 2000ms" time="0.115" classname="BookingsBookingsCrudVerifyEventIsDeleted"/>
+    <testcase name="Response status code should be 404" time="0.115" classname="BookingsBookingsCrudVerifyEventIsDeleted"/>
+    <testcase name="success should be false" time="0.115" classname="BookingsBookingsCrudVerifyEventIsDeleted"/>
+    <testcase name="error should be Event with id '107168' not found" time="0.115" classname="BookingsBookingsCrudVerifyEventIsDeleted"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - Negative Tests / GET - List all bokings / List all bookings - Invalid values" id="b253f493-e4be-407d-b11b-b48c536cafdd" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.114">
+    <testcase name="Response header Content-Type is JSON" time="0.114" classname="BookingsBookingsNegativeTestsGetListAllBokingsListAllBookingsInvalidValues"/>
+    <testcase name="Response body should not be null or empty" time="0.114" classname="BookingsBookingsNegativeTestsGetListAllBokingsListAllBookingsInvalidValues"/>
+    <testcase name="Response time is within 2000ms" time="0.114" classname="BookingsBookingsNegativeTestsGetListAllBokingsListAllBookingsInvalidValues"/>
+    <testcase name="Response status code should be 500" time="0.114" classname="BookingsBookingsNegativeTestsGetListAllBokingsListAllBookingsInvalidValues"/>
+    <testcase name="success should be false" time="0.114" classname="BookingsBookingsNegativeTestsGetListAllBokingsListAllBookingsInvalidValues"/>
+    <testcase name="error should be 'Internal server error'" time="0.114" classname="BookingsBookingsNegativeTestsGetListAllBokingsListAllBookingsInvalidValues"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - Negative Tests / GET - Lookup booking / Look up a booking using a reference code - Incorrect code" id="ed8f56b2-4936-4492-9805-e48d7f4a2878" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.337">
+    <testcase name="Response header Content-Type is JSON" time="0.337" classname="BookingsBookingsNegativeTestsGetLookupBookingLookUpABookingUsingAReferenceCodeIncorrectCode"/>
+    <testcase name="Response body should not be null or empty" time="0.337" classname="BookingsBookingsNegativeTestsGetLookupBookingLookUpABookingUsingAReferenceCodeIncorrectCode"/>
+    <testcase name="Response time is within 2000ms" time="0.337" classname="BookingsBookingsNegativeTestsGetLookupBookingLookUpABookingUsingAReferenceCodeIncorrectCode"/>
+    <testcase name="Response status code should be 404" time="0.337" classname="BookingsBookingsNegativeTestsGetLookupBookingLookUpABookingUsingAReferenceCodeIncorrectCode"/>
+    <testcase name="success should be false" time="0.337" classname="BookingsBookingsNegativeTestsGetLookupBookingLookUpABookingUsingAReferenceCodeIncorrectCode"/>
+    <testcase name="error should be 'Route GET /api%7B/bookings/ref?ref%20=ref-123456 not found'" time="0.337" classname="BookingsBookingsNegativeTestsGetLookupBookingLookUpABookingUsingAReferenceCodeIncorrectCode"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - Negative Tests / GET - Get a booking / Get a single booking by ID - Missing parameter" id="ddc7bde3-b7d9-4613-bd1b-d88e526b562d" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.114">
+    <testcase name="Response header Content-Type is JSON" time="0.114" classname="BookingsBookingsNegativeTestsGetGetABookingGetASingleBookingByIdMissingParameter"/>
+    <testcase name="Response body should not be null or empty" time="0.114" classname="BookingsBookingsNegativeTestsGetGetABookingGetASingleBookingByIdMissingParameter"/>
+    <testcase name="Response time is within 2000ms" time="0.114" classname="BookingsBookingsNegativeTestsGetGetABookingGetASingleBookingByIdMissingParameter"/>
+    <testcase name="Response status code should be 404" time="0.114" classname="BookingsBookingsNegativeTestsGetGetABookingGetASingleBookingByIdMissingParameter"/>
+    <testcase name="success should be false" time="0.114" classname="BookingsBookingsNegativeTestsGetGetABookingGetASingleBookingByIdMissingParameter"/>
+    <testcase name="error should be 'Route GET /api%7B/bookings not found'" time="0.114" classname="BookingsBookingsNegativeTestsGetGetABookingGetASingleBookingByIdMissingParameter"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - Negative Tests / POST - Create booking / Create a booking - Empty request body" id="d171da59-9ffe-491a-8f79-91950896978f" timestamp="2026-08-28T04:26:28.331Z" tests="19" failures="0" errors="0" time="0.115">
+    <testcase name="Response header Content-Type is JSON" time="0.115" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyRequestBody"/>
+    <testcase name="Response body should not be null or empty" time="0.115" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyRequestBody"/>
+    <testcase name="Response time is within 2000ms" time="0.115" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyRequestBody"/>
+    <testcase name="Response status code should be 400" time="0.115" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyRequestBody"/>
+    <testcase name="success should be false" time="0.115" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyRequestBody"/>
+    <testcase name="error should be 'Validation failed'" time="0.115" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyRequestBody"/>
+    <testcase name="details array should exist and be an array" time="0.115" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyRequestBody"/>
+    <testcase name="each item in details should have 'field' and 'message' properties" time="0.115" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyRequestBody"/>
+    <testcase name="Validation failed for 'eventId' required field" time="0.115" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyRequestBody"/>
+    <testcase name="Validation failed for 'customerName' required field" time="0.115" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyRequestBody"/>
+    <testcase name="Validation failed for 'customerEmail' required field" time="0.115" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyRequestBody"/>
+    <testcase name="Validation failed for 'customerPhone' required field" time="0.115" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyRequestBody"/>
+    <testcase name="Validation failed for 'quantity' required field" time="0.115" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyRequestBody"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - Negative Tests / POST - Create booking / Create a booking - Empty field values" id="27c5e445-e778-430c-a46c-37d91fce1dd6" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.316">
+    <testcase name="Response header Content-Type is JSON" time="0.316" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyFieldValues"/>
+    <testcase name="Response body should not be null or empty" time="0.316" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyFieldValues"/>
+    <testcase name="Response time is within 2000ms" time="0.316" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyFieldValues"/>
+    <testcase name="Response status code should be 500" time="0.316" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyFieldValues"/>
+    <testcase name="success should be false" time="0.316" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyFieldValues"/>
+    <testcase name="error should be 'Internal server error'" time="0.316" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEmptyFieldValues"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - Negative Tests / POST - Create booking / Create a booking - Null integer values" id="31de76bd-5e3a-4495-bbf6-db668d9f552d" timestamp="2026-08-28T04:26:28.331Z" tests="12" failures="0" errors="0" time="0.337">
+    <testcase name="Response header Content-Type is JSON" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingNullIntegerValues"/>
+    <testcase name="Response body should not be null or empty" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingNullIntegerValues"/>
+    <testcase name="Response time is within 2000ms" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingNullIntegerValues"/>
+    <testcase name="Response status code should be 400" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingNullIntegerValues"/>
+    <testcase name="success should be false" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingNullIntegerValues"/>
+    <testcase name="error should be 'Validation failed'" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingNullIntegerValues"/>
+    <testcase name="details array should exist and be an array" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingNullIntegerValues"/>
+    <testcase name="each item in details should have 'field' and 'message' properties" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingNullIntegerValues"/>
+    <testcase name="Validation failed for 'eventId' required field" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingNullIntegerValues"/>
+    <testcase name="Validation failed for 'quantity' required field" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingNullIntegerValues"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - Negative Tests / POST - Create booking / Create a booking - Event ID = 0" id="80e36681-e680-4b21-b6c5-b3d94f9c8484" timestamp="2026-08-28T04:26:28.331Z" tests="8" failures="0" errors="0" time="0.337">
+    <testcase name="Response header Content-Type is JSON" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEventId0"/>
+    <testcase name="Response body should not be null or empty" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEventId0"/>
+    <testcase name="Response time is within 2000ms" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEventId0"/>
+    <testcase name="Response status code should be 400" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEventId0"/>
+    <testcase name="success should be false" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEventId0"/>
+    <testcase name="error should be 'Validation failed'" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEventId0"/>
+    <testcase name="details array should exist and be an array" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEventId0"/>
+    <testcase name="Validation failed for 'eventId' required field" time="0.337" classname="BookingsBookingsNegativeTestsPostCreateBookingCreateABookingEventId0"/>
+  </testsuite>
+  <testsuite name="Bookings / Bookings - Negative Tests / DELETE - Cancel booking / Cancel a booking - Missing parameter" id="c998160f-9143-45d1-99c1-85282555c5ca" timestamp="2026-08-28T04:26:28.331Z" tests="6" failures="0" errors="0" time="0.334">
+    <testcase name="Response header Content-Type is JSON" time="0.334" classname="BookingsBookingsNegativeTestsDeleteCancelBookingCancelABookingMissingParameter"/>
+    <testcase name="Response body should not be null or empty" time="0.334" classname="BookingsBookingsNegativeTestsDeleteCancelBookingCancelABookingMissingParameter"/>
+    <testcase name="Response time is within 2000ms" time="0.334" classname="BookingsBookingsNegativeTestsDeleteCancelBookingCancelABookingMissingParameter"/>
+    <testcase name="Response status code should be 404" time="0.334" classname="BookingsBookingsNegativeTestsDeleteCancelBookingCancelABookingMissingParameter"/>
+    <testcase name="success should be false" time="0.334" classname="BookingsBookingsNegativeTestsDeleteCancelBookingCancelABookingMissingParameter"/>
+    <testcase name="error should be 'Route DELETE /api%7B/bookings not found'" time="0.334" classname="BookingsBookingsNegativeTestsDeleteCancelBookingCancelABookingMissingParameter"/>
+  </testsuite>
+</testsuites>

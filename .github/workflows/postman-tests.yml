@@ -35,6 +35,12 @@ jobs:
           mkdir -p reports/data-driven
 
       # --------------------------------------------------
+      # 2.1 Postman login
+      # --------------------------------------------------
+      - name: Postman login
+        run: postman login --with-api-key "${{ secrets.POSTMAN_API_KEY }}"
+
+      # --------------------------------------------------
       # 3. EventHubAPI - Functional Collection
       # --------------------------------------------------
       - name: Run Functional Collection

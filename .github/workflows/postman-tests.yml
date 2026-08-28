@@ -33,7 +33,14 @@ jobs:
           mkdir -p reports/functional
           mkdir -p reports/e2e
           mkdir -p reports/data-driven
-
+      - name: Debug BASE_URL presence
+        run: |
+          if [ -z "${{ vars.BASE_URL }}" ]; then
+            echo "BASE_URL is empty or missing"
+            exit 1
+          fi
+          echo "BASE_URL is set"
+          
       # --------------------------------------------------
       # 3. EventHubAPI - Functional Collection
       # --------------------------------------------------
@@ -44,8 +51,7 @@ jobs:
         with:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
-            collection run
-            postman/collections/functional.postman_collection.json
+            collection run postman/collections/functional.postman_collection.json
             --env-var "base_url=${{ vars.BASE_URL }}"
             --env-var "userName=${{ secrets.USERNAME }}"
             --env-var "userPassword=${{ secrets.USER_PASSWORD }}"
@@ -66,8 +72,7 @@ jobs:
         with:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
-            collection run
-            postman/collections/e2e.postman_collection.json
+            collection run postman/collections/e2e.postman_collection.json
             --env-var "base_url=${{ vars.BASE_URL }}"
             --env-var "userName=${{ secrets.USERNAME }}"
             --env-var "userPassword=${{ secrets.USER_PASSWORD }}"
@@ -87,8 +92,7 @@ jobs:
         with:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
-            collection run
-            postman/collections/datadriven.postman_collection.json
+            collection run postman/collections/datadriven.postman_collection.json
             --env-var "base_url=${{ vars.BASE_URL }}"
             --env-var "userName=${{ secrets.USERNAME }}"
             --env-var "userPassword=${{ secrets.USER_PASSWORD }}"

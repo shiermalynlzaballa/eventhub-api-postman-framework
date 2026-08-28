@@ -2,7 +2,6 @@
   "info": {
     "_postman_id": "08b86eb5-e4d7-4a33-b18d-e6f8ee7ea1bb",
     "name": "EventHubAPI - Bug Reports",
-    "description": "This collection serves as a structured repository of bugs identified during QA testing of the EventHub API.\n\nDocuments reproducible defects across the EventHub API endpoints, providing the API requests needed to reproduce each issue along with its expected and actual behavior.\n\n### Structure\n\nAll reports are organized under a **Bug Reports** root folder, which contains an **Active Bugs** sub-folder. Each bug is tracked in its own individually labeled sub-folder:\n\n| Bug ID | Area | Summary |\n| --- | --- | --- |\n| BUG-001 | Events | `availableSeats` is not recalculated when `totalSeats` is updated |\n| BUG-002 | Events | Incorrect error response when a required parameter is missing on delete |\n| BUG-003 | Events | Incorrect error response when a required parameter value is empty |\n| BUG-004 | Events | Incorrect error response when an invalid HTTP method is used |\n| BUG-005 | Bookings | Cancelled bookings are not returned in the bookings list |\n| BUG-006 | Bookings | Incorrect error response when a required query parameter is missing |\n| BUG-007 | Bookings | Incorrect error response when a required query parameter value is empty |\n\n### Authentication\n\nAll requests use **Bearer Token** authentication via the `{{authToken}}` collection variable, inherited from the active environment.\n\n### Intended Use\n\n- **Bug reproduction** — run the requests in each bug folder to reliably reproduce the reported defect.\n    \n- **Root cause analysis** — use the saved examples to compare actual vs. expected responses.\n    \n- **Fix validation & regression testing** — re-run relevant requests after a fix is deployed to confirm resolution and prevent regressions. When a fix is verified, consider adding the request to a dedicated **Regression Tests** folder to build a suite of checks that guard against the bug resurfacing.\n    \n- **Bug tracking** — once a bug is resolved, move its folder into a dedicated **Resolved Bugs** folder for historical reference.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "54248427"
   },
@@ -2428,74 +2427,6 @@
           }
         }
       ]
-    }
-  ],
-  "auth": {
-    "type": "bearer",
-    "bearer": [
-      {
-        "key": "token",
-        "value": "{{authToken}}",
-        "type": "string"
-      }
-    ]
-  },
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    }
-  ],
-  "variable": [
-    {
-      "key": "eventTitle",
-      "value": ""
-    },
-    {
-      "key": "eventDate",
-      "value": ""
-    },
-    {
-      "key": "eventPrice",
-      "value": ""
-    },
-    {
-      "key": "eventTotalSeats",
-      "value": ""
-    },
-    {
-      "key": "eventID",
-      "value": ""
-    },
-    {
-      "key": "eventUpdatedTitle",
-      "value": ""
-    },
-    {
-      "key": "eventUpdatedPrice",
-      "value": ""
-    },
-    {
-      "key": "eventUpdatedTotalSeats",
-      "value": ""
     }
   ]
 }

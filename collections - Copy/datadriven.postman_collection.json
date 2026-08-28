@@ -2,13 +2,12 @@
   "info": {
     "_postman_id": "54a504f9-c46a-4728-9e63-1aa434ce2d28",
     "name": "EventHubAPI - Data-Driven",
-    "description": "## EventHubAPI – Data-Driven Testing\n\nThis collection validates the **EventHub API** using a **data-driven testing approach**, where multiple sets of input values are fed through a single collection run to maximize coverage with minimal repetition.\n\nEach folder in this collection targets a specific resource or workflow. Requests are driven by **Postman Datasets** — a first-class Postman entity for tabular data — allowing the same test logic to execute repeatedly across different input rows in one run. Each row in a dataset becomes an iteration, feeding variable values directly into requests, scripts, and assertions.\n\nThis approach makes it easy to:\n\n- Cover a wide range of scenarios (happy path, negative and edge cases) without duplicating requests\n    \n- Catch regressions across any EventHub API endpoint\n    \n- Confirm consistent API behaviour across varied data sets\n    \n\n### Structure\n\nFolders are organized by resource and workflow. Each folder maps to a Postman Dataset that supplies the variable values for that run:\n\n| Folder | Resource | Dataset |\n| --- | --- | --- |\n| Events > Events – CRUD | Events | Data-Driven Events – CRUD |\n\n> More folders and datasets will be added here as coverage expands to other EventHub API resources. \n  \n\n### When to use\n\nRun this collection (or individual folders) with the linked Postman Dataset selected in the Collection Runner whenever you need to:\n\n- Validate API behaviour across multiple input scenarios in a single pass\n    \n- Catch regressions introduced by changes to any EventHub endpoint\n    \n- Confirm data integrity across full resource lifecycles (create → read → update → delete)",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "54248427"
   },
   "item": [
     {
-      "name": "Events",
+      "name": "Data-Driven",
       "item": [
         {
           "name": "Events - CRUD",
@@ -709,7 +708,7 @@
           ]
         }
       ],
-      "description": "This folder groups all **data-driven tests (DDT)** for the EventHub API. Instead of hardcoding test inputs, requests in this folder are parameterized against an external dataset, enabling multiple scenarios to be validated in a single automated collection run.\n\n**Sub-folders:**\n\n- **Events - CRUD** — covers the complete Create → Read → Update → Read → Delete → Verify lifecycle of the Events resource, driven by the `Data-Driven Events - CRUD` dataset.\n    \n\nRun this folder using the Collection Runner with a linked dataset to exercise all scenarios across different data inputs in one pass.",
+      "description": "This folder groups all **data-driven tests (DDT)** for the EventHub API. Instead of hardcoding test inputs, requests in this folder are parameterized against an external dataset, enabling multiple scenarios to be validated in a single automated collection run.\n\n**Sub-folders:**\n\n- **Events - CRUD DDT** — covers the complete Create → Read → Update → Read → Delete → Verify lifecycle of the Events resource, driven by the `Data-Driven Events - CRUD` dataset.\n    \n\nRun this folder using the Collection Runner with a linked dataset to exercise all scenarios across different data inputs in one pass.",
       "auth": {
         "type": "bearer",
         "bearer": [
@@ -744,94 +743,6 @@
           }
         }
       ]
-    }
-  ],
-  "auth": {
-    "type": "bearer",
-    "bearer": [
-      {
-        "key": "token",
-        "value": "{{authToken}}",
-        "type": "string"
-      }
-    ]
-  },
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "packages": {},
-        "requests": {},
-        "exec": [
-          ""
-        ]
-      }
-    }
-  ],
-  "variable": [
-    {
-      "key": "dd_eventTitle",
-      "value": ""
-    },
-    {
-      "key": "dd_eventDescription",
-      "value": ""
-    },
-    {
-      "key": "dd_eventCategory",
-      "value": ""
-    },
-    {
-      "key": "dd_eventVenue",
-      "value": ""
-    },
-    {
-      "key": "dd_eventCity",
-      "value": ""
-    },
-    {
-      "key": "dd_eventPrice",
-      "value": ""
-    },
-    {
-      "key": "dd_eventTotalSeats",
-      "value": ""
-    },
-    {
-      "key": "dd_eventDate",
-      "value": ""
-    },
-    {
-      "key": "dd_eventID",
-      "value": ""
-    },
-    {
-      "key": "dd_eventUpdatedTitle",
-      "value": ""
-    },
-    {
-      "key": "dd_eventUpdatedDescription",
-      "value": ""
-    },
-    {
-      "key": "dd_eventNewPrice",
-      "value": ""
-    },
-    {
-      "key": "dd_eventNewTotalSeats",
-      "value": ""
     }
   ]
 }

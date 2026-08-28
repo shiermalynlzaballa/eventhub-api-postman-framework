@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "d769b2fd-57e8-419a-a01b-d353833564e1",
     "name": "EventHubAPI - Functional",
-    "description": "## Overview\nThis collection contains functional tests for the **EventHub API** — a platform for managing events and bookings. It validates the full API surface across authentication, event management, and booking workflows, covering both happy-path (CRUD) and negative/edge-case scenarios.\n\n## Authentication\nAll requests are secured using a **Bearer token** (`{{authToken}}`), configured at the collection level. A dedicated **Admin Login** folder handles admin-level authentication flows.\n\n## Collection-Level Test Scripts\nEvery request in this collection automatically runs the following assertions:\n- Response `Content-Type` is `application/json`\n- Response body is not null or empty\n- Response time is within **2000ms**\n\n## Folder Structure\n\n### Health\nVerifies that the API is up and reachable via a health check endpoint.\n\n### Config\nRetrieves public feature flags and configuration settings exposed by the API.\n\n### Authorization\nCovers user authentication flows, split into:\n- **CRUD** — Register a new user, log in, and retrieve the currently authenticated user.\n- **Negative Tests** — Validates proper error handling for missing credentials, invalid email/password, empty payloads, expired tokens, and unauthorized access.\n\n### Events\nManages the full lifecycle of events, organized into:\n- **CRUD** — Create, read, update, and delete events.\n- **Search Events** — Tests event search and filtering functionality.\n- **Negative Tests** — Covers invalid inputs and unauthorized operations for create, get, update, and delete actions.\n\n### Bookings\nHandles ticket booking operations, organized into:\n- **CRUD** — Create, retrieve, look up, list, and cancel bookings.\n- **Negative Tests** — Validates error responses for invalid booking requests across list, lookup, get, create, and cancel operations.",
+    "description": "This collection provides a QA automation framework for testing the EventHub API. It covers core API areas including health checks, public configuration, user authorization, event management, and booking workflows.\n\nThe collection includes positive and negative test scenarios for authentication, Events CRUD operations, Bookings CRUD operations, data-driven event testing, and end-to-end event booking business flows. It also contains dedicated bug-report scenarios that validate known issues and regression cases.\n\nReusable variables, bearer token authentication, and collection-level tests are used to support consistent validation of response format, response body content, and response performance across the API.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "54248427"
   },
@@ -6982,6 +6982,126 @@
     },
     {
       "key": "seatsBooked",
+      "value": ""
+    },
+    {
+      "key": "dd_eventTitle",
+      "value": ""
+    },
+    {
+      "key": "dd_eventDescription",
+      "value": ""
+    },
+    {
+      "key": "dd_eventCategory",
+      "value": ""
+    },
+    {
+      "key": "dd_eventVenue",
+      "value": ""
+    },
+    {
+      "key": "dd_eventCity",
+      "value": ""
+    },
+    {
+      "key": "dd_eventPrice",
+      "value": ""
+    },
+    {
+      "key": "dd_eventTotalSeats",
+      "value": ""
+    },
+    {
+      "key": "dd_eventDate",
+      "value": ""
+    },
+    {
+      "key": "dd_eventID",
+      "value": ""
+    },
+    {
+      "key": "dd_eventUpdatedTitle",
+      "value": ""
+    },
+    {
+      "key": "dd_eventUpdatedDescription",
+      "value": ""
+    },
+    {
+      "key": "dd_eventNewPrice",
+      "value": ""
+    },
+    {
+      "key": "dd_eventNewTotalSeats",
+      "value": ""
+    },
+    {
+      "key": "e2e_testUserEmail",
+      "value": ""
+    },
+    {
+      "key": "e2e_testUserID",
+      "value": ""
+    },
+    {
+      "key": "e2e_eventTitle",
+      "value": ""
+    },
+    {
+      "key": "e2e_eventDate",
+      "value": ""
+    },
+    {
+      "key": "e2e_eventPrice",
+      "value": ""
+    },
+    {
+      "key": "e2e_eventTotalSeats",
+      "value": ""
+    },
+    {
+      "key": "e2e_eventCurrentAvailableSeats",
+      "value": ""
+    },
+    {
+      "key": "e2e_eventID",
+      "value": ""
+    },
+    {
+      "key": "e2e_bookingTicketQuantity",
+      "value": ""
+    },
+    {
+      "key": "e2e_bookingTotalPrice",
+      "value": ""
+    },
+    {
+      "key": "e2e_bookingID",
+      "value": ""
+    },
+    {
+      "key": "e2e_bookingRefCode",
+      "value": ""
+    },
+    {
+      "key": "e2e_seatsBooked",
+      "value": ""
+    },
+    {
+      "key": "e2e_eventUpdatedTitle",
+      "value": ""
+    },
+    {
+      "key": "e2e_eventNewPrice",
+      "value": ""
+    },
+    {
+      "key": "e2e_eventNewTotalSeats",
+      "value": ""
+    },
+    {
+      "key": "e2e_bookingCustomerName",
       "value": ""
     }
   ]

@@ -43,7 +43,7 @@ jobs:
           node-version: '18'
 
       - name: Install Postman CLI via npm
-        run: npm install -g postman
+        run: npm install -g @postman/cli
 
       # --------------------------------------------------
       # 2.2 Postman login

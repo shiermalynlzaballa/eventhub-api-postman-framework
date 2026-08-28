@@ -35,7 +35,18 @@ jobs:
           mkdir -p reports/data-driven
 
       # --------------------------------------------------
-      # 2.1 Postman login
+      # 2.1 Install Postman CLI
+      # --------------------------------------------------
+      - name: Install Postman CLI
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Postman CLI via npm
+        run: npm install -g postman
+
+      # --------------------------------------------------
+      # 2.2 Postman login
       # --------------------------------------------------
       - name: Postman login
         run: postman login --with-api-key "${{ secrets.POSTMAN_API_KEY }}"

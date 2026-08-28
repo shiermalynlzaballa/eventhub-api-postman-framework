@@ -19,20 +19,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
       # --------------------------------------------------
       # 1. Checkout repository
       # --------------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v4
+
       # --------------------------------------------------
       # 2. Create reports directory
       # --------------------------------------------------
       - name: Create reports directory
-      run: |
-      mkdir -p reports/functional
-			mkdir -p reports/e2e
-			mkdir -p reports/datadriven
+        run: |
+          mkdir -p reports/functional
+          mkdir -p reports/e2e
+          mkdir -p reports/data-driven
 
       # --------------------------------------------------
       # 3. EventHubAPI - Functional Collection
@@ -46,14 +46,14 @@ jobs:
             collection run
             postman/collections/functional.postman_collection.json
             --env-var "base_url=${{ vars.BASE_URL }}"
-			--env-var "userName=${{ secrets.USERNAME }}"
-			--env-var "userPassword=${{ secrets.USER_PASSWORD }}"
-			--env-var "userID=${{ vars.USER_ID }}"
-			--env-var "expiredToken=${{ secrets.EXPIRED_TOKEN }}"
-      --reporters cli,junit,json,html
-      --reporter-junit-export reports/functional/postman-functional-junit-report.xml
-      --reporter-json-export reports/functional/postman-functional-json-report.json
-      --reporter-html-export reports/functional/postman-functional-html-report.html
+            --env-var "userName=${{ secrets.USERNAME }}"
+            --env-var "userPassword=${{ secrets.USER_PASSWORD }}"
+            --env-var "userID=${{ vars.USER_ID }}"
+            --env-var "expiredToken=${{ secrets.EXPIRED_TOKEN }}"
+            --reporters cli,junit,json,html
+            --reporter-junit-export reports/functional/postman-functional-junit-report.xml
+            --reporter-json-export reports/functional/postman-functional-json-report.json
+            --reporter-html-export reports/functional/postman-functional-html-report.html
 
       # --------------------------------------------------
       # 4. EventHubAPI - E2E Collection
@@ -67,14 +67,14 @@ jobs:
             collection run
             postman/collections/e2e.postman_collection.json
             --env-var "base_url=${{ vars.BASE_URL }}"
-			--env-var "userName=${{ secrets.USERNAME }}"
-			--env-var "userPassword=${{ secrets.USER_PASSWORD }}"
-			--env-var "userID=${{ vars.USER_ID }}"
-      --reporters cli,junit,json,html
-			--reporter-junit-export reports/e2e/postman-e2e-junit-report.xml
-      --reporter-json-export reports/e2e/postman-e2e-json-report.json
-      --reporter-html-export reports/e2e/postman-e2e-html-report.html
-			
+            --env-var "userName=${{ secrets.USERNAME }}"
+            --env-var "userPassword=${{ secrets.USER_PASSWORD }}"
+            --env-var "userID=${{ vars.USER_ID }}"
+            --reporters cli,junit,json,html
+            --reporter-junit-export reports/e2e/postman-e2e-junit-report.xml
+            --reporter-json-export reports/e2e/postman-e2e-json-report.json
+            --reporter-html-export reports/e2e/postman-e2e-html-report.html
+
       # --------------------------------------------------
       # 5. EventHubAPI - Data-Driven Collection
       # --------------------------------------------------
@@ -87,15 +87,15 @@ jobs:
             collection run
             postman/collections/datadriven.postman_collection.json
             --env-var "base_url=${{ vars.BASE_URL }}"
-			--env-var "userName=${{ secrets.USERNAME }}"
-			--env-var "userPassword=${{ secrets.USER_PASSWORD }}"
-			--env-var "userID=${{ vars.USER_ID }}"
-      --iteration-data test-data/eventData.csv
-      --reporters cli,junit,json,html
-			--reporter-junit-export reports/data-driven/postman-ddt-junit-report.xml
-      --reporter-json-export reports/data-driven/postman-ddt-json-report.json
-      --reporter-html-export reports/data-driven/postman-ddt-html-report.html
-			
+            --env-var "userName=${{ secrets.USERNAME }}"
+            --env-var "userPassword=${{ secrets.USER_PASSWORD }}"
+            --env-var "userID=${{ vars.USER_ID }}"
+            --iteration-data test-data/eventData.csv
+            --reporters cli,junit,json,html
+            --reporter-junit-export reports/data-driven/postman-ddt-junit-report.xml
+            --reporter-json-export reports/data-driven/postman-ddt-json-report.json
+            --reporter-html-export reports/data-driven/postman-ddt-html-report.html
+
       # --------------------------------------------------
       # 6. Show summary in GitHub Actions
       # --------------------------------------------------

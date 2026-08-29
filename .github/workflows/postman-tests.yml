@@ -24,6 +24,11 @@ jobs:
       # --------------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v5
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
 
       # --------------------------------------------------
       # 2. Create reports directory
@@ -135,7 +140,7 @@ jobs:
       # --------------------------------------------------
       - name: Upload Postman Reports
         if: always()
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: postman-test-reports
           path: reports/

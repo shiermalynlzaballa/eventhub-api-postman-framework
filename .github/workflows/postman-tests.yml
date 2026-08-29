@@ -33,6 +33,15 @@ jobs:
           mkdir -p reports/functional
           mkdir -p reports/e2e
           mkdir -p reports/data-driven
+          
+      - name: Verify CI variables
+        run: |
+          echo "EVENTHUB_BASE_URL=${{ vars.EVENTHUB_BASE_URL }}"
+          echo "EVENTHUB_USER_ID=${{ vars.EVENTHUB_USER_ID }}"
+          echo "EVENTHUB_EMAIL is configured: ${{ secrets.EVENTHUB_EMAIL != '' }}"
+          echo "EVENTHUB_PASSWORD is configured: ${{ secrets.EVENTHUB_PASSWORD != '' }}"
+          echo "POSTMAN_API_KEY is configured: ${{ secrets.POSTMAN_API_KEY != '' }}"
+          
       # --------------------------------------------------
       # 3. EventHubAPI - Functional Collection
       # --------------------------------------------------
@@ -43,7 +52,7 @@ jobs:
         with:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
-            postman collection run postman/collections/functional.postman_collection.json
+            collection run postman/collections/functional.postman_collection.json
             --env-var "base_url=${{ vars.EVENTHUB_BASE_URL }}"
             --env-var "userName=${{ secrets.EVENTHUB_EMAIL }}"
             --env-var "userPassword=${{ secrets.EVENTHUB_PASSWORD }}"
@@ -64,7 +73,7 @@ jobs:
         with:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
-            postman collection run postman/collections/e2e.postman_collection.json
+            collection run postman/collections/e2e.postman_collection.json
             --env-var "base_url=${{ vars.EVENTHUB_BASE_URL }}"
             --env-var "userName=${{ secrets.EVENTHUB_EMAIL }}"
             --env-var "userPassword=${{ secrets.EVENTHUB_PASSWORD }}"
@@ -84,7 +93,7 @@ jobs:
         with:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
-            postman collection run postman/collections/datadriven.postman_collection.json
+            collection run postman/collections/datadriven.postman_collection.json
             --env-var "base_url=${{ vars.EVENTHUB_BASE_URL }}"
             --env-var "userName=${{ secrets.EVENTHUB_EMAIL }}"
             --env-var "userPassword=${{ secrets.EVENTHUB_PASSWORD }}"

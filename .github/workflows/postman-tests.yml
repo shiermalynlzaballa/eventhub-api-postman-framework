@@ -61,11 +61,11 @@ jobs:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
             collection run postman/collections/functional.postman_collection.json
-            --env-var "base_url=https://api.eventhub.rahulshettyacademy.com/api"
-            --env-var "userName=${{ secrets.EVENTHUB_EMAIL }}"
-            --env-var "userPassword=${{ secrets.EVENTHUB_PASSWORD }}"
-            --env-var "userID=${{ vars.EVENTHUB_USER_ID }}"
-            --env-var "expiredToken=${{ secrets.EVENTHUB_EXPIRED_TOKEN }}"
+            --env-var base_url=${{ vars.EVENTHUB_BASE_URL }}
+            --env-var userName=${{ secrets.EVENTHUB_EMAIL }}
+            --env-var userPassword=${{ secrets.EVENTHUB_PASSWORD }}
+            --env-var userID=${{ vars.EVENTHUB_USER_ID }}
+            --env-var expiredToken=${{ secrets.EVENTHUB_EXPIRED_TOKEN }}
             --reporters cli,junit,json,html
             --reporter-junit-export reports/functional/postman-functional-junit-report.xml
             --reporter-json-export reports/functional/postman-functional-json-report.json
@@ -82,10 +82,10 @@ jobs:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
             collection run postman/collections/e2e.postman_collection.json
-            --env-var "base_url=https://api.eventhub.rahulshettyacademy.com/api"
-            --env-var "userName=${{ secrets.EVENTHUB_EMAIL }}"
-            --env-var "userPassword=${{ secrets.EVENTHUB_PASSWORD }}"
-            --env-var "userID=${{ vars.EVENTHUB_USER_ID }}"
+            --env-var base_url=${{ vars.EVENTHUB_BASE_URL }}
+            --env-var userName=${{ secrets.EVENTHUB_EMAIL }}
+            --env-var userPassword=${{ secrets.EVENTHUB_PASSWORD }}
+            --env-var userID=${{ vars.EVENTHUB_USER_ID }}
             --reporters cli,junit,json,html
             --reporter-junit-export reports/e2e/postman-e2e-junit-report.xml
             --reporter-json-export reports/e2e/postman-e2e-json-report.json
@@ -102,10 +102,10 @@ jobs:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
             collection run postman/collections/datadriven.postman_collection.json
-            --env-var "base_url=https://api.eventhub.rahulshettyacademy.com/api"
-            --env-var "userName=${{ secrets.EVENTHUB_EMAIL }}"
-            --env-var "userPassword=${{ secrets.EVENTHUB_PASSWORD }}"
-            --env-var "userID=${{ vars.EVENTHUB_USER_ID }}"
+            --env-var base_url=${{ vars.EVENTHUB_BASE_URL }}
+            --env-var userName=${{ secrets.EVENTHUB_EMAIL }}
+            --env-var userPassword=${{ secrets.EVENTHUB_PASSWORD }}
+            --env-var userID=${{ vars.EVENTHUB_USER_ID }}
             --iteration-data test-data/eventData.csv
             --reporters cli,junit,json,html
             --reporter-junit-export reports/data-driven/postman-ddt-junit-report.xml

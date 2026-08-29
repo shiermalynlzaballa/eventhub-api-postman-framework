@@ -61,7 +61,7 @@ jobs:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
             collection run postman/collections/functional.postman_collection.json
-            --env-var "base_url=${{ vars.EVENTHUB_BASE_URL }}"
+            --env-var "base_url=https://api.eventhub.rahulshettyacademy.com/api"
             --env-var "userName=${{ secrets.EVENTHUB_EMAIL }}"
             --env-var "userPassword=${{ secrets.EVENTHUB_PASSWORD }}"
             --env-var "userID=${{ vars.EVENTHUB_USER_ID }}"
@@ -82,7 +82,7 @@ jobs:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
             collection run postman/collections/e2e.postman_collection.json
-            --env-var "base_url=${{ vars.EVENTHUB_BASE_URL }}"
+            --env-var "base_url=https://api.eventhub.rahulshettyacademy.com/api"
             --env-var "userName=${{ secrets.EVENTHUB_EMAIL }}"
             --env-var "userPassword=${{ secrets.EVENTHUB_PASSWORD }}"
             --env-var "userID=${{ vars.EVENTHUB_USER_ID }}"
@@ -102,7 +102,7 @@ jobs:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
             collection run postman/collections/datadriven.postman_collection.json
-            --env-var "base_url=${{ vars.EVENTHUB_BASE_URL }}"
+            --env-var "base_url=https://api.eventhub.rahulshettyacademy.com/api"
             --env-var "userName=${{ secrets.EVENTHUB_EMAIL }}"
             --env-var "userPassword=${{ secrets.EVENTHUB_PASSWORD }}"
             --env-var "userID=${{ vars.EVENTHUB_USER_ID }}"

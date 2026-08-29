@@ -33,23 +33,7 @@ jobs:
           mkdir -p reports/functional
           mkdir -p reports/e2e
           mkdir -p reports/data-driven
-          
-      - name: Inspect EVENTHUB_BASE_URL
-        shell: bash
-        run: |
-          printf 'VALUE=<%s>\n' '${{ vars.EVENTHUB_BASE_URL }}'
-          printf 'LENGTH=%s\n' '${{ vars.EVENTHUB_BASE_URL }}' | wc -c
-          printf 'BYTES:\n'
-          printf '%s' '${{ vars.EVENTHUB_BASE_URL }}' | od -An -t x1
-          
-      - name: Verify CI variables
-        run: |
-          echo "EVENTHUB_BASE_URL=${{ vars.EVENTHUB_BASE_URL }}"
-          echo "EVENTHUB_USER_ID=${{ vars.EVENTHUB_USER_ID }}"
-          echo "EVENTHUB_EMAIL is configured: ${{ secrets.EVENTHUB_EMAIL != '' }}"
-          echo "EVENTHUB_PASSWORD is configured: ${{ secrets.EVENTHUB_PASSWORD != '' }}"
-          echo "POSTMAN_API_KEY is configured: ${{ secrets.POSTMAN_API_KEY != '' }}"
-          
+                    
       # --------------------------------------------------
       # 3. EventHubAPI - Functional Collection
       # --------------------------------------------------
@@ -133,6 +117,12 @@ jobs:
           echo ""
           echo "Data-Driven Collection:"
           echo "  Outcome: ${{ steps.datadriven.outcome }}"
+
+          echo ""
+          echo "Currently Identified Failed Test Assertions:"
+          echo "  Functional Collection:   6"
+          echo "  E2E Collection:          9"
+          echo "  Data-Driven Collection:  10"
 
           echo ""
           echo "Known application defects may appear"

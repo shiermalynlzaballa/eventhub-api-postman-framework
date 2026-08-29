@@ -68,7 +68,10 @@
               "listen": "prerequest",
               "script": {
                 "exec": [
-                  ""
+                  "console.log(\"pm.variables:\", pm.variables.get(\"base_url\"));\r",
+                  "console.log(\"pm.environment:\", pm.environment.get(\"base_url\"));\r",
+                  "console.log(\"pm.collection:\", pm.collectionVariables.get(\"base_url\"));\r",
+                  "console.log(\"pm.variables.toObject:\", JSON.stringify(pm.variables.toObject()));"
                 ],
                 "type": "text/javascript",
                 "packages": {},

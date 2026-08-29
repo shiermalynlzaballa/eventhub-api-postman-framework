@@ -8,6 +8,180 @@
   },
   "item": [
     {
+      "name": "Admin Login",
+      "item": [
+        {
+          "name": "Login with existing credentials",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const jsonData = pm.response.json();\r",
+                  "const userName = pm.environment.get(\"userName\");\r",
+                  "const userID = pm.environment.get(\"userID\");\r",
+                  "\r",
+                  "pm.test(\"Response status code should be 200\", () => {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"success should be true\", () => {\r",
+                  "    pm.expect(jsonData.success).to.exist.and.to.equal(true);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response has token property and not empty\", () => {\r",
+                  "    pm.expect(jsonData).to.have.property(\"token\");\r",
+                  "    pm.expect(jsonData.token).to.be.a(\"string\");\r",
+                  "    pm.expect(jsonData.token).to.not.be.empty;\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Extract token and set environment variable\", () => {\r",
+                  "    pm.environment.set(\"authToken\", jsonData.token);\r",
+                  "    pm.expect(pm.environment.get(\"authToken\")).to.equal(jsonData.token);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response contains login user id and email\", () => {\r",
+                  "    pm.expect(jsonData.user).to.exist;\r",
+                  "    pm.expect(jsonData.user.id).to.equal(Number(userID));\r",
+                  "    pm.expect(jsonData.user.email).to.equal(userName);\r",
+                  "});\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "console.log(\"pm.variables:\", pm.variables.get(\"base_url\"));\r",
+                  "console.log(\"pm.environment:\", pm.environment.get(\"base_url\"));\r",
+                  "console.log(\"pm.collection:\", pm.collectionVariables.get(\"base_url\"));\r",
+                  "console.log(\"pm.variables.toObject:\", JSON.stringify(pm.variables.toObject()));"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"{{userName}}\",\r\n    \"password\": \"{{userPassword}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get the currently auhenticated user",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const jsonData = pm.response.json();\r",
+                  "const userName = pm.environment.get(\"userName\");\r",
+                  "const userID = pm.environment.get(\"userID\");\r",
+                  "\r",
+                  "pm.test(\"Response status code should be 200\", () => {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"success should be true\", () => {\r",
+                  "    pm.expect(jsonData.success).to.exist.and.to.equal(true);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response contains login user\", () => {\r",
+                  "    pm.expect(jsonData.user).to.exist;\r",
+                  "    pm.expect(jsonData.user.userId).to.equal(Number(userID));\r",
+                  "    pm.expect(jsonData.user.email).to.equal(userName);\r",
+                  "    pm.expect(jsonData.user.iat).to.exist;\r",
+                  "    pm.expect(jsonData.user.exp).to.exist;\r",
+                  "});\r",
+                  "\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/me",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "## Admin Login\n\nThis folder covers the **admin authentication flow** for the EventHub API. It contains the two core requests needed to establish and verify an authenticated session:\n\n| Request | Method | Endpoint |\n| --- | --- | --- |\n| Login with existing credentials | `POST` | `/auth/login` |\n| Get the currently authenticated user | `GET` | `/auth/me` |\n\n### Purpose\n\n- Authenticate an admin user using existing credentials and obtain a bearer token via `POST /auth/login`.\n- Confirm the session is valid by retrieving the currently authenticated user's profile via `GET /auth/me`.\n\n> The bearer token returned from login is expected to be stored in an environment variable (e.g. `{{authToken}}`) and used by downstream requests that require authorization."
+    },
+    {
       "name": "Events",
       "item": [
         {

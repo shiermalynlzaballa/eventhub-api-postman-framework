@@ -43,7 +43,7 @@ jobs:
         with:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
-            collection run postman/collections/functional.postman_collection.json
+            postman collection run postman/collections/functional.postman_collection.json
             --env-var "base_url=${{ vars.BASE_URL }}"
             --env-var "userName=${{ secrets.USERNAME }}"
             --env-var "userPassword=${{ secrets.USER_PASSWORD }}"
@@ -64,7 +64,7 @@ jobs:
         with:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
-            collection run postman/collections/e2e.postman_collection.json
+            postman collection run postman/collections/e2e.postman_collection.json
             --env-var "base_url=${{ vars.BASE_URL }}"
             --env-var "userName=${{ secrets.USERNAME }}"
             --env-var "userPassword=${{ secrets.USER_PASSWORD }}"
@@ -84,7 +84,7 @@ jobs:
         with:
           api-key: ${{ secrets.POSTMAN_API_KEY }}
           command: >
-            collection run postman/collections/datadriven.postman_collection.json
+            postman collection run postman/collections/datadriven.postman_collection.json
             --env-var "base_url=${{ vars.BASE_URL }}"
             --env-var "userName=${{ secrets.USERNAME }}"
             --env-var "userPassword=${{ secrets.USER_PASSWORD }}"

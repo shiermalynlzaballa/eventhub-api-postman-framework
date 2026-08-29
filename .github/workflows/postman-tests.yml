@@ -34,6 +34,14 @@ jobs:
           mkdir -p reports/e2e
           mkdir -p reports/data-driven
           
+      - name: Inspect EVENTHUB_BASE_URL
+        shell: bash
+        run: |
+          printf 'VALUE=<%s>\n' '${{ vars.EVENTHUB_BASE_URL }}'
+          printf 'LENGTH=%s\n' '${{ vars.EVENTHUB_BASE_URL }}' | wc -c
+          printf 'BYTES:\n'
+          printf '%s' '${{ vars.EVENTHUB_BASE_URL }}' | od -An -t x1
+          
       - name: Verify CI variables
         run: |
           echo "EVENTHUB_BASE_URL=${{ vars.EVENTHUB_BASE_URL }}"

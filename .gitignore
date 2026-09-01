@@ -15,9 +15,9 @@ reports/functional/*.xml
 reports/functional/*.json
 reports/functional/*.html
 
-reports/datadriven/*.xml
-reports/datadriven/*.json
-reports/datadriven/*.html
+reports/data-driven/*.xml
+reports/data-driven/*.json
+reports/data-driven/*.html
 
 reports/e2e/*.xml
 reports/e2e/*.json

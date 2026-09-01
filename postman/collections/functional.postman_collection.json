@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "d769b2fd-57e8-419a-a01b-d353833564e1",
     "name": "EventHubAPI - Functional",
-    "description": "## Overview\nThis collection contains functional tests for the **EventHub API** — a platform for managing events and bookings. It validates the full API surface across authentication, event management, and booking workflows, covering both happy-path (CRUD) and negative/edge-case scenarios.\n\n## Authentication\nAll requests are secured using a **Bearer token** (`{{authToken}}`), configured at the collection level. A dedicated **Admin Login** folder handles admin-level authentication flows.\n\n## Collection-Level Test Scripts\nEvery request in this collection automatically runs the following assertions:\n- Response `Content-Type` is `application/json`\n- Response body is not null or empty\n- Response time is within **2000ms**\n\n## Folder Structure\n\n### Health\nVerifies that the API is up and reachable via a health check endpoint.\n\n### Config\nRetrieves public feature flags and configuration settings exposed by the API.\n\n### Authorization\nCovers user authentication flows, split into:\n- **CRUD** — Register a new user, log in, and retrieve the currently authenticated user.\n- **Negative Tests** — Validates proper error handling for missing credentials, invalid email/password, empty payloads, expired tokens, and unauthorized access.\n\n### Events\nManages the full lifecycle of events, organized into:\n- **CRUD** — Create, read, update, and delete events.\n- **Search Events** — Tests event search and filtering functionality.\n- **Negative Tests** — Covers invalid inputs and unauthorized operations for create, get, update, and delete actions.\n\n### Bookings\nHandles ticket booking operations, organized into:\n- **CRUD** — Create, retrieve, look up, list, and cancel bookings.\n- **Negative Tests** — Validates error responses for invalid booking requests across list, lookup, get, create, and cancel operations.",
+    "description": "## Overview\n\nThis collection contains functional tests for the **EventHub API** — a platform for managing events and bookings. It validates the full API surface across authentication, event management, and booking workflows, covering both happy-path (CRUD) and negative/edge-case scenarios.\n\n## Authentication\n\nAll requests are secured using a **Bearer token** (`{{authToken}}`), configured at the collection level. A dedicated **Admin Login** folder handles admin-level authentication flows.\n\n## Collection-Level Test Scripts\n\nEvery request in this collection automatically runs the following assertions:\n\n- Response `Content-Type` is `application/json`\n    \n- Response body is not null or empty\n    \n- Response time is within **2000ms**\n    \n\n## Folder Structure\n\n### Health\n\nVerifies that the API is up and reachable via a health check endpoint.\n\n### Config\n\nRetrieves public feature flags and configuration settings exposed by the API.\n\n### Authorization\n\nCovers user authentication flows, split into:\n\n- **CRUD** — Register a new user, log in, and retrieve the currently authenticated user.\n    \n- **Negative Tests** — Validates proper error handling for missing credentials, invalid email/password, empty payloads, expired tokens, and unauthorized access.\n    \n\n### Events\n\nManages the full lifecycle of events, organized into:\n\n- **CRUD** — Create, read, update, and delete events.\n    \n- **Search Events** — Tests event search and filtering functionality.\n    \n- **Negative Tests** — Covers invalid inputs and unauthorized operations for create, get, update, and delete actions.\n    \n\n### Bookings\n\nHandles ticket booking operations, organized into:\n\n- **CRUD** — Create, retrieve, look up, list, and cancel bookings.\n    \n- **Negative Tests** — Validates error responses for invalid booking requests across list, lookup, get, create, and cancel operations.\n    \n\n### Notes\n\n- A total of **6 failed test assertions** have been identified to date.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "54248427"
   },
@@ -17,6 +17,14 @@
               "listen": "test",
               "script": {
                 "exec": [
+                  "// @allure.label.epic=EventHub API\r",
+                  "// @allure.label.feature=Authentication\r",
+                  "// @allure.label.story=Valid Login\r",
+                  "// @allure.label.severity=critical\r",
+                  "// @allure.label.tag=smoke\r",
+                  "// @allure.label.tag=authentication\r",
+                  "// @allure.label.tag=functional\r",
+                  "\r",
                   "const jsonData = pm.response.json();\r",
                   "const userName = pm.environment.get(\"userName\");\r",
                   "const userID = pm.environment.get(\"userID\");\r",
@@ -68,10 +76,7 @@
               "listen": "prerequest",
               "script": {
                 "exec": [
-                  "console.log(\"pm.variables:\", pm.variables.get(\"base_url\"));\r",
-                  "console.log(\"pm.environment:\", pm.environment.get(\"base_url\"));\r",
-                  "console.log(\"pm.collection:\", pm.collectionVariables.get(\"base_url\"));\r",
-                  "console.log(\"pm.variables.toObject:\", JSON.stringify(pm.variables.toObject()));"
+                  ""
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -80,6 +85,16 @@
             }
           ],
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
             "header": [],
             "body": {
@@ -154,6 +169,16 @@
             "disableBodyPruning": true
           },
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{authToken}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "body": {
@@ -179,7 +204,41 @@
           "response": []
         }
       ],
-      "description": "## Admin Login\n\nThis folder covers the **admin authentication flow** for the EventHub API. It contains the two core requests needed to establish and verify an authenticated session:\n\n| Request | Method | Endpoint |\n| --- | --- | --- |\n| Login with existing credentials | `POST` | `/auth/login` |\n| Get the currently authenticated user | `GET` | `/auth/me` |\n\n### Purpose\n\n- Authenticate an admin user using existing credentials and obtain a bearer token via `POST /auth/login`.\n- Confirm the session is valid by retrieving the currently authenticated user's profile via `GET /auth/me`.\n\n> The bearer token returned from login is expected to be stored in an environment variable (e.g. `{{authToken}}`) and used by downstream requests that require authorization."
+      "description": "## Admin Login\n\nThis folder covers the **admin authentication flow** for the EventHub API. It contains the two core requests needed to establish and verify an authenticated session:\n\n| Request | Method | Endpoint |\n| --- | --- | --- |\n| Login with existing credentials | `POST` | `/auth/login` |\n| Get the currently authenticated user | `GET` | `/auth/me` |\n\n### Purpose\n\n- Authenticate an admin user using existing credentials and obtain a bearer token via `POST /auth/login`.\n- Confirm the session is valid by retrieving the currently authenticated user's profile via `GET /auth/me`.\n\n> The bearer token returned from login is expected to be stored in an environment variable (e.g. `{{authToken}}`) and used by downstream requests that require authorization.",
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "{{authToken}}",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "Authorization",
@@ -245,8 +304,20 @@
                       "    pm.expect(jsonData.user.email).to.equal(userEmail);\r",
                       "});\r",
                       "\r",
-                      "pm.test(\"Set '\" + userID + \"' user id as collection variable\", () => {\r",
+                      "/*pm.test(\"Set '\" + userID + \"' user id as collection variable\", () => {\r",
                       "    pm.collectionVariables.set(\"testUserID\", userID);\r",
+                      "    pm.expect(pm.collectionVariables.get(\"testUserID\")).to.equal(userID);\r",
+                      "});*/\r",
+                      "\r",
+                      "pm.test(\"Set user id as collection variable\", () => {\r",
+                      "    pm.collectionVariables.set(\"testUserID\", userID);\r",
+                      "\r",
+                      "    const storedUserID = pm.collectionVariables.get(\"testUserID\");\r",
+                      "\r",
+                      "    console.log(\"Response userID:\", userID);\r",
+                      "    console.log(\"Stored collection testUserID:\", storedUserID);\r",
+                      "\r",
+                      "    pm.expect(storedUserID).to.equal(userID);\r",
                       "});\r",
                       ""
                     ],
@@ -287,52 +358,63 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "const jsonData = pm.response.json();\r",
-                      "const userEmail = pm.collectionVariables.get(\"testUserEmail\");\r",
-                      "const userID = pm.collectionVariables.get(\"testUserID\");\r",
-                      "\r",
-                      "pm.test(\"Response status code should be 200\", () => {\r",
-                      "    pm.response.to.have.status(200);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"success should be true\", () => {\r",
-                      "    pm.expect(jsonData.success).to.exist.and.to.equal(true);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Response has token property and not empty\", () => {\r",
-                      "    pm.expect(jsonData).to.have.property(\"token\");\r",
-                      "    pm.expect(jsonData.token).to.be.a(\"string\");\r",
-                      "    pm.expect(jsonData.token).to.not.be.empty;\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Extract token and set environment variable\", () => {\r",
-                      "    pm.environment.set(\"testAuthToken\", jsonData.token);\r",
-                      "    pm.expect(pm.environment.get(\"testAuthToken\")).to.equal(jsonData.token);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Response contains login user id and email\", () => {\r",
-                      "    pm.expect(jsonData.user).to.exist;\r",
-                      "    pm.expect(jsonData.user.id).to.equal(Number(userID));\r",
-                      "    pm.expect(jsonData.user.email).to.equal(userEmail);\r",
-                      "});\r",
-                      "\r",
-                      "\r",
-                      "\r",
-                      "\r",
-                      "\r",
-                      "\r",
-                      "\r",
-                      "\r",
-                      "\r",
-                      "\r",
-                      "\r",
-                      "\r",
-                      ""
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "const userEmail = pm.collectionVariables.get(\"testUserEmail\");",
+                      "",
+                      "pm.test(\"Response status code should be 200\", () => {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"success should be true\", () => {",
+                      "    pm.expect(jsonData.success).to.exist.and.to.equal(true);",
+                      "});",
+                      "",
+                      "pm.test(\"Response has token property and not empty\", () => {",
+                      "    pm.expect(jsonData).to.have.property(\"token\");",
+                      "    pm.expect(jsonData.token).to.be.a(\"string\");",
+                      "    pm.expect(jsonData.token).to.not.be.empty;",
+                      "});",
+                      "",
+                      "pm.test(\"Extract token and set environment variable\", () => {",
+                      "    pm.environment.set(\"testAuthToken\", jsonData.token);",
+                      "    pm.collectionVariables.set(\"testAuthToken\", jsonData.token);",
+                      "    pm.expect(pm.environment.get(\"testAuthToken\")).to.equal(jsonData.token);",
+                      "});",
+                      "",
+                      "pm.test(\"Response contains login user id and email\", () => {",
+                      "    const userID = pm.collectionVariables.get(\"testUserID\");",
+                      "",
+                      "    pm.expect(jsonData.user).to.exist;",
+                      "    pm.expect(jsonData.user.id).to.equal(Number(userID));",
+                      "    pm.expect(jsonData.user.email).to.equal(userEmail);",
+                      "});",
+                      "",
+                      "pm.test(\"Response contains login user id and email\", () => {",
+                      "    const userID = pm.collectionVariables.get(\"testUserID\");",
+                      "",
+                      "    pm.expect(jsonData.user).to.exist;",
+                      "",
+                      "    console.log(\"Comparing:\",",
+                      "        jsonData.user.id,",
+                      "        \"===\",",
+                      "        Number(userID)",
+                      "    );",
+                      "",
+                      "    pm.expect(jsonData.user.id).to.equal(Number(userID));",
+                      "    pm.expect(jsonData.user.email).to.equal(userEmail);",
+                      "",
+                      "    console.log(\"========== LOGIN DEBUG ==========\");",
+                      "    console.log(\"Collection testUserID:\", userID);",
+                      "    console.log(\"Resolved testUserID:\", pm.variables.get(\"testUserID\"));",
+                      "    console.log(\"Login response user.id:\", jsonData.user?.id);",
+                      "    console.log(\"Expected userID:\", Number(userID));",
+                      "    console.log(\"=================================\");",
+                      "    console.log(\"Response ID:\", jsonData.user.id, typeof jsonData.user.id);",
+                      "    console.log(\"Collection ID:\", userID, typeof userID);",
+                      "});"
+                    ]
                   }
                 },
                 {
@@ -348,16 +430,6 @@
                 }
               ],
               "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{testAuthToken}}",
-                      "type": "string"
-                    }
-                  ]
-                },
                 "method": "POST",
                 "header": [],
                 "body": {
@@ -391,7 +463,7 @@
                     "exec": [
                       "const jsonData = pm.response.json();\r",
                       "const userEmail = pm.collectionVariables.get(\"testUserEmail\");\r",
-                      "const userID = pm.collectionVariables.get(\"testUserID\");\r",
+                      "\r",
                       "\r",
                       "pm.test(\"Response status code should be 200\", () => {\r",
                       "    pm.response.to.have.status(200);\r",
@@ -402,12 +474,18 @@
                       "});\r",
                       "\r",
                       "pm.test(\"Response contains login user\", () => {\r",
+                      "    const userID = pm.collectionVariables.get(\"testUserID\");\r",
+                      "\r",
                       "    pm.expect(jsonData.user).to.exist;\r",
                       "    pm.expect(jsonData.user.userId).to.equal(Number(userID));\r",
                       "    pm.expect(jsonData.user.email).to.equal(userEmail);\r",
                       "    pm.expect(jsonData.user.iat).to.exist;\r",
                       "    pm.expect(jsonData.user.exp).to.exist;\r",
+                      "\r",
+                      "    console.log(\"Response ID:\", jsonData.user.userId, typeof jsonData.user.userId);\r",
+                      "    console.log(\"Collection ID:\", userID, typeof userID);\r",
                       "});\r",
+                      "\r",
                       "\r",
                       ""
                     ],
@@ -419,12 +497,11 @@
                 {
                   "listen": "prerequest",
                   "script": {
-                    "exec": [
-                      ""
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "const token = pm.collectionVariables.get(\"testAuthToken\") || pm.environment.get(\"testAuthToken\");",
+                      "pm.request.headers.upsert({ key: \"Authorization\", value: \"Bearer \" + token });"
+                    ]
                   }
                 }
               ],
@@ -433,14 +510,7 @@
               },
               "request": {
                 "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{testAuthToken}}",
-                      "type": "string"
-                    }
-                  ]
+                  "type": "noauth"
                 },
                 "method": "GET",
                 "header": [],
@@ -661,6 +731,13 @@
                   "listen": "test",
                   "script": {
                     "exec": [
+                      "// @allure.label.epic=EventHub API\r",
+                      "// @allure.label.feature=Negative\r",
+                      "// @allure.label.story=Expired Token\r",
+                      "// @allure.label.severity=critical\r",
+                      "// @allure.label.tag=edge-case\r",
+                      "// @allure.label.tag=security\r",
+                      "\r",
                       "const jsonData = pm.response.json();\r",
                       "\r",
                       "pm.test(\"Response status code should be 401\", () => {\r",
@@ -1130,7 +1207,14 @@
             }
           ],
           "auth": {
-            "type": "noauth"
+            "type": "bearer",
+            "bearer": [
+              {
+                "key": "token",
+                "value": "{{authToken}}",
+                "type": "string"
+              }
+            ]
           },
           "event": [
             {
@@ -1462,6 +1546,13 @@
                   "listen": "test",
                   "script": {
                     "exec": [
+                      "// @allure.label.epic=EventHub API",
+                      "// @allure.label.feature=Events",
+                      "// @allure.label.story=Create Event",
+                      "// @allure.label.severity=critical",
+                      "// @allure.label.tag=crud",
+                      "// @allure.label.tag=functional",
+                      "",
                       "const jsonData = pm.response.json();",
                       "const data = jsonData.data;",
                       "const eventID = jsonData.data.id;",
@@ -1520,6 +1611,9 @@
                   "listen": "prerequest",
                   "script": {
                     "exec": [
+                      "const token = pm.environment.get(\"testAuthToken\");",
+                      "pm.request.headers.upsert({ key: \"Authorization\", value: \"Bearer \" + token });",
+                      "",
                       "// Generate unique event title",
                       "pm.test(\"Pre-request: Generate event title and set as collection variable\", () => {",
                       "    const d = new Date();",
@@ -1583,6 +1677,16 @@
                 }
               ],
               "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{testAuthToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
                 "method": "POST",
                 "header": [],
                 "body": {
@@ -2279,6 +2383,16 @@
               "response": []
             }
           ],
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "key": "token",
+                "value": "{{testAuthToken}}",
+                "type": "string"
+              }
+            ]
+          },
           "event": [
             {
               "listen": "prerequest",
@@ -4544,6 +4658,9 @@
                   "listen": "prerequest",
                   "script": {
                     "exec": [
+                      "const token = pm.environment.get(\"testAuthToken\");",
+                      "pm.request.headers.upsert({ key: \"Authorization\", value: \"Bearer \" + token });",
+                      "",
                       "// Generate unique event title",
                       "const d = new Date();",
                       "const p = n => String(n).padStart(2, \"0\");",
@@ -5676,6 +5793,16 @@
               "response": []
             }
           ],
+          "auth": {
+            "type": "bearer",
+            "bearer": [
+              {
+                "key": "token",
+                "value": "{{testAuthToken}}",
+                "type": "string"
+              }
+            ]
+          },
           "event": [
             {
               "listen": "prerequest",
@@ -6819,7 +6946,8 @@
             "packages": {},
             "requests": {},
             "exec": [
-              ""
+              "const token = pm.environment.get(\"testAuthToken\");\r",
+              "pm.request.headers.upsert({ key: \"Authorization\", value: \"Bearer \" + token });"
             ]
           }
         },
@@ -6842,7 +6970,7 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{authToken}}",
+        "value": "{{testAuthToken}}",
         "type": "string"
       }
     ]
@@ -6893,30 +7021,14 @@
   "variable": [
     {
       "key": "testUserEmail",
-      "value": "testuser_20260825084849763@example.com"
+      "value": ""
     },
     {
       "key": "testUserID",
-      "value": "44326"
+      "value": ""
     },
     {
       "key": "eventTitle",
-      "value": ""
-    },
-    {
-      "key": "eventID",
-      "value": ""
-    },
-    {
-      "key": "eventDescription",
-      "value": ""
-    },
-    {
-      "key": "eventVenue",
-      "value": ""
-    },
-    {
-      "key": "eventCity",
       "value": ""
     },
     {
@@ -6932,7 +7044,11 @@
       "value": ""
     },
     {
-      "key": "eventCurrentAvailableSeats",
+      "key": "eventInitialAvailableSeats",
+      "value": ""
+    },
+    {
+      "key": "eventID",
       "value": ""
     },
     {
@@ -6940,19 +7056,7 @@
       "value": ""
     },
     {
-      "key": "eventUpdatedDescription",
-      "value": ""
-    },
-    {
-      "key": "eventNewPrice",
-      "value": ""
-    },
-    {
-      "key": "eventNewTotalSeats",
-      "value": ""
-    },
-    {
-      "key": "eventInitialAvailableSeats",
+      "key": "eventUpdatedPrice",
       "value": ""
     },
     {
@@ -6960,7 +7064,7 @@
       "value": ""
     },
     {
-      "key": "eventUpdatedPrice",
+      "key": "eventCurrentAvailableSeats",
       "value": ""
     },
     {
@@ -6985,6 +7089,10 @@
     },
     {
       "key": "seatsBooked",
+      "value": ""
+    },
+    {
+      "key": "testAuthToken",
       "value": ""
     }
   ]

@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Allure generated reports
+reports/allure/allure-results/
+reports/allure/allure-report/
+
+# Newman generated reports
+reports/functional/*.xml
+reports/functional/*.json
+reports/functional/*.html
+
+reports/datadriven/*.xml
+reports/datadriven/*.json
+reports/datadriven/*.html
+
+reports/e2e/*.xml
+reports/e2e/*.json
+reports/e2e/*.html
+
+# Postman local/private files
+.postman/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

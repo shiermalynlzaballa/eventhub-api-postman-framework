@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="EventHubAPI - Data-Driven" tests="40" time="9.211">
-  <testsuite name="Admin Login / Login with existing credentials" id="ab2c613d-dfa2-4302-a5c9-9d7736cda4a1" timestamp="2026-09-01T08:04:26.979Z" tests="5" failures="0" errors="0" time="0.375">
-    <testcase name="Response status code should be 200" time="0.292" classname="AdminLoginLoginWithExistingCredentials"/>
-    <testcase name="success should be true" time="0.292" classname="AdminLoginLoginWithExistingCredentials"/>
-    <testcase name="Response has token property and not empty" time="0.292" classname="AdminLoginLoginWithExistingCredentials"/>
-    <testcase name="Extract token and set environment variable" time="0.292" classname="AdminLoginLoginWithExistingCredentials"/>
-    <testcase name="Response contains login user id and email" time="0.292" classname="AdminLoginLoginWithExistingCredentials"/>
+<testsuites name="EventHubAPI - Data-Driven" tests="40" time="10.650">
+  <testsuite name="Admin Login / Login with existing credentials" id="f2bdd7bc-1f5b-429a-bb47-23daaf360a31" timestamp="2026-09-02T04:26:49.490Z" tests="5" failures="0" errors="0" time="0.452">
+    <testcase name="Response status code should be 200" time="0.321" classname="AdminLoginLoginWithExistingCredentials"/>
+    <testcase name="success should be true" time="0.321" classname="AdminLoginLoginWithExistingCredentials"/>
+    <testcase name="Response has token property and not empty" time="0.321" classname="AdminLoginLoginWithExistingCredentials"/>
+    <testcase name="Extract token and set environment variable" time="0.321" classname="AdminLoginLoginWithExistingCredentials"/>
+    <testcase name="Response contains login user id and email" time="0.321" classname="AdminLoginLoginWithExistingCredentials"/>
   </testsuite>
-  <testsuite name="Admin Login / Get the currently auhenticated user" id="3c891c7a-e492-4b9d-9e40-bf1c589d4ce7" timestamp="2026-09-01T08:04:26.979Z" tests="3" failures="0" errors="0" time="0.204">
-    <testcase name="Response status code should be 200" time="0.204" classname="AdminLoginGetTheCurrentlyAuhenticatedUser"/>
-    <testcase name="success should be true" time="0.204" classname="AdminLoginGetTheCurrentlyAuhenticatedUser"/>
-    <testcase name="Response contains login user" time="0.204" classname="AdminLoginGetTheCurrentlyAuhenticatedUser"/>
+  <testsuite name="Admin Login / Get the currently auhenticated user" id="365a2015-0f49-4b50-975b-cafab1c18dfb" timestamp="2026-09-02T04:26:49.490Z" tests="3" failures="0" errors="0" time="0.233">
+    <testcase name="Response status code should be 200" time="0.232" classname="AdminLoginGetTheCurrentlyAuhenticatedUser"/>
+    <testcase name="success should be true" time="0.232" classname="AdminLoginGetTheCurrentlyAuhenticatedUser"/>
+    <testcase name="Response contains login user" time="0.232" classname="AdminLoginGetTheCurrentlyAuhenticatedUser"/>
   </testsuite>
-  <testsuite name="Events / Events - CRUD / Create a new event" id="6da2e66a-1a65-4d35-b5c9-fcde67252794" timestamp="2026-09-01T08:04:26.979Z" tests="10" failures="0" errors="0" time="0.216">
-    <testcase name="Pre-request: Validate eventData.csv data" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="Pre-request: Generate event title and set as collection variable" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="Pre-request: Generated event date: 2026-12-01T08:04:27.969Z" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="Pre-request: Generate future event date and set as collection variable" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="Response status code should be 201" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="success should be true" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="The 'id' property exists and value is '109468'" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="Set Event ID as 'eventID' variable" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="Validate event data properties" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="message should be 'Event created successfully'" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="Pre-request: Generated event date: 2026-12-01T08:04:29.906Z" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="The 'id' property exists and value is '109469'" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="Pre-request: Generated event date: 2026-12-01T08:04:31.831Z" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="The 'id' property exists and value is '109470'" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="Pre-request: Generated event date: 2026-12-01T08:04:33.716Z" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="The 'id' property exists and value is '109471'" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="Pre-request: Generated event date: 2026-12-01T08:04:35.623Z" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
-    <testcase name="The 'id' property exists and value is '109472'" time="0.214" classname="EventsEventsCrudCreateANewEvent"/>
+  <testsuite name="Events / Events - CRUD / Create a new event" id="2b78d78a-de22-41e4-b547-571638f924dc" timestamp="2026-09-02T04:26:49.490Z" tests="10" failures="0" errors="0" time="0.245">
+    <testcase name="Pre-request: Validate eventData.csv data" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Pre-request: Generate event title and set as collection variable" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Pre-request: Generated event date: 2026-12-02T04:26:50.699Z" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Pre-request: Generate future event date and set as collection variable" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Response status code should be 201" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="success should be true" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="The 'id' property exists and value is '110039'" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Set Event ID as 'eventID' variable" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Validate event data properties" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="message should be 'Event created successfully'" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Pre-request: Generated event date: 2026-12-02T04:26:52.920Z" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="The 'id' property exists and value is '110040'" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Pre-request: Generated event date: 2026-12-02T04:26:55.042Z" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="The 'id' property exists and value is '110041'" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Pre-request: Generated event date: 2026-12-02T04:26:57.143Z" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="The 'id' property exists and value is '110042'" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="Pre-request: Generated event date: 2026-12-02T04:26:59.229Z" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
+    <testcase name="The 'id' property exists and value is '110043'" time="0.244" classname="EventsEventsCrudCreateANewEvent"/>
   </testsuite>
-  <testsuite name="Events / Events - CRUD / Get a single event by ID" id="968e15f6-97aa-49c6-930c-fb6786fd5d4f" timestamp="2026-09-01T08:04:26.979Z" tests="2" failures="0" errors="0" time="0.206">
-    <testcase name="Response status code should be 200" time="0.206" classname="EventsEventsCrudGetASingleEventById"/>
-    <testcase name="Validate event data properties" time="0.206" classname="EventsEventsCrudGetASingleEventById"/>
+  <testsuite name="Events / Events - CRUD / Get a single event by ID" id="15584c5a-3ebd-4420-87a5-d53b3ee24c21" timestamp="2026-09-02T04:26:49.490Z" tests="2" failures="0" errors="0" time="0.235">
+    <testcase name="Response status code should be 200" time="0.234" classname="EventsEventsCrudGetASingleEventById"/>
+    <testcase name="Validate event data properties" time="0.234" classname="EventsEventsCrudGetASingleEventById"/>
   </testsuite>
-  <testsuite name="Events / Events - CRUD / Update an event" id="69764cd8-9721-4f43-b0ae-0905839c04e7" timestamp="2026-09-01T08:04:26.979Z" tests="7" failures="5" errors="0" time="0.215">
-    <testcase name="Pre-request: Validate eventData.csv data" time="0.214" classname="EventsEventsCrudUpdateAnEvent"/>
-    <testcase name="Pre-request: Updated event title: Event_Conference_Updated_API_20260901-080427969" time="0.214" classname="EventsEventsCrudUpdateAnEvent"/>
-    <testcase name="Pre-request: Update event title and set as collection variable" time="0.214" classname="EventsEventsCrudUpdateAnEvent"/>
-    <testcase name="Response status code should be 200" time="0.214" classname="EventsEventsCrudUpdateAnEvent"/>
-    <testcase name="success should be true" time="0.214" classname="EventsEventsCrudUpdateAnEvent"/>
-    <testcase name="(BUG-001) Validate event data properties" time="0.214" classname="EventsEventsCrudUpdateAnEvent">
+  <testsuite name="Events / Events - CRUD / Update an event" id="b97a5c29-57af-4820-ab9a-1e52556135b6" timestamp="2026-09-02T04:26:49.490Z" tests="7" failures="5" errors="0" time="0.245">
+    <testcase name="Pre-request: Validate eventData.csv data" time="0.242" classname="EventsEventsCrudUpdateAnEvent"/>
+    <testcase name="Pre-request: Updated event title: Event_Conference_Updated_API_20260902-042650698" time="0.242" classname="EventsEventsCrudUpdateAnEvent"/>
+    <testcase name="Pre-request: Update event title and set as collection variable" time="0.242" classname="EventsEventsCrudUpdateAnEvent"/>
+    <testcase name="Response status code should be 200" time="0.242" classname="EventsEventsCrudUpdateAnEvent"/>
+    <testcase name="success should be true" time="0.242" classname="EventsEventsCrudUpdateAnEvent"/>
+    <testcase name="(BUG-001) Validate event data properties" time="0.242" classname="EventsEventsCrudUpdateAnEvent">
       <failure type="AssertionFailure" message="expected 1600 to equal 2000">
         <![CDATA[Failed 5 times.]]>
         <![CDATA[Collection JSON ID: 54a504f9-c46a-4728-9e63-1aa434ce2d28.]]>
@@ -54,16 +54,16 @@
    at Object.eval sandbox-script.js:3:5).]]>
       </failure>
     </testcase>
-    <testcase name="message should be 'Event updated successfully'" time="0.214" classname="EventsEventsCrudUpdateAnEvent"/>
-    <testcase name="Pre-request: Updated event title: Event_Concert_Updated_API_20260901-080429906" time="0.214" classname="EventsEventsCrudUpdateAnEvent"/>
-    <testcase name="Pre-request: Updated event title: Event_Sports_Updated_API_20260901-080431830" time="0.214" classname="EventsEventsCrudUpdateAnEvent"/>
-    <testcase name="Pre-request: Updated event title: Event_Workshop_Updated_API_20260901-080433716" time="0.214" classname="EventsEventsCrudUpdateAnEvent"/>
-    <testcase name="Pre-request: Updated event title: Event_Festival_Updated_API_20260901-080435622" time="0.214" classname="EventsEventsCrudUpdateAnEvent"/>
+    <testcase name="message should be 'Event updated successfully'" time="0.242" classname="EventsEventsCrudUpdateAnEvent"/>
+    <testcase name="Pre-request: Updated event title: Event_Concert_Updated_API_20260902-042652919" time="0.242" classname="EventsEventsCrudUpdateAnEvent"/>
+    <testcase name="Pre-request: Updated event title: Event_Sports_Updated_API_20260902-042655042" time="0.242" classname="EventsEventsCrudUpdateAnEvent"/>
+    <testcase name="Pre-request: Updated event title: Event_Workshop_Updated_API_20260902-042657143" time="0.242" classname="EventsEventsCrudUpdateAnEvent"/>
+    <testcase name="Pre-request: Updated event title: Event_Festival_Updated_API_20260902-042659229" time="0.242" classname="EventsEventsCrudUpdateAnEvent"/>
   </testsuite>
-  <testsuite name="Events / Events - CRUD / Get a single event by ID" id="67f269ac-eafd-4bbb-b815-c87dbd4d4733" timestamp="2026-09-01T08:04:26.979Z" tests="3" failures="5" errors="0" time="0.206">
-    <testcase name="Response status code should be 200" time="0.206" classname="EventsEventsCrudGetASingleEventById"/>
-    <testcase name="success should be true" time="0.206" classname="EventsEventsCrudGetASingleEventById"/>
-    <testcase name="(BUG-001) Validate event data properties" time="0.206" classname="EventsEventsCrudGetASingleEventById">
+  <testsuite name="Events / Events - CRUD / Get a single event by ID" id="29befc4e-efcd-45d9-ac6e-8be902db2002" timestamp="2026-09-02T04:26:49.490Z" tests="3" failures="5" errors="0" time="0.245">
+    <testcase name="Response status code should be 200" time="0.288" classname="EventsEventsCrudGetASingleEventById"/>
+    <testcase name="success should be true" time="0.288" classname="EventsEventsCrudGetASingleEventById"/>
+    <testcase name="(BUG-001) Validate event data properties" time="0.288" classname="EventsEventsCrudGetASingleEventById">
       <failure type="AssertionFailure" message="expected 1600 to equal 2000">
         <![CDATA[Failed 5 times.]]>
         <![CDATA[Collection JSON ID: 54a504f9-c46a-4728-9e63-1aa434ce2d28.]]>
@@ -76,18 +76,18 @@
       </failure>
     </testcase>
   </testsuite>
-  <testsuite name="Events / Events - CRUD / Delete an event" id="1984905d-2510-4558-8e4d-bd22b080feed" timestamp="2026-09-01T08:04:26.979Z" tests="3" failures="0" errors="0" time="0.214">
-    <testcase name="Response status code should be 200" time="0.213" classname="EventsEventsCrudDeleteAnEvent"/>
-    <testcase name="success should be true" time="0.213" classname="EventsEventsCrudDeleteAnEvent"/>
-    <testcase name="message should be 'Event deleted successfully'" time="0.213" classname="EventsEventsCrudDeleteAnEvent"/>
+  <testsuite name="Events / Events - CRUD / Delete an event" id="487330a0-500e-4d53-8907-7dfb8d71482b" timestamp="2026-09-02T04:26:49.490Z" tests="3" failures="0" errors="0" time="0.242">
+    <testcase name="Response status code should be 200" time="0.243" classname="EventsEventsCrudDeleteAnEvent"/>
+    <testcase name="success should be true" time="0.243" classname="EventsEventsCrudDeleteAnEvent"/>
+    <testcase name="message should be 'Event deleted successfully'" time="0.243" classname="EventsEventsCrudDeleteAnEvent"/>
   </testsuite>
-  <testsuite name="Events / Events - CRUD / Verify event is deleted" id="e8105549-c73c-44f4-b0e7-0919b428fee5" timestamp="2026-09-01T08:04:26.979Z" tests="3" failures="0" errors="0" time="0.205">
-    <testcase name="Response status code should be 404" time="0.205" classname="EventsEventsCrudVerifyEventIsDeleted"/>
-    <testcase name="success should be false" time="0.205" classname="EventsEventsCrudVerifyEventIsDeleted"/>
-    <testcase name="error should be Event with id '109468' not found" time="0.205" classname="EventsEventsCrudVerifyEventIsDeleted"/>
-    <testcase name="error should be Event with id '109469' not found" time="0.205" classname="EventsEventsCrudVerifyEventIsDeleted"/>
-    <testcase name="error should be Event with id '109470' not found" time="0.205" classname="EventsEventsCrudVerifyEventIsDeleted"/>
-    <testcase name="error should be Event with id '109471' not found" time="0.205" classname="EventsEventsCrudVerifyEventIsDeleted"/>
-    <testcase name="error should be Event with id '109472' not found" time="0.205" classname="EventsEventsCrudVerifyEventIsDeleted"/>
+  <testsuite name="Events / Events - CRUD / Verify event is deleted" id="e1932535-15f1-4b35-b684-244f430ce756" timestamp="2026-09-02T04:26:49.490Z" tests="3" failures="0" errors="0" time="0.234">
+    <testcase name="Response status code should be 404" time="0.234" classname="EventsEventsCrudVerifyEventIsDeleted"/>
+    <testcase name="success should be false" time="0.234" classname="EventsEventsCrudVerifyEventIsDeleted"/>
+    <testcase name="error should be Event with id '110039' not found" time="0.234" classname="EventsEventsCrudVerifyEventIsDeleted"/>
+    <testcase name="error should be Event with id '110040' not found" time="0.234" classname="EventsEventsCrudVerifyEventIsDeleted"/>
+    <testcase name="error should be Event with id '110041' not found" time="0.234" classname="EventsEventsCrudVerifyEventIsDeleted"/>
+    <testcase name="error should be Event with id '110042' not found" time="0.234" classname="EventsEventsCrudVerifyEventIsDeleted"/>
+    <testcase name="error should be Event with id '110043' not found" time="0.234" classname="EventsEventsCrudVerifyEventIsDeleted"/>
   </testsuite>
 </testsuites>

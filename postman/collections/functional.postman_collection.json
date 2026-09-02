@@ -1,8 +1,8 @@
 {
   "info": {
-    "_postman_id": "d769b2fd-57e8-419a-a01b-d353833564e1",
+    "_postman_id": "ccf4ba6e-6bb2-4927-9353-144365d3d3de",
     "name": "EventHubAPI - Functional",
-    "description": "## Overview\n\nThis collection contains functional tests for the **EventHub API** — a platform for managing events and bookings. It validates the full API surface across authentication, event management, and booking workflows, covering both happy-path (CRUD) and negative/edge-case scenarios.\n\n## Authentication\n\nAll requests are secured using a **Bearer token** (`{{authToken}}`), configured at the collection level. A dedicated **Admin Login** folder handles admin-level authentication flows.\n\n## Collection-Level Test Scripts\n\nEvery request in this collection automatically runs the following assertions:\n\n- Response `Content-Type` is `application/json`\n    \n- Response body is not null or empty\n    \n- Response time is within **2000ms**\n    \n\n## Folder Structure\n\n### Health\n\nVerifies that the API is up and reachable via a health check endpoint.\n\n### Config\n\nRetrieves public feature flags and configuration settings exposed by the API.\n\n### Authorization\n\nCovers user authentication flows, split into:\n\n- **CRUD** — Register a new user, log in, and retrieve the currently authenticated user.\n    \n- **Negative Tests** — Validates proper error handling for missing credentials, invalid email/password, empty payloads, expired tokens, and unauthorized access.\n    \n\n### Events\n\nManages the full lifecycle of events, organized into:\n\n- **CRUD** — Create, read, update, and delete events.\n    \n- **Search Events** — Tests event search and filtering functionality.\n    \n- **Negative Tests** — Covers invalid inputs and unauthorized operations for create, get, update, and delete actions.\n    \n\n### Bookings\n\nHandles ticket booking operations, organized into:\n\n- **CRUD** — Create, retrieve, look up, list, and cancel bookings.\n    \n- **Negative Tests** — Validates error responses for invalid booking requests across list, lookup, get, create, and cancel operations.\n    \n\n### Notes\n\n- A total of **6 failed test assertions** have been identified to date.",
+    "description": "## Overview\n\nThis collection contains functional tests for the **EventHub API** — a platform for managing events and bookings. It validates the full API surface across authentication, event management, and booking workflows, covering both happy-path (CRUD) and negative/edge-case scenarios.\n\n---\n\n### Notes:\n\n- A total of **6 failed test assertions** have been identified to date.\n    \n- The identified failures are attributed to **BUG-001 and BUG-005**, as documented in the **Bug Reports** collection.\n    \n- The response time test assertion may fail when the response time exceeds **2,000 ms**.\n    \n\n---\n\n## Authentication\n\nAll requests are secured using a **Bearer token** (`{{authToken}}`), configured at the collection level. A dedicated **Admin Login** folder handles admin-level authentication flows.\n\n## Collection-Level Test Scripts\n\nEvery request in this collection automatically runs the following assertions:\n\n- Response `Content-Type` is `application/json`\n    \n- Response body is not null or empty\n    \n- Response time is within **2000ms**\n    \n\n---\n\n## Folder Structure\n\n### Health\n\nVerifies that the API is up and reachable via a health check endpoint.\n\n### Config\n\nRetrieves public feature flags and configuration settings exposed by the API.\n\n### Authorization\n\nCovers user authentication flows, split into:\n\n- **CRUD** — Register a new user, log in, and retrieve the currently authenticated user.\n    \n- **Negative Tests** — Validates proper error handling for missing credentials, invalid email/password, empty payloads, expired tokens, and unauthorized access.\n    \n\n### Events\n\nManages the full lifecycle of events, organized into:\n\n- **CRUD** — Create, read, update, and delete events.\n    \n- **Search Events** — Tests event search and filtering functionality.\n    \n- **Negative Tests** — Covers invalid inputs and unauthorized operations for create, get, update, and delete actions.\n    \n\n### Bookings\n\nHandles ticket booking operations, organized into:\n\n- **CRUD** — Create, retrieve, look up, list, and cancel bookings.\n    \n- **Negative Tests** — Validates error responses for invalid booking requests across list, lookup, get, create, and cancel operations.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "54248427"
   },
@@ -17,55 +17,34 @@
               "listen": "test",
               "script": {
                 "exec": [
-                  "// @allure.label.epic=EventHub API\r",
-                  "// @allure.label.feature=Authentication\r",
-                  "// @allure.label.story=Valid Login\r",
-                  "// @allure.label.severity=critical\r",
-                  "// @allure.label.tag=smoke\r",
-                  "// @allure.label.tag=authentication\r",
-                  "// @allure.label.tag=functional\r",
-                  "\r",
-                  "const jsonData = pm.response.json();\r",
-                  "const userName = pm.environment.get(\"userName\");\r",
-                  "const userID = pm.environment.get(\"userID\");\r",
-                  "\r",
-                  "pm.test(\"Response status code should be 200\", () => {\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "});\r",
-                  "\r",
-                  "pm.test(\"success should be true\", () => {\r",
-                  "    pm.expect(jsonData.success).to.exist.and.to.equal(true);\r",
-                  "});\r",
-                  "\r",
-                  "pm.test(\"Response has token property and not empty\", () => {\r",
-                  "    pm.expect(jsonData).to.have.property(\"token\");\r",
-                  "    pm.expect(jsonData.token).to.be.a(\"string\");\r",
-                  "    pm.expect(jsonData.token).to.not.be.empty;\r",
-                  "});\r",
-                  "\r",
-                  "pm.test(\"Extract token and set environment variable\", () => {\r",
-                  "    pm.environment.set(\"authToken\", jsonData.token);\r",
-                  "    pm.expect(pm.environment.get(\"authToken\")).to.equal(jsonData.token);\r",
-                  "});\r",
-                  "\r",
-                  "pm.test(\"Response contains login user id and email\", () => {\r",
-                  "    pm.expect(jsonData.user).to.exist;\r",
-                  "    pm.expect(jsonData.user.id).to.equal(Number(userID));\r",
-                  "    pm.expect(jsonData.user.email).to.equal(userName);\r",
-                  "});\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  "\r",
-                  ""
+                  "const jsonData = pm.response.json();",
+                  "const userName = pm.environment.get(\"userName\");",
+                  "const userID = pm.environment.get(\"userID\");",
+                  "",
+                  "pm.test(\"Response status code should be 200\", () => {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"success should be true\", () => {",
+                  "    pm.expect(jsonData.success).to.exist.and.to.equal(true);",
+                  "});",
+                  "",
+                  "pm.test(\"Response has token property and not empty\", () => {",
+                  "    pm.expect(jsonData).to.have.property(\"token\");",
+                  "    pm.expect(jsonData.token).to.be.a(\"string\");",
+                  "    pm.expect(jsonData.token).to.not.be.empty;",
+                  "});",
+                  "",
+                  "pm.test(\"Extract token and set environment variable\", () => {",
+                  "    pm.environment.set(\"authToken\", jsonData.token);",
+                  "    pm.expect(pm.environment.get(\"authToken\")).to.equal(jsonData.token);",
+                  "});",
+                  "",
+                  "pm.test(\"Response contains login user id and email\", () => {",
+                  "    pm.expect(jsonData.user).to.exist;",
+                  "    pm.expect(jsonData.user.id).to.equal(Number(userID));",
+                  "    pm.expect(jsonData.user.email).to.equal(userName);",
+                  "});"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -84,17 +63,10 @@
               }
             }
           ],
+          "protocolProfileBehavior": {
+            "protocolVersion": "auto"
+          },
           "request": {
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{authToken}}",
-                  "type": "string"
-                }
-              ]
-            },
             "method": "POST",
             "header": [],
             "body": {
@@ -126,27 +98,25 @@
               "listen": "test",
               "script": {
                 "exec": [
-                  "const jsonData = pm.response.json();\r",
-                  "const userName = pm.environment.get(\"userName\");\r",
-                  "const userID = pm.environment.get(\"userID\");\r",
-                  "\r",
-                  "pm.test(\"Response status code should be 200\", () => {\r",
-                  "    pm.response.to.have.status(200);\r",
-                  "});\r",
-                  "\r",
-                  "pm.test(\"success should be true\", () => {\r",
-                  "    pm.expect(jsonData.success).to.exist.and.to.equal(true);\r",
-                  "});\r",
-                  "\r",
-                  "pm.test(\"Response contains login user\", () => {\r",
-                  "    pm.expect(jsonData.user).to.exist;\r",
-                  "    pm.expect(jsonData.user.userId).to.equal(Number(userID));\r",
-                  "    pm.expect(jsonData.user.email).to.equal(userName);\r",
-                  "    pm.expect(jsonData.user.iat).to.exist;\r",
-                  "    pm.expect(jsonData.user.exp).to.exist;\r",
-                  "});\r",
-                  "\r",
-                  ""
+                  "const jsonData = pm.response.json();",
+                  "const userEmail = pm.environment.get(\"userName\");",
+                  "const userID = pm.environment.get(\"userID\");",
+                  "",
+                  "pm.test(\"Response status code should be 200\", () => {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"success should be true\", () => {",
+                  "    pm.expect(jsonData.success).to.exist.and.to.equal(true);",
+                  "});",
+                  "",
+                  "pm.test(\"Response contains login user\", () => {",
+                  "    pm.expect(jsonData.user).to.exist;",
+                  "    pm.expect(jsonData.user.userId).to.equal(Number(userID));",
+                  "    pm.expect(jsonData.user.email).to.equal(userEmail);",
+                  "    pm.expect(jsonData.user.iat).to.exist;",
+                  "    pm.expect(jsonData.user.exp).to.exist;",
+                  "});"
                 ],
                 "type": "text/javascript",
                 "packages": {},
@@ -166,7 +136,8 @@
             }
           ],
           "protocolProfileBehavior": {
-            "disableBodyPruning": true
+            "disableBodyPruning": true,
+            "protocolVersion": "auto"
           },
           "request": {
             "auth": {
@@ -206,14 +177,7 @@
       ],
       "description": "## Admin Login\n\nThis folder covers the **admin authentication flow** for the EventHub API. It contains the two core requests needed to establish and verify an authenticated session:\n\n| Request | Method | Endpoint |\n| --- | --- | --- |\n| Login with existing credentials | `POST` | `/auth/login` |\n| Get the currently authenticated user | `GET` | `/auth/me` |\n\n### Purpose\n\n- Authenticate an admin user using existing credentials and obtain a bearer token via `POST /auth/login`.\n- Confirm the session is valid by retrieving the currently authenticated user's profile via `GET /auth/me`.\n\n> The bearer token returned from login is expected to be stored in an environment variable (e.g. `{{authToken}}`) and used by downstream requests that require authorization.",
       "auth": {
-        "type": "bearer",
-        "bearer": [
-          {
-            "key": "token",
-            "value": "{{authToken}}",
-            "type": "string"
-          }
-        ]
+        "type": "noauth"
       },
       "event": [
         {
@@ -304,20 +268,8 @@
                       "    pm.expect(jsonData.user.email).to.equal(userEmail);\r",
                       "});\r",
                       "\r",
-                      "/*pm.test(\"Set '\" + userID + \"' user id as collection variable\", () => {\r",
+                      "pm.test(\"Set '\" + userID + \"' user id as collection variable\", () => {\r",
                       "    pm.collectionVariables.set(\"testUserID\", userID);\r",
-                      "    pm.expect(pm.collectionVariables.get(\"testUserID\")).to.equal(userID);\r",
-                      "});*/\r",
-                      "\r",
-                      "pm.test(\"Set user id as collection variable\", () => {\r",
-                      "    pm.collectionVariables.set(\"testUserID\", userID);\r",
-                      "\r",
-                      "    const storedUserID = pm.collectionVariables.get(\"testUserID\");\r",
-                      "\r",
-                      "    console.log(\"Response userID:\", userID);\r",
-                      "    console.log(\"Stored collection testUserID:\", storedUserID);\r",
-                      "\r",
-                      "    pm.expect(storedUserID).to.equal(userID);\r",
                       "});\r",
                       ""
                     ],
@@ -358,10 +310,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "type": "text/javascript",
                     "exec": [
                       "const jsonData = pm.response.json();",
                       "const userEmail = pm.collectionVariables.get(\"testUserEmail\");",
+                      "const userID = pm.collectionVariables.get(\"testUserID\");",
                       "",
                       "pm.test(\"Response status code should be 200\", () => {",
                       "    pm.response.to.have.status(200);",
@@ -377,44 +329,20 @@
                       "    pm.expect(jsonData.token).to.not.be.empty;",
                       "});",
                       "",
-                      "pm.test(\"Extract token and set environment variable\", () => {",
+                      "pm.test(\"Extract token and set variable\", () => {",
                       "    pm.environment.set(\"testAuthToken\", jsonData.token);",
-                      "    pm.collectionVariables.set(\"testAuthToken\", jsonData.token);",
                       "    pm.expect(pm.environment.get(\"testAuthToken\")).to.equal(jsonData.token);",
                       "});",
                       "",
                       "pm.test(\"Response contains login user id and email\", () => {",
-                      "    const userID = pm.collectionVariables.get(\"testUserID\");",
-                      "",
                       "    pm.expect(jsonData.user).to.exist;",
                       "    pm.expect(jsonData.user.id).to.equal(Number(userID));",
                       "    pm.expect(jsonData.user.email).to.equal(userEmail);",
-                      "});",
-                      "",
-                      "pm.test(\"Response contains login user id and email\", () => {",
-                      "    const userID = pm.collectionVariables.get(\"testUserID\");",
-                      "",
-                      "    pm.expect(jsonData.user).to.exist;",
-                      "",
-                      "    console.log(\"Comparing:\",",
-                      "        jsonData.user.id,",
-                      "        \"===\",",
-                      "        Number(userID)",
-                      "    );",
-                      "",
-                      "    pm.expect(jsonData.user.id).to.equal(Number(userID));",
-                      "    pm.expect(jsonData.user.email).to.equal(userEmail);",
-                      "",
-                      "    console.log(\"========== LOGIN DEBUG ==========\");",
-                      "    console.log(\"Collection testUserID:\", userID);",
-                      "    console.log(\"Resolved testUserID:\", pm.variables.get(\"testUserID\"));",
-                      "    console.log(\"Login response user.id:\", jsonData.user?.id);",
-                      "    console.log(\"Expected userID:\", Number(userID));",
-                      "    console.log(\"=================================\");",
-                      "    console.log(\"Response ID:\", jsonData.user.id, typeof jsonData.user.id);",
-                      "    console.log(\"Collection ID:\", userID, typeof userID);",
                       "});"
-                    ]
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
                   }
                 },
                 {
@@ -430,6 +358,16 @@
                 }
               ],
               "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{testAuthToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
                 "method": "POST",
                 "header": [],
                 "body": {
@@ -463,7 +401,7 @@
                     "exec": [
                       "const jsonData = pm.response.json();\r",
                       "const userEmail = pm.collectionVariables.get(\"testUserEmail\");\r",
-                      "\r",
+                      "const userID = pm.collectionVariables.get(\"testUserID\");\r",
                       "\r",
                       "pm.test(\"Response status code should be 200\", () => {\r",
                       "    pm.response.to.have.status(200);\r",
@@ -474,18 +412,12 @@
                       "});\r",
                       "\r",
                       "pm.test(\"Response contains login user\", () => {\r",
-                      "    const userID = pm.collectionVariables.get(\"testUserID\");\r",
-                      "\r",
                       "    pm.expect(jsonData.user).to.exist;\r",
                       "    pm.expect(jsonData.user.userId).to.equal(Number(userID));\r",
                       "    pm.expect(jsonData.user.email).to.equal(userEmail);\r",
                       "    pm.expect(jsonData.user.iat).to.exist;\r",
                       "    pm.expect(jsonData.user.exp).to.exist;\r",
-                      "\r",
-                      "    console.log(\"Response ID:\", jsonData.user.userId, typeof jsonData.user.userId);\r",
-                      "    console.log(\"Collection ID:\", userID, typeof userID);\r",
                       "});\r",
-                      "\r",
                       "\r",
                       ""
                     ],
@@ -497,20 +429,29 @@
                 {
                   "listen": "prerequest",
                   "script": {
-                    "type": "text/javascript",
                     "exec": [
-                      "const token = pm.collectionVariables.get(\"testAuthToken\") || pm.environment.get(\"testAuthToken\");",
-                      "pm.request.headers.upsert({ key: \"Authorization\", value: \"Bearer \" + token });"
-                    ]
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
                   }
                 }
               ],
               "protocolProfileBehavior": {
-                "disableBodyPruning": true
+                "disableBodyPruning": true,
+                "protocolVersion": "http1"
               },
               "request": {
                 "auth": {
-                  "type": "noauth"
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{testAuthToken}}",
+                      "type": "string"
+                    }
+                  ]
                 },
                 "method": "GET",
                 "header": [],
@@ -538,16 +479,6 @@
             }
           ],
           "description": "## Authorization - CRUD\n\nThis folder covers the core **happy-path authentication flows** for the EventHub API. It groups the three foundational auth endpoints that must succeed before any protected resource can be accessed:\n\n| Request | Method | Endpoint |\n| --- | --- | --- |\n| Register a new user | `POST` | `/auth/register` |\n| Login with registered new user | `POST` | `/auth/login` |\n| Get the currently authenticated user | `GET` | `/auth/me` |\n\n### Purpose\n\n- Validate that a new user can be **registered** successfully and receives a valid response.\n    \n- Confirm that a registered user can **log in** and obtain a bearer token, which is stored in the `testAuthToken` environment variable for use by downstream requests.\n    \n- Verify that the **authenticated user profile** (`/auth/me`) is returned correctly when a valid token is present.\n    \n\n> **Note:** Negative and edge-case scenarios (e.g. missing credentials, expired tokens, invalid email) are covered in the sibling folder **Authorization - Negative Tests**.",
-          "auth": {
-            "type": "bearer",
-            "bearer": [
-              {
-                "key": "token",
-                "value": "{{testAuthToken}}",
-                "type": "string"
-              }
-            ]
-          },
           "event": [
             {
               "listen": "prerequest",
@@ -650,15 +581,6 @@
                   "originalRequest": {
                     "method": "GET",
                     "header": [],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "",
-                      "options": {
-                        "raw": {
-                          "language": "json"
-                        }
-                      }
-                    },
                     "url": {
                       "raw": "{{base_url}}/auth/me",
                       "host": [
@@ -672,7 +594,7 @@
                   },
                   "status": "Unauthorized",
                   "code": 401,
-                  "_postman_previewlanguage": null,
+                  "_postman_previewlanguage": "Text",
                   "header": [
                     {
                       "key": "Date",
@@ -731,13 +653,6 @@
                   "listen": "test",
                   "script": {
                     "exec": [
-                      "// @allure.label.epic=EventHub API\r",
-                      "// @allure.label.feature=Negative\r",
-                      "// @allure.label.story=Expired Token\r",
-                      "// @allure.label.severity=critical\r",
-                      "// @allure.label.tag=edge-case\r",
-                      "// @allure.label.tag=security\r",
-                      "\r",
                       "const jsonData = pm.response.json();\r",
                       "\r",
                       "pm.test(\"Response status code should be 401\", () => {\r",
@@ -1207,14 +1122,7 @@
             }
           ],
           "auth": {
-            "type": "bearer",
-            "bearer": [
-              {
-                "key": "token",
-                "value": "{{authToken}}",
-                "type": "string"
-              }
-            ]
+            "type": "noauth"
           },
           "event": [
             {
@@ -1243,16 +1151,6 @@
         }
       ],
       "description": "## Authorization\n\nThis folder contains all authentication-related test scenarios for the EventHub API. It is organized into two sub-folders that together cover the full spectrum of authorization testing — from successful flows to failure conditions.\n\n| Sub-folder | Purpose |\n| --- | --- |\n| **Authorization - CRUD** | Happy-path flows: user registration, login, and fetching the authenticated user profile |\n| **Authorization - Negative Tests** | Edge cases and failure scenarios: missing credentials, invalid email/password, expired token, empty payload, and unauthorized access |\n\n### Coverage\n\n- **Happy Path** — Validates that a user can register, log in, and retrieve their profile using a valid bearer token.\n    \n- **Negative / Edge Cases** — Verifies that the API returns appropriate error responses when requests are malformed, credentials are invalid, or authentication tokens are missing or expired.\n    \n\n> Bearer token authentication is inherited from the parent collection and the `{{testAuthToken}}` environment variable is used across protected endpoints.",
-      "auth": {
-        "type": "bearer",
-        "bearer": [
-          {
-            "key": "token",
-            "value": "{{testAuthToken}}",
-            "type": "string"
-          }
-        ]
-      },
       "event": [
         {
           "listen": "prerequest",
@@ -1357,7 +1255,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Date",
@@ -1408,6 +1306,33 @@
               "body": "{\n    \"status\": \"ok\",\n    \"timestamp\": \"2026-06-17T02:48:55.483Z\",\n    \"dbStatus\": \"connected\"\n}"
             }
           ]
+        }
+      ],
+      "auth": {
+        "type": "bearer"
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
         }
       ]
     },
@@ -1479,7 +1404,7 @@
               },
               "status": "OK",
               "code": 200,
-              "_postman_previewlanguage": null,
+              "_postman_previewlanguage": "Text",
               "header": [
                 {
                   "key": "Date",
@@ -1545,14 +1470,8 @@
                 {
                   "listen": "test",
                   "script": {
+                    "type": "text/javascript",
                     "exec": [
-                      "// @allure.label.epic=EventHub API",
-                      "// @allure.label.feature=Events",
-                      "// @allure.label.story=Create Event",
-                      "// @allure.label.severity=critical",
-                      "// @allure.label.tag=crud",
-                      "// @allure.label.tag=functional",
-                      "",
                       "const jsonData = pm.response.json();",
                       "const data = jsonData.data;",
                       "const eventID = jsonData.data.id;",
@@ -1601,19 +1520,13 @@
                       "pm.test(\"message should be 'Event created successfully'\", () => {",
                       "    pm.expect(jsonData.message).to.exist.and.to.equal(\"Event created successfully\");",
                       "});"
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    ]
                   }
                 },
                 {
                   "listen": "prerequest",
                   "script": {
                     "exec": [
-                      "const token = pm.environment.get(\"testAuthToken\");",
-                      "pm.request.headers.upsert({ key: \"Authorization\", value: \"Bearer \" + token });",
-                      "",
                       "// Generate unique event title",
                       "pm.test(\"Pre-request: Generate event title and set as collection variable\", () => {",
                       "    const d = new Date();",
@@ -1677,16 +1590,6 @@
                 }
               ],
               "request": {
-                "auth": {
-                  "type": "bearer",
-                  "bearer": [
-                    {
-                      "key": "token",
-                      "value": "{{testAuthToken}}",
-                      "type": "string"
-                    }
-                  ]
-                },
                 "method": "POST",
                 "header": [],
                 "body": {
@@ -1716,6 +1619,7 @@
                 {
                   "listen": "test",
                   "script": {
+                    "type": "text/javascript",
                     "exec": [
                       "const jsonData = pm.response.json();",
                       "const data = jsonData.data;",
@@ -1748,10 +1652,7 @@
                       "    pm.expect(data.createdAt).to.be.a(\"string\").and.not.empty;",
                       "    pm.expect(data.updatedAt).to.be.a(\"string\").and.not.empty;",
                       "});"
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    ]
                   }
                 },
                 {
@@ -2018,6 +1919,7 @@
                 {
                   "listen": "test",
                   "script": {
+                    "type": "text/javascript",
                     "exec": [
                       "const jsonData = pm.response.json();",
                       "const data = jsonData.data;",
@@ -2062,12 +1964,8 @@
                       "// Removed this assertion once the bug is fixed.",
                       "pm.test(\"BUG-001 - availableSeats should be updated when totalSeats changes\", () => {",
                       "    pm.expect(data.availableSeats).to.exist.and.to.equal(eventUpdatedTotalSeats);",
-                      "});    ",
-                      ""
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                      "});    "
+                    ]
                   }
                 },
                 {
@@ -2146,6 +2044,7 @@
                 {
                   "listen": "test",
                   "script": {
+                    "type": "text/javascript",
                     "exec": [
                       "const jsonData = pm.response.json();",
                       "const data = jsonData.data;",
@@ -2187,12 +2086,8 @@
                       "// Removed this assertion once the bug is fixed.",
                       "pm.test(\"BUG-001 - availableSeats should be updated when totalSeats changes\", () => {",
                       "    pm.expect(data.availableSeats).to.exist.and.to.equal(eventUpdatedTotalSeats);",
-                      "});  ",
-                      ""
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                      "});  "
+                    ]
                   }
                 },
                 {
@@ -2383,16 +2278,6 @@
               "response": []
             }
           ],
-          "auth": {
-            "type": "bearer",
-            "bearer": [
-              {
-                "key": "token",
-                "value": "{{testAuthToken}}",
-                "type": "string"
-              }
-            ]
-          },
           "event": [
             {
               "listen": "prerequest",
@@ -2504,10 +2389,6 @@
                   "originalRequest": {
                     "method": "GET",
                     "header": [],
-                    "body": {
-                      "mode": "raw",
-                      "raw": ""
-                    },
                     "url": {
                       "raw": "{{base_url}}/events?category=&city=&search=&page=&limit=",
                       "host": [
@@ -2545,7 +2426,7 @@
                   },
                   "status": "OK",
                   "code": 200,
-                  "_postman_previewlanguage": null,
+                  "_postman_previewlanguage": "Text",
                   "header": [
                     {
                       "key": "Date",
@@ -2686,10 +2567,6 @@
                   "originalRequest": {
                     "method": "GET",
                     "header": [],
-                    "body": {
-                      "mode": "raw",
-                      "raw": ""
-                    },
                     "url": {
                       "raw": "{{base_url}}/events?category=Conference&city=Tokyo&search=Technology Conference&page=1&limit=10",
                       "host": [
@@ -2727,7 +2604,7 @@
                   },
                   "status": "OK",
                   "code": 200,
-                  "_postman_previewlanguage": null,
+                  "_postman_previewlanguage": "Text",
                   "header": [
                     {
                       "key": "Date",
@@ -2900,10 +2777,6 @@
                   "originalRequest": {
                     "method": "GET",
                     "header": [],
-                    "body": {
-                      "mode": "raw",
-                      "raw": ""
-                    },
                     "url": {
                       "raw": "{{base_url}}/events?category=Concert&city=Los Angeles&search=Hollywood Monsoon Night — Los Angeles&page=1&limit=10",
                       "host": [
@@ -2941,7 +2814,7 @@
                   },
                   "status": "OK",
                   "code": 200,
-                  "_postman_previewlanguage": null,
+                  "_postman_previewlanguage": "Text",
                   "header": [
                     {
                       "key": "Date",
@@ -3150,7 +3023,7 @@
                       },
                       "status": "Bad Request",
                       "code": 400,
-                      "_postman_previewlanguage": null,
+                      "_postman_previewlanguage": "Text",
                       "header": [
                         {
                           "key": "Date",
@@ -3326,7 +3199,7 @@
                       },
                       "status": "Bad Request",
                       "code": 400,
-                      "_postman_previewlanguage": null,
+                      "_postman_previewlanguage": "Text",
                       "header": [
                         {
                           "key": "Date",
@@ -3462,7 +3335,7 @@
                       },
                       "status": "Internal Server Error",
                       "code": 500,
-                      "_postman_previewlanguage": null,
+                      "_postman_previewlanguage": "Text",
                       "header": [
                         {
                           "key": "Date",
@@ -3598,7 +3471,7 @@
                       },
                       "status": "Internal Server Error",
                       "code": 500,
-                      "_postman_previewlanguage": null,
+                      "_postman_previewlanguage": "Text",
                       "header": [
                         {
                           "key": "Date",
@@ -3751,7 +3624,7 @@
                       },
                       "status": "Bad Request",
                       "code": 400,
-                      "_postman_previewlanguage": null,
+                      "_postman_previewlanguage": "Text",
                       "header": [
                         {
                           "key": "Date",
@@ -3875,10 +3748,6 @@
                       "originalRequest": {
                         "method": "GET",
                         "header": [],
-                        "body": {
-                          "mode": "raw",
-                          "raw": ""
-                        },
                         "url": {
                           "raw": "{{base_url}}/events/:id",
                           "host": [
@@ -3898,7 +3767,7 @@
                       },
                       "status": "Not Found",
                       "code": 404,
-                      "_postman_previewlanguage": null,
+                      "_postman_previewlanguage": "Text",
                       "header": [
                         {
                           "key": "Date",
@@ -4055,7 +3924,7 @@
                       },
                       "status": "Internal Server Error",
                       "code": 500,
-                      "_postman_previewlanguage": null,
+                      "_postman_previewlanguage": "Text",
                       "header": [
                         {
                           "key": "Date",
@@ -4203,7 +4072,7 @@
                       },
                       "status": "Not Found",
                       "code": 404,
-                      "_postman_previewlanguage": null,
+                      "_postman_previewlanguage": "Text",
                       "header": [
                         {
                           "key": "Date",
@@ -4407,7 +4276,7 @@
                       },
                       "status": "Not Found",
                       "code": 404,
-                      "_postman_previewlanguage": null,
+                      "_postman_previewlanguage": "Text",
                       "header": [
                         {
                           "key": "Date",
@@ -4658,9 +4527,6 @@
                   "listen": "prerequest",
                   "script": {
                     "exec": [
-                      "const token = pm.environment.get(\"testAuthToken\");",
-                      "pm.request.headers.upsert({ key: \"Authorization\", value: \"Bearer \" + token });",
-                      "",
                       "// Generate unique event title",
                       "const d = new Date();",
                       "const p = n => String(n).padStart(2, \"0\");",
@@ -4819,6 +4685,7 @@
                 {
                   "listen": "test",
                   "script": {
+                    "type": "text/javascript",
                     "exec": [
                       "const jsonData = pm.response.json();",
                       "const data = jsonData.data;",
@@ -4901,10 +4768,7 @@
                       "console.log(\"Previous available seats:\", previousAvailableSeats);",
                       "console.log(\"Tickets booked:\", bookingTicketQuantity);",
                       "console.log(\"Expected available seats:\", expectedAvailableSeats);"
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    ]
                   }
                 },
                 {
@@ -4970,71 +4834,68 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "const jsonData = pm.response.json();\r",
-                      "const data = jsonData.data;\r",
-                      "const userID = pm.collectionVariables.get(\"testUserID\");\r",
-                      "const testUserEmail = pm.collectionVariables.get(\"testUserEmail\");\r",
-                      "const eventID = pm.collectionVariables.get(\"eventID\");\r",
-                      "const eventTitle = pm.collectionVariables.get(\"eventTitle\");\r",
-                      "const eventDate = pm.collectionVariables.get(\"eventDate\");\r",
-                      "const eventPrice = pm.collectionVariables.get(\"eventPrice\");\r",
-                      "const eventTotalSeats = pm.collectionVariables.get(\"eventTotalSeats\");\r",
-                      "const eventCurrentAvailableSeats = pm.collectionVariables.get(\"eventCurrentAvailableSeats\");\r",
-                      "const bookingID = pm.collectionVariables.get(\"bookingID\");\r",
-                      "const bookingRefCode = pm.collectionVariables.get(\"bookingRefCode\");\r",
-                      "const customerName = pm.collectionVariables.get(\"bookingCustomerName\");\r",
-                      "const bookingTicketQuantity = pm.collectionVariables.get(\"bookingTicketQuantity\");\r",
-                      "const bookingTotalPrice = pm.collectionVariables.get(\"bookingTotalPrice\");\r",
-                      "\r",
-                      "pm.test(\"Response status code should be 200\", () => {\r",
-                      "    pm.response.to.have.status(200);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"success should be true\", () => {\r",
-                      "    pm.expect(jsonData.success).to.exist.and.to.equal(true);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Validate booking data object properties\", () => {\r",
-                      "    pm.expect(data).to.have.property('id').that.is.a('number').and.equal(bookingID);\r",
-                      "    pm.expect(data).to.have.property('eventId').that.is.a('number').and.equal(Number(eventID));\r",
-                      "    pm.expect(data).to.have.property('userId').that.is.a('number').and.equal(Number(userID));\r",
-                      "    pm.expect(data).to.have.property('customerName').that.is.a('string').and.equal(customerName);\r",
-                      "    pm.expect(data).to.have.property('customerEmail').that.is.a('string').and.equal(testUserEmail);\r",
-                      "    pm.expect(data).to.have.property('customerPhone').that.is.a('string').and.equal('+63-9123456789');\r",
-                      "    pm.expect(data).to.have.property('quantity').that.is.a('number').and.equal(Number(bookingTicketQuantity));\r",
-                      "    pm.expect(data).to.have.property('totalPrice').that.is.a('string').and.equal(String(Number(bookingTotalPrice)));\r",
-                      "    pm.expect(data).to.have.property('status').that.is.a('string').and.equal('confirmed');\r",
-                      "    pm.expect(data).to.have.property('bookingRef').that.is.a('string').and.equal(bookingRefCode);\r",
-                      "    pm.expect(data).to.have.property('createdAt').that.is.a('string').and.not.empty;\r",
-                      "    pm.expect(data).to.have.property('updatedAt').that.is.a('string').and.not.empty;\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"(BUG-001) Validate data event object properties\", () => {\r",
-                      "    pm.expect(data.event.id).to.equal(eventID);\r",
-                      "    pm.expect(data.event.title).to.equal(eventTitle);\r",
-                      "    pm.expect(data.event.description).to.equal(\"Postman API event testing\");\r",
-                      "    pm.expect(data.event.category).to.equal(\"Workshop\");\r",
-                      "    pm.expect(data.event.venue).to.equal(\"SMX Convention Center Aura\");\r",
-                      "    pm.expect(data.event.city).to.equal(\"Taguig City\");\r",
-                      "    pm.expect(data.event.eventDate).to.equal(eventDate);\r",
-                      "    pm.expect(Number(data.event.price)).to.equal(eventPrice);\r",
-                      "    pm.expect(data.event.totalSeats).to.equal(eventTotalSeats);\r",
-                      "\r",
-                      "    // BUG-001: availableSeats Not Updated when totalSeats Changes\r",
-                      "    pm.expect(data.event.availableSeats).to.equal(eventCurrentAvailableSeats);\r",
-                      "\r",
-                      "    pm.expect(data.event.imageUrl).to.equal(\"https://example.com/banner.jpg\");\r",
-                      "    pm.expect(data.event.isStatic).to.equal(false);\r",
-                      "    pm.expect(data.event.userId).to.equal(Number(userID));\r",
-                      "    pm.expect(data.event.createdAt).to.be.a(\"string\").and.not.empty;\r",
-                      "    pm.expect(data.event.updatedAt).to.be.a(\"string\").and.not.empty;\r",
-                      "});\r",
-                      ""
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "const data = jsonData.data;",
+                      "const userID = pm.collectionVariables.get(\"testUserID\");",
+                      "const testUserEmail = pm.collectionVariables.get(\"testUserEmail\");",
+                      "const eventID = pm.collectionVariables.get(\"eventID\");",
+                      "const eventTitle = pm.collectionVariables.get(\"eventTitle\");",
+                      "const eventDate = pm.collectionVariables.get(\"eventDate\");",
+                      "const eventPrice = pm.collectionVariables.get(\"eventPrice\");",
+                      "const eventTotalSeats = pm.collectionVariables.get(\"eventTotalSeats\");",
+                      "const eventCurrentAvailableSeats = pm.collectionVariables.get(\"eventCurrentAvailableSeats\");",
+                      "const bookingID = pm.collectionVariables.get(\"bookingID\");",
+                      "const bookingRefCode = pm.collectionVariables.get(\"bookingRefCode\");",
+                      "const customerName = pm.collectionVariables.get(\"bookingCustomerName\");",
+                      "const bookingTicketQuantity = pm.collectionVariables.get(\"bookingTicketQuantity\");",
+                      "const bookingTotalPrice = pm.collectionVariables.get(\"bookingTotalPrice\");",
+                      "",
+                      "pm.test(\"Response status code should be 200\", () => {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"success should be true\", () => {",
+                      "    pm.expect(jsonData.success).to.exist.and.to.equal(true);",
+                      "});",
+                      "",
+                      "pm.test(\"Validate booking data object properties\", () => {",
+                      "    pm.expect(data).to.have.property('id').that.is.a('number').and.equal(bookingID);",
+                      "    pm.expect(data).to.have.property('eventId').that.is.a('number').and.equal(Number(eventID));",
+                      "    pm.expect(data).to.have.property('userId').that.is.a('number').and.equal(Number(userID));",
+                      "    pm.expect(data).to.have.property('customerName').that.is.a('string').and.equal(customerName);",
+                      "    pm.expect(data).to.have.property('customerEmail').that.is.a('string').and.equal(testUserEmail);",
+                      "    pm.expect(data).to.have.property('customerPhone').that.is.a('string').and.equal('+63-9123456789');",
+                      "    pm.expect(data).to.have.property('quantity').that.is.a('number').and.equal(Number(bookingTicketQuantity));",
+                      "    pm.expect(data).to.have.property('totalPrice').that.is.a('string').and.equal(String(Number(bookingTotalPrice)));",
+                      "    pm.expect(data).to.have.property('status').that.is.a('string').and.equal('confirmed');",
+                      "    pm.expect(data).to.have.property('bookingRef').that.is.a('string').and.equal(bookingRefCode);",
+                      "    pm.expect(data).to.have.property('createdAt').that.is.a('string').and.not.empty;",
+                      "    pm.expect(data).to.have.property('updatedAt').that.is.a('string').and.not.empty;",
+                      "});",
+                      "",
+                      "pm.test(\"(BUG-001) Validate data event object properties\", () => {",
+                      "    pm.expect(data.event.id).to.equal(eventID);",
+                      "    pm.expect(data.event.title).to.equal(eventTitle);",
+                      "    pm.expect(data.event.description).to.equal(\"Postman API event testing\");",
+                      "    pm.expect(data.event.category).to.equal(\"Workshop\");",
+                      "    pm.expect(data.event.venue).to.equal(\"SMX Convention Center Aura\");",
+                      "    pm.expect(data.event.city).to.equal(\"Taguig City\");",
+                      "    pm.expect(data.event.eventDate).to.equal(eventDate);",
+                      "    pm.expect(Number(data.event.price)).to.equal(eventPrice);",
+                      "    pm.expect(data.event.totalSeats).to.equal(eventTotalSeats);",
+                      "",
+                      "    // BUG-001: availableSeats Not Updated when totalSeats Changes",
+                      "    pm.expect(data.event.availableSeats).to.equal(eventCurrentAvailableSeats);",
+                      "",
+                      "    pm.expect(data.event.imageUrl).to.equal(\"https://example.com/banner.jpg\");",
+                      "    pm.expect(data.event.isStatic).to.equal(false);",
+                      "    pm.expect(data.event.userId).to.equal(Number(userID));",
+                      "    pm.expect(data.event.createdAt).to.be.a(\"string\").and.not.empty;",
+                      "    pm.expect(data.event.updatedAt).to.be.a(\"string\").and.not.empty;",
+                      "});"
+                    ]
                   }
                 },
                 {
@@ -5077,70 +4938,68 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "const jsonData = pm.response.json();\r",
-                      "const data = jsonData.data;\r",
-                      "const userID = pm.collectionVariables.get(\"testUserID\");\r",
-                      "const testUserEmail = pm.collectionVariables.get(\"testUserEmail\");\r",
-                      "const eventID = pm.collectionVariables.get(\"eventID\");\r",
-                      "const eventTitle = pm.collectionVariables.get(\"eventTitle\");\r",
-                      "const eventDate = pm.collectionVariables.get(\"eventDate\");\r",
-                      "const eventPrice = pm.collectionVariables.get(\"eventPrice\");\r",
-                      "const eventTotalSeats = pm.collectionVariables.get(\"eventTotalSeats\");\r",
-                      "const eventCurrentAvailableSeats = pm.collectionVariables.get(\"eventCurrentAvailableSeats\");\r",
-                      "const bookingID = pm.collectionVariables.get(\"bookingID\");\r",
-                      "const bookingRefCode = pm.collectionVariables.get(\"bookingRefCode\");\r",
-                      "const customerName = pm.collectionVariables.get(\"bookingCustomerName\");\r",
-                      "const bookingTicketQuantity = pm.collectionVariables.get(\"bookingTicketQuantity\");\r",
-                      "const bookingTotalPrice = pm.collectionVariables.get(\"bookingTotalPrice\");\r",
-                      "\r",
-                      "pm.test(\"Response status code should be 200\", () => {\r",
-                      "    pm.response.to.have.status(200);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"success should be true\", () => {\r",
-                      "    pm.expect(jsonData.success).to.exist.and.to.equal(true);\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"Validate booking data object properties\", () => {\r",
-                      "    pm.expect(data).to.have.property('id').that.is.a('number').and.equal(bookingID);\r",
-                      "    pm.expect(data).to.have.property('eventId').that.is.a('number').and.equal(Number(eventID));\r",
-                      "    pm.expect(data).to.have.property('userId').that.is.a('number').and.equal(Number(userID));\r",
-                      "    pm.expect(data).to.have.property('customerName').that.is.a('string').and.equal(customerName);\r",
-                      "    pm.expect(data).to.have.property('customerEmail').that.is.a('string').and.equal(testUserEmail);\r",
-                      "    pm.expect(data).to.have.property('customerPhone').that.is.a('string').and.equal('+63-9123456789');\r",
-                      "    pm.expect(data).to.have.property('quantity').that.is.a('number').and.equal(Number(bookingTicketQuantity));\r",
-                      "    pm.expect(data).to.have.property('totalPrice').that.is.a('string').and.equal(String(Number(bookingTotalPrice)));\r",
-                      "    pm.expect(data).to.have.property('status').that.is.a('string').and.equal('confirmed');\r",
-                      "    pm.expect(data).to.have.property('bookingRef').that.is.a('string').and.equal(bookingRefCode);\r",
-                      "    pm.expect(data).to.have.property('createdAt').that.is.a('string').and.not.empty;\r",
-                      "    pm.expect(data).to.have.property('updatedAt').that.is.a('string').and.not.empty;\r",
-                      "});\r",
-                      "\r",
-                      "pm.test(\"(BUG-001) Validate data event object properties\", () => {\r",
-                      "    pm.expect(data.event.id).to.equal(eventID);\r",
-                      "    pm.expect(data.event.title).to.equal(eventTitle);\r",
-                      "    pm.expect(data.event.description).to.equal(\"Postman API event testing\");\r",
-                      "    pm.expect(data.event.category).to.equal(\"Workshop\");\r",
-                      "    pm.expect(data.event.venue).to.equal(\"SMX Convention Center Aura\");\r",
-                      "    pm.expect(data.event.city).to.equal(\"Taguig City\");\r",
-                      "    pm.expect(data.event.eventDate).to.equal(eventDate);\r",
-                      "    pm.expect(Number(data.event.price)).to.equal(eventPrice);\r",
-                      "    pm.expect(data.event.totalSeats).to.equal(eventTotalSeats);\r",
-                      "\r",
-                      "    // BUG-001: availableSeats Not Updated when totalSeats Changes\r",
-                      "    pm.expect(data.event.availableSeats).to.equal(eventCurrentAvailableSeats);\r",
-                      "\r",
-                      "    pm.expect(data.event.imageUrl).to.equal(\"https://example.com/banner.jpg\");\r",
-                      "    pm.expect(data.event.isStatic).to.equal(false);\r",
-                      "    pm.expect(data.event.userId).to.equal(Number(userID));\r",
-                      "    pm.expect(data.event.createdAt).to.be.a(\"string\").and.not.empty;\r",
-                      "    pm.expect(data.event.updatedAt).to.be.a(\"string\").and.not.empty;\r",
-                      "});"
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                    "exec": [
+                      "const jsonData = pm.response.json();",
+                      "const data = jsonData.data;",
+                      "const userID = pm.collectionVariables.get(\"testUserID\");",
+                      "const testUserEmail = pm.collectionVariables.get(\"testUserEmail\");",
+                      "const eventID = pm.collectionVariables.get(\"eventID\");",
+                      "const eventTitle = pm.collectionVariables.get(\"eventTitle\");",
+                      "const eventDate = pm.collectionVariables.get(\"eventDate\");",
+                      "const eventPrice = pm.collectionVariables.get(\"eventPrice\");",
+                      "const eventTotalSeats = pm.collectionVariables.get(\"eventTotalSeats\");",
+                      "const eventCurrentAvailableSeats = pm.collectionVariables.get(\"eventCurrentAvailableSeats\");",
+                      "const bookingID = pm.collectionVariables.get(\"bookingID\");",
+                      "const bookingRefCode = pm.collectionVariables.get(\"bookingRefCode\");",
+                      "const customerName = pm.collectionVariables.get(\"bookingCustomerName\");",
+                      "const bookingTicketQuantity = pm.collectionVariables.get(\"bookingTicketQuantity\");",
+                      "const bookingTotalPrice = pm.collectionVariables.get(\"bookingTotalPrice\");",
+                      "",
+                      "pm.test(\"Response status code should be 200\", () => {",
+                      "    pm.response.to.have.status(200);",
+                      "});",
+                      "",
+                      "pm.test(\"success should be true\", () => {",
+                      "    pm.expect(jsonData.success).to.exist.and.to.equal(true);",
+                      "});",
+                      "",
+                      "pm.test(\"Validate booking data object properties\", () => {",
+                      "    pm.expect(data).to.have.property('id').that.is.a('number').and.equal(bookingID);",
+                      "    pm.expect(data).to.have.property('eventId').that.is.a('number').and.equal(Number(eventID));",
+                      "    pm.expect(data).to.have.property('userId').that.is.a('number').and.equal(Number(userID));",
+                      "    pm.expect(data).to.have.property('customerName').that.is.a('string').and.equal(customerName);",
+                      "    pm.expect(data).to.have.property('customerEmail').that.is.a('string').and.equal(testUserEmail);",
+                      "    pm.expect(data).to.have.property('customerPhone').that.is.a('string').and.equal('+63-9123456789');",
+                      "    pm.expect(data).to.have.property('quantity').that.is.a('number').and.equal(Number(bookingTicketQuantity));",
+                      "    pm.expect(data).to.have.property('totalPrice').that.is.a('string').and.equal(String(Number(bookingTotalPrice)));",
+                      "    pm.expect(data).to.have.property('status').that.is.a('string').and.equal('confirmed');",
+                      "    pm.expect(data).to.have.property('bookingRef').that.is.a('string').and.equal(bookingRefCode);",
+                      "    pm.expect(data).to.have.property('createdAt').that.is.a('string').and.not.empty;",
+                      "    pm.expect(data).to.have.property('updatedAt').that.is.a('string').and.not.empty;",
+                      "});",
+                      "",
+                      "pm.test(\"(BUG-001) Validate data event object properties\", () => {",
+                      "    pm.expect(data.event.id).to.equal(eventID);",
+                      "    pm.expect(data.event.title).to.equal(eventTitle);",
+                      "    pm.expect(data.event.description).to.equal(\"Postman API event testing\");",
+                      "    pm.expect(data.event.category).to.equal(\"Workshop\");",
+                      "    pm.expect(data.event.venue).to.equal(\"SMX Convention Center Aura\");",
+                      "    pm.expect(data.event.city).to.equal(\"Taguig City\");",
+                      "    pm.expect(data.event.eventDate).to.equal(eventDate);",
+                      "    pm.expect(Number(data.event.price)).to.equal(eventPrice);",
+                      "    pm.expect(data.event.totalSeats).to.equal(eventTotalSeats);",
+                      "",
+                      "    // BUG-001: availableSeats Not Updated when totalSeats Changes",
+                      "    pm.expect(data.event.availableSeats).to.equal(eventCurrentAvailableSeats);",
+                      "",
+                      "    pm.expect(data.event.imageUrl).to.equal(\"https://example.com/banner.jpg\");",
+                      "    pm.expect(data.event.isStatic).to.equal(false);",
+                      "    pm.expect(data.event.userId).to.equal(Number(userID));",
+                      "    pm.expect(data.event.createdAt).to.be.a(\"string\").and.not.empty;",
+                      "    pm.expect(data.event.updatedAt).to.be.a(\"string\").and.not.empty;",
+                      "});"
+                    ]
                   }
                 },
                 {
@@ -5793,16 +5652,6 @@
               "response": []
             }
           ],
-          "auth": {
-            "type": "bearer",
-            "bearer": [
-              {
-                "key": "token",
-                "value": "{{testAuthToken}}",
-                "type": "string"
-              }
-            ]
-          },
           "event": [
             {
               "listen": "prerequest",
@@ -5921,10 +5770,6 @@
                       "originalRequest": {
                         "method": "GET",
                         "header": [],
-                        "body": {
-                          "mode": "raw",
-                          "raw": ""
-                        },
                         "url": {
                           "raw": "{{base_url}}/bookings?eventId=123invalideEventID&status=status&page=0&limit=0",
                           "host": [
@@ -5959,7 +5804,7 @@
                       },
                       "status": "Internal Server Error",
                       "code": 500,
-                      "_postman_previewlanguage": null,
+                      "_postman_previewlanguage": "Text",
                       "header": [
                         {
                           "key": "Date",
@@ -6098,7 +5943,7 @@
                       },
                       "status": "Not Found",
                       "code": 404,
-                      "_postman_previewlanguage": null,
+                      "_postman_previewlanguage": "Text",
                       "header": [
                         {
                           "key": "Date",
@@ -6368,7 +6213,7 @@
                       },
                       "status": "Bad Request",
                       "code": 400,
-                      "_postman_previewlanguage": null,
+                      "_postman_previewlanguage": "Text",
                       "header": [
                         {
                           "key": "Date",
@@ -6504,7 +6349,7 @@
                       },
                       "status": "Internal Server Error",
                       "code": 500,
-                      "_postman_previewlanguage": null,
+                      "_postman_previewlanguage": "Text",
                       "header": [
                         {
                           "key": "Date",
@@ -6671,7 +6516,7 @@
                       },
                       "status": "Bad Request",
                       "code": 400,
-                      "_postman_previewlanguage": null,
+                      "_postman_previewlanguage": "Text",
                       "header": [
                         {
                           "key": "Date",
@@ -6816,7 +6661,7 @@
                       },
                       "status": "Bad Request",
                       "code": 400,
-                      "_postman_previewlanguage": null,
+                      "_postman_previewlanguage": "Text",
                       "header": [
                         {
                           "key": "Date",
@@ -6946,8 +6791,7 @@
             "packages": {},
             "requests": {},
             "exec": [
-              "const token = pm.environment.get(\"testAuthToken\");\r",
-              "pm.request.headers.upsert({ key: \"Authorization\", value: \"Bearer \" + token });"
+              ""
             ]
           }
         },
@@ -6965,16 +6809,6 @@
       ]
     }
   ],
-  "auth": {
-    "type": "bearer",
-    "bearer": [
-      {
-        "key": "token",
-        "value": "{{testAuthToken}}",
-        "type": "string"
-      }
-    ]
-  },
   "event": [
     {
       "listen": "prerequest",
@@ -7032,6 +6866,22 @@
       "value": ""
     },
     {
+      "key": "eventID",
+      "value": ""
+    },
+    {
+      "key": "eventDescription",
+      "value": ""
+    },
+    {
+      "key": "eventVenue",
+      "value": ""
+    },
+    {
+      "key": "eventCity",
+      "value": ""
+    },
+    {
       "key": "eventDate",
       "value": ""
     },
@@ -7044,11 +6894,7 @@
       "value": ""
     },
     {
-      "key": "eventInitialAvailableSeats",
-      "value": ""
-    },
-    {
-      "key": "eventID",
+      "key": "eventCurrentAvailableSeats",
       "value": ""
     },
     {
@@ -7056,7 +6902,19 @@
       "value": ""
     },
     {
-      "key": "eventUpdatedPrice",
+      "key": "eventUpdatedDescription",
+      "value": ""
+    },
+    {
+      "key": "eventNewPrice",
+      "value": ""
+    },
+    {
+      "key": "eventNewTotalSeats",
+      "value": ""
+    },
+    {
+      "key": "eventInitialAvailableSeats",
       "value": ""
     },
     {
@@ -7064,7 +6922,7 @@
       "value": ""
     },
     {
-      "key": "eventCurrentAvailableSeats",
+      "key": "eventUpdatedPrice",
       "value": ""
     },
     {
@@ -7089,10 +6947,6 @@
     },
     {
       "key": "seatsBooked",
-      "value": ""
-    },
-    {
-      "key": "testAuthToken",
       "value": ""
     }
   ]

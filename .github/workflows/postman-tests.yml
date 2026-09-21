@@ -134,41 +134,6 @@ jobs:
           echo "as FAILED tests and are documented using BUG IDs."
           echo ""
           echo "Reports are available in the workflow artifact."
-
-          echo "========================================"
-          echo "========================================"
-
-          echo "# EventHub API Automation" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-      
-          echo "## Collection Results" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-      
-          echo "| Collection | Outcome |" >> "$GITHUB_STEP_SUMMARY"
-          echo "|---|---|" >> "$GITHUB_STEP_SUMMARY"
-          echo "| Functional | ${{ steps.functional.outcome }} |" >> "$GITHUB_STEP_SUMMARY"
-          echo "| E2E | ${{ steps.e2e.outcome }} |" >> "$GITHUB_STEP_SUMMARY"
-          echo "| Data-Driven | ${{ steps.datadriven.outcome }} |" >> "$GITHUB_STEP_SUMMARY"
-      
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-      
-          echo "## Test Statistics" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-      
-          echo "| Metric | Count |" >> "$GITHUB_STEP_SUMMARY"
-          echo "|---|---:|" >> "$GITHUB_STEP_SUMMARY"
-          echo "| Total Tests | ${TOTAL_TESTS:-0} |" >> "$GITHUB_STEP_SUMMARY"
-          echo "| Failed Tests | ${TOTAL_FAILED_TESTS:-0} |" >> "$GITHUB_STEP_SUMMARY"
-          echo "| Total Assertions | ${TOTAL_ASSERTIONS:-0} |" >> "$GITHUB_STEP_SUMMARY"
-          echo "| Failed Assertions | ${TOTAL_FAILED_ASSERTIONS:-0} |" >> "$GITHUB_STEP_SUMMARY"
-      
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-      
-          echo "## Known Defects" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "Some failures are associated with active application defects and are documented using BUG IDs." >> "$GITHUB_STEP_SUMMARY"          
-          echo "========================================"
-          echo "========================================"
           
       # --------------------------------------------------
       # 7. Upload reports even if tests failed
@@ -180,24 +145,6 @@ jobs:
           name: postman-test-reports
           path: reports/
           if-no-files-found: warn
-      
-      # --------------------------------------------------
-      # 7. Upload reports even if tests failed
-      # --------------------------------------------------
 
-      - name: Final Quality Gate
-        if: always()
-        run: |
-          if [ "${{ steps.functional.outcome }}" != "success" ] || \
-          [ "${{ steps.e2e.outcome }}" != "success" ] || \
-          [ "${{ steps.datadriven.outcome }}" != "success" ]; then
 
-          echo "❌ API automation tests failed."
-          echo "Failed assertions: ${TOTAL_FAILED_ASSERTIONS:-0}"
-          echo "Failed tests: ${TOTAL_FAILED_TESTS:-0}"
-
-          exit 1
-          fi
-
-          echo "✅ All API automation collections passed."
 

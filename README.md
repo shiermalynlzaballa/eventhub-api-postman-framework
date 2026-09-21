@@ -1,6 +1,6 @@
 # EventHub API QA Automation Framework
 
-API test automation framework built with **Postman, JavaScript, Postman CLI, Git, and GitHub Actions** for validating the EventHub REST API.
+API test automation framework built with **Postman, JavaScript, Postman CLI, Newman, Git, and GitHub Actions** for validating the EventHub REST API.
 Swagger link: https://api.eventhub.rahulshettyacademy.com/api/docs/
 
 ## Portfolio
@@ -12,7 +12,7 @@ This repository demonstrates a complete API QA automation workflow from test des
 
 - **API Testing:** Postman
 - **Automation:** JavaScript
-- **CLI:** Postman CLI
+- **CLI:** Postman CLI/Newman
 - **CI/CD:** GitHub Actions
 - **Version Control:** Git/GitHub
 - **Reporting:** JUnit, JSON, HTML
@@ -33,6 +33,7 @@ This project demonstrates practical experience in:
 - Data-Driven Testing
 - Business Rule Validation
 - Postman CLI
+- Newman
 - Git
 - GitHub
 - GitHub Actions
@@ -116,11 +117,10 @@ Planned improvements include:
 - Additional API test coverage
 - Contract/schema validation
 - Allure reporting
-- Newman-based execution
 - Performance testing with k6
+- Enhanced CI/CD reporting – visibility into build, test, and deployment results.
+- Integration with CI/CD tools such as Jenkins and GitLab.
 - Dockerized test execution
-- Enhanced CI/CD reporting
-- Integration with additional test management tools
 
 ## Author
 

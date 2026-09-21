@@ -2662,67 +2662,10 @@
                 {
                   "listen": "test",
                   "script": {
-                    "exec": [
-                      "const jsonData = pm.response.json();\r",
-                      "const data = jsonData.data;\r",
-                      "\r",
-                      "pm.test(\"Response status code should be 200\", () => {\r",
-                      "    pm.response.to.have.status(200);\r",
-                      "})\r",
-                      "\r",
-                      "// Verify the 'data' array\r",
-                      "if (data.length > 0) {\r",
-                      "    pm.test(\"The 'data' array is not empty and not null\", () => {\r",
-                      "        pm.expect(data).to.exist.and.to.be.an('array').to.have.lengthOf(1);\r",
-                      "    });\r",
-                      "\r",
-                      "    pm.test(\"Each property in the 'data' array has the expected properties\", () => {\r",
-                      "        data.forEach((item) => {\r",
-                      "            pm.expect(item).to.have.property(\"id\", 2);\r",
-                      "            pm.expect(item).to.have.property(\"title\", \"Hollywood Monsoon Night — Los Angeles\");\r",
-                      "            pm.expect(item).to.have.property(\"description\", \"An unforgettable evening of live music performed by A-list playback singers under the open Mumbai sky. Featuring chart-toppers from the last three decades with a stunning light show and pyrotechnics.\");\r",
-                      "            pm.expect(item).to.have.property(\"category\", \"Concert\");\r",
-                      "            pm.expect(item).to.have.property(\"venue\", \"Dome, NSCI SVP Stadium, Worli\");\r",
-                      "            pm.expect(item).to.have.property(\"city\", \"Los Angeles\");\r",
-                      "            pm.expect(item).to.have.property(\"eventDate\", \"2026-07-11T19:00:00.000Z\");\r",
-                      "            pm.expect(item).to.have.property(\"price\", \"2500\");\r",
-                      "            pm.expect(item).to.have.property(\"totalSeats\", 3000);\r",
-                      "            pm.expect(item).to.have.property(\"availableSeats\");\r",
-                      "            pm.expect(item).to.have.property(\"imageUrl\", \"https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800\");\r",
-                      "            pm.expect(item).to.have.property(\"isStatic\", true);\r",
-                      "            pm.expect(item).to.have.property(\"userId\", null);\r",
-                      "            pm.expect(item).to.have.property(\"createdAt\");\r",
-                      "            pm.expect(item).to.have.property(\"updatedAt\");\r",
-                      "        });\r",
-                      "    });\r",
-                      "} else {\r",
-                      "    pm.test(\"The 'data' array is null or empty\", () => {\r",
-                      "        pm.expect.fail();\r",
-                      "    });\r",
-                      "}\r",
-                      "\r",
-                      "pm.test(\"Pagination values are correct\", () => {\r",
-                      "    pm.expect(jsonData.pagination).to.have.property(\"total\", 1);\r",
-                      "    pm.expect(jsonData.pagination).to.have.property(\"page\", 1);\r",
-                      "    pm.expect(jsonData.pagination).to.have.property(\"limit\", 10);\r",
-                      "    pm.expect(jsonData.pagination).to.have.property(\"totalPages\", 1);\r",
-                      "});\r",
-                      ""
-                    ],
                     "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
-                  }
-                },
-                {
-                  "listen": "prerequest",
-                  "script": {
                     "exec": [
-                      ""
-                    ],
-                    "type": "text/javascript",
-                    "packages": {},
-                    "requests": {}
+                      "const jsonData = pm.response.json();\r\nconst data = jsonData.data;\r\n\r\npm.test(\"Response status code should be 200\", () => {\r\n    pm.response.to.have.status(200);\r\n})\r\n\r\n// Verify the 'data' array\r\nif (data.length > 0) {\r\n    pm.test(\"The 'data' array is not empty and not null\", () => {\r\n        pm.expect(data).to.exist.and.to.be.an('array').to.have.lengthOf(1);\r\n    });\r\n\r\n    pm.test(\"Each property in the 'data' array has the expected properties\", () => {\r\n        data.forEach((item) => {\r\n            pm.expect(item).to.have.property(\"id\");\r\n            pm.expect(item).to.have.property(\"title\", \"Hollywood Monsoon Night — Los Angeles\");\r\n            pm.expect(item).to.have.property(\"description\", \"An unforgettable evening of live music performed by A-list playback singers under the open Mumbai sky. Featuring chart-toppers from the last three decades with a stunning light show and pyrotechnics.\");\r\n            pm.expect(item).to.have.property(\"category\", \"Concert\");\r\n            pm.expect(item).to.have.property(\"venue\", \"Dome, NSCI SVP Stadium, Worli\");\r\n            pm.expect(item).to.have.property(\"city\", \"Los Angeles\");\r\n            pm.expect(item).to.have.property(\"eventDate\", \"2026-07-11T19:00:00.000Z\");\r\n            pm.expect(item).to.have.property(\"price\", \"2500\");\r\n            pm.expect(item).to.have.property(\"totalSeats\", 3000);\r\n            pm.expect(item).to.have.property(\"availableSeats\");\r\n            pm.expect(item).to.have.property(\"imageUrl\", \"https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800\");\r\n            pm.expect(item).to.have.property(\"isStatic\", true);\r\n            pm.expect(item).to.have.property(\"userId\", null);\r\n            pm.expect(item).to.have.property(\"createdAt\");\r\n            pm.expect(item).to.have.property(\"updatedAt\");\r\n        });\r\n    });\r\n} else {\r\n    pm.test(\"The 'data' array is null or empty\", () => {\r\n        pm.expect.fail();\r\n    });\r\n}\r\n\r\npm.test(\"Pagination values are correct\", () => {\r\n    pm.expect(jsonData.pagination).to.have.property(\"total\", 1);\r\n    pm.expect(jsonData.pagination).to.have.property(\"page\", 1);\r\n    pm.expect(jsonData.pagination).to.have.property(\"limit\", 10);\r\n    pm.expect(jsonData.pagination).to.have.property(\"totalPages\", 1);\r\n});\r\n"
+                    ]
                   }
                 }
               ],
@@ -2734,7 +2677,12 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": ""
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "text"
+                    }
+                  }
                 },
                 "url": {
                   "raw": "{{base_url}}/events?category=Concert&city=Los Angeles&search=Hollywood Monsoon Night — Los Angeles&page=1&limit=10",

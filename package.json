@@ -19,7 +19,7 @@
   "devDependencies": {
     "allure": "^3.16.0",
     "newman": "^6.2.2",
-    "newman-reporter-allure": "^3.11.0",
+    "newman-reporter-allure": "^3.12.2",
     "newman-reporter-htmlextra": "^1.23.1"
   }
 }
